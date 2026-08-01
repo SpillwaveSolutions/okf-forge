@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { gotoApp } from "./helpers";
 
 test.describe("OKFForge web smoke", () => {
   test("loads learn view with sample concepts", async ({ page }) => {
@@ -23,10 +24,7 @@ test.describe("OKFForge web smoke", () => {
   });
 
   test("navigates to graph search via impact", async ({ page }) => {
-    await page.goto("/");
-    await expect(page.getByText("Learn OKF by using it")).toBeVisible({
-      timeout: 15_000,
-    });
+    await gotoApp(page);
 
     await page.getByRole("button", { name: "Graph & Search" }).click();
     await expect(
@@ -39,10 +37,7 @@ test.describe("OKFForge web smoke", () => {
   });
 
   test("open dialog exposes workspace + sample", async ({ page }) => {
-    await page.goto("/");
-    await expect(page.getByText("Learn OKF by using it")).toBeVisible({
-      timeout: 15_000,
-    });
+    await gotoApp(page);
     const openBtn = page.getByTestId("header-open");
     await expect(openBtn).toBeEnabled({ timeout: 15_000 });
     await openBtn.click();

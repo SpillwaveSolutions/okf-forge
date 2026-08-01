@@ -1,14 +1,26 @@
 {
  "docs": [
   {
+   "canonical_key": "design/ui-editor",
+   "doc_type": "design",
+   "git_hash": "6d72f85",
+   "slug": "ui-editor",
+   "source": "docs/designs/ui-editor.md",
+   "title": "UI spec \u2014 Editor view",
+   "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Editor",
+   "wiki_key": "design/ui-editor"
+  },
+  {
    "canonical_key": "roadmap",
    "doc_type": "roadmap",
-   "generated_at": "2026-08-01T16:24:00Z",
+   "generated_at": "2026-08-01T20:07:12Z",
    "slug": "roadmap",
    "source": "docs/roadmap.md",
-   "source_hash": "34d15d07",
+   "source_hash": "874bab08",
    "title": "Roadmap",
    "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",
    "wiki_key": "roadmap"
   }
  ],

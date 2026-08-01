@@ -2067,7 +2067,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "okf-motion"
+name = "okfforge"
 version = "0.1.0"
 dependencies = [
  "log",

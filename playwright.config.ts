@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import { resolveDevPortSync } from "./scripts/dev-port.mjs";
 import { mkdtempSync, cpSync, existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -20,9 +21,15 @@ function createE2EWorkspace(): string {
 const E2E_WORKSPACE =
   process.env.OKF_WORKSPACE ?? process.env.MOTION_WORKSPACE ?? createE2EWorkspace();
 
+// Resolved once here, then pinned into webServer.env so the dev server this
+// config spawns cannot independently resolve a different port. Without the pin
+// there is a real race: the port can be taken between our probe and Vite's.
+const PORT = resolveDevPortSync();
+const BASE_URL = `http://127.0.0.1:${PORT}`;
+
 /**
  * Web-mode e2e for OKFForge.
- * Same app as Vercel / live preview — real Vite dev server on :8080 with
+ * Same app as Vercel / live preview — a real Vite dev server with
  * OKF_WORKSPACE pointing at a scratch copy of sample-okf.
  */
 export default defineConfig({
@@ -34,7 +41,7 @@ export default defineConfig({
   reporter: process.env.CI ? [["html"], ["list"]] : [["list"]],
   timeout: 60_000,
   use: {
-    baseURL: "http://127.0.0.1:8080",
+    baseURL: BASE_URL,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "off",
@@ -52,12 +59,15 @@ export default defineConfig({
   ],
   webServer: {
     command: "npm run dev",
-    url: "http://127.0.0.1:8080",
-    // Live preview already runs on 8080 in this sandbox — reuse when present.
+    url: BASE_URL,
+    // Safe to reuse now that the port is resolved rather than assumed: a
+    // foreign server on the old fixed port used to be silently reused, and the
+    // whole suite would run against a different project's app.
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     env: {
       ...process.env,
+      OKF_DEV_PORT: String(PORT),
       OKF_WORKSPACE: E2E_WORKSPACE,
     },
   },

@@ -106,7 +106,8 @@ export async function loadGithubBundle(
   const parsed = parseGithubInput(input);
   if (!parsed) throw new Error("Enter owner/repo or a GitHub URL");
 
-  let { owner, repo, branch, subpath } = parsed;
+  const { owner, repo, branch } = parsed;
+  let { subpath } = parsed;
   if (preferredSubpath) subpath = preferredSubpath.replace(/\/$/, "");
 
   const tree = await fetchGithubTree(owner, repo, branch);
@@ -157,29 +158,67 @@ export async function loadGithubBundle(
   };
 }
 
+const UPLOAD_SKIP = new Set([
+  "node_modules",
+  ".git",
+  "dist",
+  "build",
+  "target",
+  ".next",
+  "coverage",
+]);
+
+/**
+ * Normalize browser folder upload paths into a nested tree.
+ * Strips the common top folder (webkitdirectory) so `agents/x.md` stays nested.
+ */
+export function normalizeUploadPath(relativePath: string): string | null {
+  const normalized = relativePath.replace(/\\/g, "/").replace(/^\/+/, "");
+  if (!normalized) return null;
+  const parts = normalized.split("/").filter(Boolean);
+  if (parts.some((p) => UPLOAD_SKIP.has(p))) return null;
+  if (!parts[parts.length - 1]?.endsWith(".md")) return null;
+  // Drop the root folder name from directory picks: MyRepo/agents/a.md → agents/a.md
+  if (parts.length > 1) return parts.slice(1).join("/");
+  return parts[0] ?? null;
+}
+
 export async function loadFilesFromUpload(
   fileList: FileList | File[],
 ): Promise<OkfBundle> {
   const files: Record<string, string> = {};
   const list = Array.from(fileList);
+  let topName = "uploaded-bundle";
+
   for (const file of list) {
     if (!file.name.endsWith(".md") && file.type !== "text/markdown") continue;
-    // webkitRelativePath for directory upload
-    const rel =
-      (file as File & { webkitRelativePath?: string }).webkitRelativePath ||
-      file.name;
-    const path = rel.replace(/^[^/]+\//, ""); // strip top folder name often
-    const content = await file.text();
-    files[path.includes("/") ? path : file.name] = content;
+    const webkit =
+      (file as File & { webkitRelativePath?: string }).webkitRelativePath || "";
+    if (webkit) {
+      const top = webkit.replace(/\\/g, "/").split("/").filter(Boolean)[0];
+      if (top) topName = top;
+      const path = normalizeUploadPath(webkit);
+      if (!path) continue;
+      files[path] = await file.text();
+    } else {
+      // Multi-file pick without folder structure
+      files[file.name] = await file.text();
+    }
   }
   if (!Object.keys(files).length)
     throw new Error("No markdown files in upload");
 
+  // Cap large folder picks so the UI stays responsive
+  const keys = Object.keys(files).sort();
+  const limited: Record<string, string> = {};
+  const max = 400;
+  for (const k of keys.slice(0, max)) limited[k] = files[k]!;
+
   return {
     id: `upload-${Date.now()}`,
-    name: "uploaded-bundle",
+    name: topName,
     source: "upload",
-    files,
+    files: limited,
     loadedAt: new Date().toISOString(),
   };
 }

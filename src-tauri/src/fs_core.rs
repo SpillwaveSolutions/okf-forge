@@ -113,6 +113,22 @@ pub fn collect_files(root: &Path, extensions: &[&str]) -> FsResult<Vec<String>> 
     Ok(out)
 }
 
+fn should_skip_dir(name: &str) -> bool {
+    matches!(
+        name,
+        "node_modules"
+            | ".git"
+            | "dist"
+            | "build"
+            | "target"
+            | ".next"
+            | "coverage"
+            | ".cache"
+            | "vendor"
+            | "__pycache__"
+    ) || (name.starts_with('.') && name != ".okf")
+}
+
 fn walk(dir: &Path, extensions: &[&str], out: &mut Vec<String>) -> FsResult<()> {
     let entries = fs::read_dir(dir).map_err(|e| {
         FsError::new(
@@ -129,11 +145,15 @@ fn walk(dir: &Path, extensions: &[&str], out: &mut Vec<String>) -> FsResult<()> 
 
         if file_type.is_dir() {
             let name = path.file_name().and_then(|s| s.to_str()).unwrap_or("");
-            if name.starts_with('.') {
+            if should_skip_dir(name) {
                 continue;
             }
             walk(&path, extensions, out)?;
         } else if file_type.is_file() {
+            let name = path.file_name().and_then(|s| s.to_str()).unwrap_or("");
+            if name.starts_with('.') {
+                continue;
+            }
             if let Some(ext) = path.extension().and_then(|s| s.to_str()) {
                 if extensions.contains(&ext.to_lowercase().as_str()) {
                     out.push(path.to_string_lossy().into_owned());

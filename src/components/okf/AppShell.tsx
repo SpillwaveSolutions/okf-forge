@@ -41,28 +41,32 @@ export function AppShell() {
   return (
     <div className="app-shell">
       <Header />
-      <div className="app-body">
-        <Sidebar />
-        <main className="app-main">
-          {view === "learn" && <LearnPanel />}
-          {view === "explorer" && <ExplorerPanel />}
-          {view === "editor" && <EditorPane />}
-          {view === "search" && <SearchPanel />}
-          {view === "classify" && <ClassifyPanel />}
-          {view === "deepagent" && <DeepAgentPanel />}
-          {view === "integrations" && <IntegrationsPanel />}
-        </main>
-      </div>
-      <footer className="status-bar">
+      {/* Grid children must be direct: header | sidebar | main | status.
+          Wrapping sidebar+main in app-body collapsed both into the 280px
+          left column so nav/editor panels looked dead. */}
+      <Sidebar />
+      {/* data-view is how tests address a view: there is one route and all
+          seven panels are conditional renders, so nothing else identifies
+          which one is mounted. */}
+      <main className="app-main" data-testid="app-main" data-view={view}>
+        {view === "learn" && <LearnPanel />}
+        {view === "explorer" && <ExplorerPanel />}
+        {view === "editor" && <EditorPane />}
+        {view === "search" && <SearchPanel />}
+        {view === "classify" && <ClassifyPanel />}
+        {view === "deepagent" && <DeepAgentPanel />}
+        {view === "integrations" && <IntegrationsPanel />}
+      </main>
+      <footer className="status-bar" data-testid="app-status">
         <div className="flex items-center gap-3 min-w-0">
           <span>{statusMessage ?? "OKFForge"}</span>
           {validation && (
             <span className="text-fg-subtle">
-              {validation.conceptCount} concepts · {validation.edgeCount} edges
-              {validation.errors > 0
-                ? ` · ${validation.errors} errors`
-                : validation.warnings > 0
-                  ? ` · ${validation.warnings} warnings`
+              {validation.concept_count} concepts · {validation.edge_count} edges
+              {validation.error_count > 0
+                ? ` · ${validation.error_count} errors`
+                : validation.warn_count > 0
+                  ? ` · ${validation.warn_count} warnings`
                   : " · healthy"}
             </span>
           )}

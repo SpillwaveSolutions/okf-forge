@@ -1,14 +1,12 @@
 import { test, expect } from "@playwright/test";
+import { gotoApp } from "./helpers";
 
 test.describe("workspace open + save", () => {
   test("opens web workspace and persists an edit via /api/fs", async ({
     page,
     request,
   }) => {
-    await page.goto("/");
-    await expect(page.getByText("Learn OKF by using it")).toBeVisible({
-      timeout: 15_000,
-    });
+    await gotoApp(page);
 
     const openBtn = page.getByTestId("header-open");
     await expect(openBtn).toBeEnabled({ timeout: 15_000 });

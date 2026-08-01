@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "d4a20ca82ddf",
+   "render_hash": "04399b7f0a72",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -91,11 +91,72 @@
    "wiki_key": "item/01KYZ27EFFB9MG32Y3YVFHRTND"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-01T16:24:00Z. Historical snapshots are linked from [[Index-Releases]].",
+   "frozen": false,
+   "page_name": "Ticket-01KYZ8TZY5GARKJKNC5NC1PE75",
+   "render": "as-is",
+   "render_hash": "de89e78c9ba4",
+   "source": "docs/.index/rendered/tickets/01KYZ8TZY5GARKJKNC5NC1PE75.md",
+   "title": "Lint gate is unlandable: ignore holes plus prefer-const errors",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZ8TZY5GARKJKNC5NC1PE75"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KYZ8V02N7W42QKDHYFK9ZS70",
+   "render": "as-is",
+   "render_hash": "1dad2bbac454",
+   "source": "docs/.index/rendered/tickets/01KYZ8V02N7W42QKDHYFK9ZS70.md",
+   "title": "Application quality gate on every pull request",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZ8V02N7W42QKDHYFK9ZS70"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KYZ97ESCXSAG4KFAESST84QT",
+   "render": "as-is",
+   "render_hash": "ccc5ab2cfb7a",
+   "source": "docs/.index/rendered/tickets/01KYZ97ESCXSAG4KFAESST84QT.md",
+   "title": "UI spec, wireframe and layout rubric for the Editor view",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZ97ESCXSAG4KFAESST84QT"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KYZ9TRM50FCMFFZDVW2VZ2CC",
+   "render": "as-is",
+   "render_hash": "13c20865ca31",
+   "source": "docs/.index/rendered/tickets/01KYZ9TRM50FCMFFZDVW2VZ2CC.md",
+   "title": "End-to-end tests interact with the app before it hydrates",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZ9TRM50FCMFFZDVW2VZ2CC"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KYZF04XQY6T771RDTCZQRWSY",
+   "render": "as-is",
+   "render_hash": "079fd929b4a0",
+   "source": "docs/.index/rendered/tickets/01KYZF04XQY6T771RDTCZQRWSY.md",
+   "title": "Dev server port collides with other projects on the same machine",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZF04XQY6T771RDTCZQRWSY"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
+   "page_name": "Design-UI-Editor",
+   "render": "doc+banner",
+   "render_hash": "ddd525c79efd",
+   "source": "docs/designs/ui-editor.md",
+   "title": "UI spec \u2014 Editor view",
+   "truth_state": "current",
+   "wiki_key": "design/ui-editor"
+  },
+  {
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-01T20:07:12Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "cc2c7f279606",
+   "render_hash": "841300abe967",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

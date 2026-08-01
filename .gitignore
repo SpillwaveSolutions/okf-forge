@@ -9,3 +9,12 @@ node_modules/
 !AGENTS.md
 
 __pycache__/
+
+# Test/build output produced by the CI gate.
+test-results/
+playwright-report/
+
+.work/wiki-checkout/
+
+# Machine-local dev-server port picked by scripts/dev-port.mjs.
+.dev-port

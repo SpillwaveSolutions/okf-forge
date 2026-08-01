@@ -14,9 +14,40 @@
    "from": "item/01KYZ27EFFB9MG32Y3YVFHRTND",
    "to": "release/v0.1.0",
    "type": "targets"
+  },
+  {
+   "from": "item/01KYZ8TZY5GARKJKNC5NC1PE75",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZ8V02N7W42QKDHYFK9ZS70",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZ97ESCXSAG4KFAESST84QT",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZ9TRM50FCMFFZDVW2VZ2CC",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZF04XQY6T771RDTCZQRWSY",
+   "to": "release/v0.1.0",
+   "type": "targets"
   }
  ],
  "nodes": {
+  "design/ui-editor": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-editor.md",
+   "title": "UI spec \u2014 Editor view",
+   "truth_state": "current"
+  },
   "item/01KYZ24K4MKBE0VN4YAZ84V221": {
    "doc_type": "item",
    "status": "todo",
@@ -31,6 +62,31 @@
    "doc_type": "item",
    "status": "todo",
    "title": "Scaffold worklog and write the project agent guide"
+  },
+  "item/01KYZ8TZY5GARKJKNC5NC1PE75": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Lint gate is unlandable: ignore holes plus prefer-const errors"
+  },
+  "item/01KYZ8V02N7W42QKDHYFK9ZS70": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Application quality gate on every pull request"
+  },
+  "item/01KYZ97ESCXSAG4KFAESST84QT": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "UI spec, wireframe and layout rubric for the Editor view"
+  },
+  "item/01KYZ9TRM50FCMFFZDVW2VZ2CC": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "End-to-end tests interact with the app before it hydrates"
+  },
+  "item/01KYZF04XQY6T771RDTCZQRWSY": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Dev server port collides with other projects on the same machine"
   },
   "release/v0.1.0": {
    "doc_type": "release"

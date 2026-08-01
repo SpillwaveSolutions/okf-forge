@@ -1,0 +1,67 @@
+@startsalt
+'
+' Wireframe — Editor view. Authoritative for THREE things only:
+'   1. element inventory (which named controls exist)
+'   2. containment and reading order (header / sidebar | main / status)
+'   3. ordinal sequence (nav order, view-toggle order)
+'
+' NOT authoritative for pixels, spacing, colour, typography, icons, density or
+' state styling. The real UI is a dark workbench; Salt draws monochrome boxes.
+' Never diff a screenshot against this render.
+'
+' Render: npm run wireframes
+'
+{
+  {* <&git-branch> OKFForge | "  Search concepts, types, tags...  " | [Preview] | [Markdown] | [Split] | [Learn] | [Open] | [Classify] | [Save] }
+  {
+    {
+      <b>NAV
+      [Learn OKF]
+      [Explorer]
+      [<b>Editor]
+      [Graph & Search]
+      [Classify]
+      [DeepAgents]
+      [Plugins & MCP]
+      --
+      <b>SAMPLE-OKF | valid
+      "  Filter files...  "
+      --
+      {T
+      + agents
+      ++ graph-engineer.md | Agent
+      ++ skill-runner.md   | Agent
+      + decisions
+      ++ single-claude.md  | DecisionRecord
+      + knowledge
+      + index.md
+      + log.md
+      }
+    } |
+    {
+      { [B] | [I] | [<&list>] | [<&link>] | [Impact] | [Pack] | [Save] }
+      {
+        {SI
+        (markdown source)
+        frontmatter + body
+        for the selected concept
+        (Graph Engineer,
+        type AgentNode)
+        } |
+        {SI
+        (rendered preview)
+        Graph Engineer
+        Owns impact analysis
+        and context packing.
+        }
+      }
+      --
+      <b>Neighborhood
+      {SI
+         (graph canvas)
+      }
+    }
+  }
+  {* 22 concepts · bundled | Loaded sample-okf | agents/graph-engineer.md | 22 concepts · 83 edges }
+}
+@endsalt

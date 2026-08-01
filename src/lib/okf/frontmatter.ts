@@ -66,7 +66,7 @@ export function parseFrontmatter(text: string): {
     if (!stripped.includes(":")) continue;
     const colon = stripped.indexOf(":");
     const key = stripped.slice(0, colon).trim();
-    let val = stripped.slice(colon + 1).trim().replace(/^["']|["']$/g, "");
+    const val = stripped.slice(colon + 1).trim().replace(/^["']|["']$/g, "");
     if (val.toLowerCase() === "true") meta[key] = true;
     else if (val.toLowerCase() === "false") meta[key] = false;
     else if (val.startsWith("[") && val.endsWith("]")) {
@@ -142,7 +142,7 @@ export function normalizeTarget(
   sourcePath: string,
   fileSet: Set<string>,
 ): string | null {
-  let t = target.split("#")[0]?.trim() ?? "";
+  const t = target.split("#")[0]?.trim() ?? "";
   if (!t || t.startsWith("http") || t.startsWith("mailto:")) return null;
 
   let cand: string;

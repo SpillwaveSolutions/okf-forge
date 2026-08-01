@@ -86,6 +86,12 @@ interface OkfState {
   statusMessage: string | null;
   /** Absolute path of opened native/web workspace (when using FS storage). */
   workspaceRoot: string | null;
+  /**
+   * Optional on-disk prefix under workspaceRoot when the logical OKF root is
+   * nested (e.g. `sample-okf/` or `.okf/`). Bundle paths are relative to the
+   * logical root; FS reads/writes use prefix + path.
+   */
+  workspacePrefix: string;
   isDesktop: boolean;
 
   init: () => Promise<void>;
@@ -152,26 +158,128 @@ function pickDefaultPath(concepts: Record<string, Concept>): string | null {
   return nonIndex ?? Object.keys(concepts)[0] ?? null;
 }
 
-async function loadBundleFromStorage(rootLabel: string): Promise<OkfBundle> {
+/** Hard cap so opening a home/docs tree does not freeze the UI. */
+export const MAX_WORKSPACE_MD_FILES = 400;
+
+const SKIP_PATH_SEGMENTS = new Set([
+  "node_modules",
+  ".git",
+  "dist",
+  "build",
+  "target",
+  ".next",
+  "coverage",
+  ".cache",
+  "vendor",
+  "__pycache__",
+]);
+
+/** Allow `.okf` bundles; skip other hidden / junk segments. */
+function shouldSkipPath(rel: string): boolean {
+  const parts = rel.split(/[/\\]/).filter(Boolean);
+  return parts.some((p) => {
+    if (p === ".okf") return false;
+    if (SKIP_PATH_SEGMENTS.has(p)) return true;
+    if (p.startsWith(".") && p !== ".okf") return true;
+    return false;
+  });
+}
+
+/**
+ * When the opened folder is not an OKF root, prefer a nested OKF subtree.
+ * Returns relative keys for the bundle and the on-disk prefix to read from.
+ */
+function resolveWorkspaceSelection(allPaths: string[]): {
+  /** Paths relative to the logical OKF root (bundle keys). */
+  relative: string[];
+  /** Prefix on disk under workspace root ("" | "sample-okf/" | ".okf/"). */
+  diskPrefix: string;
+  name: string;
+} {
+  const paths = allPaths
+    .map((p) => p.replace(/^\/+/, "").replace(/\\/g, "/"))
+    .filter((p) => p.endsWith(".md") && !shouldSkipPath(p))
+    .sort();
+
+  if (paths.includes("index.md")) {
+    return { relative: paths, diskPrefix: "", name: "workspace" };
+  }
+
+  const sample = paths.filter((p) => p.startsWith("sample-okf/"));
+  if (sample.length && sample.some((p) => p === "sample-okf/index.md")) {
+    return {
+      relative: sample.map((p) => p.slice("sample-okf/".length)).filter(Boolean),
+      diskPrefix: "sample-okf/",
+      name: "sample-okf",
+    };
+  }
+
+  const okf = paths.filter((p) => p.startsWith(".okf/"));
+  if (okf.length) {
+    return {
+      relative: okf.map((p) => p.slice(".okf/".length)).filter(Boolean),
+      diskPrefix: ".okf/",
+      name: ".okf",
+    };
+  }
+
+  return { relative: paths, diskPrefix: "", name: "workspace" };
+}
+
+async function loadBundleFromStorage(
+  rootLabel: string,
+): Promise<{
+  bundle: OkfBundle;
+  truncated: number;
+  skipped: number;
+  diskPrefix: string;
+}> {
   const storage = getStorage();
-  const filesList = await storage.listMarkdownFiles();
-  if (!filesList.length) {
+  const listed = await storage.listMarkdownFiles();
+  if (!listed.length) {
     throw new Error("No markdown files in workspace");
   }
+
+  const normalized = listed.map((p) =>
+    p.replace(/^\/+/, "").replace(/\\/g, "/"),
+  );
+  const junkFree = normalized.filter((p) => !shouldSkipPath(p));
+  const skipped = normalized.length - junkFree.length;
+  const { relative, diskPrefix, name } = resolveWorkspaceSelection(junkFree);
+
+  let selected = relative;
+  let truncated = 0;
+  if (selected.length > MAX_WORKSPACE_MD_FILES) {
+    truncated = selected.length - MAX_WORKSPACE_MD_FILES;
+    selected = selected.slice(0, MAX_WORKSPACE_MD_FILES);
+  }
+
+  if (!selected.length) {
+    throw new Error(
+      "No markdown files left after filtering (or empty OKF root)",
+    );
+  }
+
   const files: Record<string, string> = {};
-  for (const p of filesList) {
-    // list returns relative paths (web) or relative after strip (tauri)
-    const rel = p.replace(/^\/+/, "");
-    const content = await storage.readFile(rel);
+  for (const rel of selected) {
+    const content = await storage.readFile(diskPrefix + rel);
     files[rel] = content;
   }
+
+  const folderName = rootLabel.split(/[/\\]/).pop() || "workspace";
+
   return {
-    id: `ws-${Date.now()}`,
-    name: rootLabel.split(/[/\\]/).pop() || "workspace",
-    source: storage.isNative() ? "local" : "local",
-    sourceUrl: rootLabel,
-    files,
-    loadedAt: new Date().toISOString(),
+    bundle: {
+      id: `ws-${Date.now()}`,
+      name: name === "workspace" ? folderName : name,
+      source: "local",
+      sourceUrl: rootLabel,
+      files,
+      loadedAt: new Date().toISOString(),
+    },
+    truncated,
+    skipped: Math.max(0, skipped),
+    diskPrefix,
   };
 }
 
@@ -209,6 +317,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   openDialog: false,
   statusMessage: null,
   workspaceRoot: null,
+  workspacePrefix: "",
   isDesktop: false,
 
   init: async () => {
@@ -288,8 +397,9 @@ export const useOkfStore = create<OkfState>((set, get) => ({
 
     // Persist to real FS when a workspace is open (desktop or web /api/fs)
     if (workspaceRoot) {
+      const prefix = get().workspacePrefix;
       void getStorage()
-        .writeFile(selectedPath, editorDraft)
+        .writeFile(prefix + selectedPath, editorDraft)
         .catch((e) => {
           get().showToast(
             `Disk save failed: ${e instanceof Error ? e.message : String(e)}`,
@@ -351,7 +461,13 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   },
 
   loadSample: async () => {
-    set({ loading: true, error: null, openDialog: false, workspaceRoot: null });
+    set({
+      loading: true,
+      error: null,
+      openDialog: false,
+      workspaceRoot: null,
+      workspacePrefix: "",
+    });
     try {
       const bundle = await loadBundledSample();
       const { concepts, validation } = recompute(bundle);
@@ -380,7 +496,13 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   },
 
   loadGithub: async (input) => {
-    set({ loading: true, error: null, openDialog: false, workspaceRoot: null });
+    set({
+      loading: true,
+      error: null,
+      openDialog: false,
+      workspaceRoot: null,
+      workspacePrefix: "",
+    });
     try {
       const bundle = await loadGithubBundle(input);
       const { concepts, validation } = recompute(bundle);
@@ -411,7 +533,13 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   },
 
   loadUpload: async (files) => {
-    set({ loading: true, error: null, openDialog: false, workspaceRoot: null });
+    set({
+      loading: true,
+      error: null,
+      openDialog: false,
+      workspaceRoot: null,
+      workspacePrefix: "",
+    });
     try {
       const bundle = await loadFilesFromUpload(files);
       const { concepts, validation } = recompute(bundle);
@@ -444,12 +572,21 @@ export const useOkfStore = create<OkfState>((set, get) => ({
         set({ loading: false });
         return;
       }
-      const bundle = await loadBundleFromStorage(root);
+      const { bundle, truncated, skipped, diskPrefix } =
+        await loadBundleFromStorage(root);
       const { concepts, validation } = recompute(bundle);
       const first = pickDefaultPath(concepts);
+      const n = Object.keys(concepts).length;
+      const notes = [
+        truncated ? `showing first ${n} of ${n + truncated}` : null,
+        skipped ? `skipped ${skipped} junk paths` : null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
       set({
         loading: false,
         workspaceRoot: root,
+        workspacePrefix: diskPrefix,
         bundle,
         concepts,
         validation,
@@ -459,15 +596,22 @@ export const useOkfStore = create<OkfState>((set, get) => ({
         impactTarget: first ?? "",
         graphFocus: first,
         view: "explorer",
-        statusMessage: `Opened ${root} · ${Object.keys(concepts).length} concepts`,
+        statusMessage: `Opened ${root} · ${n} concepts${notes ? ` (${notes})` : ""}`,
       });
       if (first) get().runGraph(first);
-      get().showToast(`Opened workspace (${Object.keys(concepts).length} files)`);
+      get().showToast(
+        notes
+          ? `Opened workspace · ${n} files (${notes})`
+          : `Opened workspace (${n} files)`,
+      );
     } catch (e) {
       set({
         loading: false,
         error: e instanceof Error ? e.message : String(e),
       });
+      get().showToast(
+        `Open failed: ${e instanceof Error ? e.message : String(e)}`,
+      );
     }
   },
 
@@ -477,12 +621,21 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       const storage = getStorage();
       const root = await storage.getWorkspaceRoot();
       if (!root) throw new Error("No web workspace configured (OKF_WORKSPACE)");
-      const bundle = await loadBundleFromStorage(root);
+      const { bundle, truncated, skipped, diskPrefix } =
+        await loadBundleFromStorage(root);
       const { concepts, validation } = recompute(bundle);
       const first = pickDefaultPath(concepts);
+      const n = Object.keys(concepts).length;
+      const notes = [
+        truncated ? `capped at ${n}` : null,
+        skipped ? `skipped ${skipped}` : null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
       set({
         loading: false,
         workspaceRoot: root,
+        workspacePrefix: diskPrefix,
         bundle,
         concepts,
         validation,
@@ -492,15 +645,22 @@ export const useOkfStore = create<OkfState>((set, get) => ({
         impactTarget: first ?? "",
         graphFocus: first,
         view: "explorer",
-        statusMessage: `Web workspace ${root}`,
+        statusMessage: `Web workspace ${root}${notes ? ` · ${notes}` : ""}`,
       });
       if (first) get().runGraph(first);
-      get().showToast("Loaded web workspace via /api/fs");
+      get().showToast(
+        notes
+          ? `Loaded web workspace · ${n} files (${notes})`
+          : "Loaded web workspace via /api/fs",
+      );
     } catch (e) {
       set({
         loading: false,
         error: e instanceof Error ? e.message : String(e),
       });
+      get().showToast(
+        `Load failed: ${e instanceof Error ? e.message : String(e)}`,
+      );
     }
   },
 
@@ -520,6 +680,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       graphFocus: first,
       openDialog: false,
       workspaceRoot: null,
+      workspacePrefix: "",
     });
     get().runGraph(first);
     get().showToast("Scaffolded new OKF bundle");
@@ -557,6 +718,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       dirty: false,
       view: "explorer",
       workspaceRoot: null,
+      workspacePrefix: "",
     });
     get().showToast(
       `Created OKF repo with ${Object.keys(concepts).length} files`,
@@ -654,7 +816,10 @@ export const useOkfStore = create<OkfState>((set, get) => ({
     });
     get().showToast(`Created ${path}`);
     if (workspaceRoot) {
-      void getStorage().writeFile(path, content).catch(() => {});
+      const prefix = get().workspacePrefix;
+      void getStorage()
+        .writeFile(prefix + path, content)
+        .catch(() => {});
     }
   },
 

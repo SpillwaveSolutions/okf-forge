@@ -5,6 +5,7 @@ import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { nitro } from "nitro/vite";
 import { okfFsApiPlugin } from "./src/lib/platform/fsApiPlugin";
+import { resolveDevPort } from "./scripts/dev-port.mjs";
 
 /**
  * Finish PGLite bootstrap during dev-server setup (before traffic). Vite awaits
@@ -115,13 +116,17 @@ function authPopupPlugin(): Plugin {
   };
 }
 
-// `0.0.0.0:8080` is the live-preview contract — don't change host/port.
+// Port comes from scripts/dev-port.mjs, not a constant: several Tauri projects
+// share this machine and every template hardcodes the same port. The resolver
+// probes for a free one and remembers it in .dev-port so vite, Playwright and
+// the Tauri devUrl all agree. strictPort stays true — the port is already known
+// to be free, so a bind failure is a real problem worth failing on.
 // Keep `nitro` gated to `build` (the Vercel deploy target).
 // okfFsApiPlugin: real filesystem jail for Playwright / web mode (OKF_WORKSPACE).
-export default defineConfig(({ command }) => ({
+export default defineConfig(async ({ command }) => ({
   server: {
     host: "0.0.0.0",
-    port: 8080,
+    port: await resolveDevPort(),
     strictPort: true,
     // Tauri webview connects to 127.0.0.1; allow it during `tauri dev`.
     clearScreen: false,
