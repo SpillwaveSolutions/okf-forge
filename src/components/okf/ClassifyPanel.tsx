@@ -39,6 +39,13 @@ export function ClassifyPanel() {
             Drop a pile of documents — we suggest types, paths, tags, and
             frontmatter, then build a searchable OKF bundle (okf-author style).
           </p>
+          <p className="text-xs text-fg-subtle mt-2 rounded-md border border-border bg-bg-subtle px-3 py-2">
+            <strong className="text-fg-muted">Safe by default:</strong> Classify
+            only works on files you upload or paste here. It does{" "}
+            <strong className="text-fg-muted">not</strong> scan or rewrite your
+            open workspace on disk. Applying results creates a new in-memory
+            bundle; nothing is written until you explicitly Save to a workspace.
+          </p>
         </div>
 
         <div className="panel-card space-y-3">

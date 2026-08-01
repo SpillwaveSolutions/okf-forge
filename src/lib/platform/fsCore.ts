@@ -81,6 +81,19 @@ function assertDirectory(path: string): string {
   return real;
 }
 
+const SKIP_DIRS = new Set([
+  "node_modules",
+  ".git",
+  "dist",
+  "build",
+  "target",
+  ".next",
+  "coverage",
+  ".cache",
+  "vendor",
+  "__pycache__",
+]);
+
 export function collectFiles(
   root: string,
   extensions: readonly string[],
@@ -92,9 +105,10 @@ export function collectFiles(
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
       const full = join(dir, entry.name);
       if (entry.isDirectory()) {
-        if (entry.name.startsWith(".")) continue;
+        if (entry.name.startsWith(".") || SKIP_DIRS.has(entry.name)) continue;
         walk(full);
       } else if (entry.isFile()) {
+        if (entry.name.startsWith(".")) continue;
         const dot = entry.name.lastIndexOf(".");
         if (dot <= 0) continue;
         const ext = entry.name.slice(dot + 1).toLowerCase();

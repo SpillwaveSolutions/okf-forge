@@ -548,6 +548,7 @@ export function searchConcepts(
   return hits.slice(0, 50);
 }
 
+/** Flat first-segment grouping (legacy). Prefer {@link buildFileTree}. */
 export function catalogTree(concepts: Record<string, Concept>) {
   const dirs: Record<string, Concept[]> = {};
   for (const c of Object.values(concepts)) {
@@ -559,6 +560,94 @@ export function catalogTree(concepts: Record<string, Concept>) {
     list.sort((a, b) => a.path.localeCompare(b.path));
   }
   return dirs;
+}
+
+export type FileTreeNode =
+  | {
+      kind: "dir";
+      name: string;
+      /** Directory path relative to bundle root (no trailing slash). */
+      path: string;
+      children: FileTreeNode[];
+    }
+  | {
+      kind: "file";
+      name: string;
+      path: string;
+      concept: Concept;
+    };
+
+/**
+ * Nested file tree from concept paths (agents/foo/bar.md → agents → foo → bar.md).
+ */
+export function buildFileTree(
+  concepts: Record<string, Concept>,
+): FileTreeNode[] {
+  type DirAcc = {
+    kind: "dir";
+    name: string;
+    path: string;
+    dirs: Map<string, DirAcc>;
+    files: FileTreeNode[];
+  };
+
+  const root: DirAcc = {
+    kind: "dir",
+    name: "",
+    path: "",
+    dirs: new Map(),
+    files: [],
+  };
+
+  const sorted = Object.values(concepts).sort((a, b) =>
+    a.path.localeCompare(b.path),
+  );
+
+  for (const c of sorted) {
+    const parts = c.path.split("/").filter(Boolean);
+    if (!parts.length) continue;
+    let node = root;
+    for (let i = 0; i < parts.length - 1; i++) {
+      const seg = parts[i]!;
+      const dirPath = node.path ? `${node.path}/${seg}` : seg;
+      let child = node.dirs.get(seg);
+      if (!child) {
+        child = {
+          kind: "dir",
+          name: seg,
+          path: dirPath,
+          dirs: new Map(),
+          files: [],
+        };
+        node.dirs.set(seg, child);
+      }
+      node = child;
+    }
+    const fileName = parts[parts.length - 1]!;
+    node.files.push({
+      kind: "file",
+      name: fileName,
+      path: c.path,
+      concept: c,
+    });
+  }
+
+  const finalize = (acc: DirAcc): FileTreeNode[] => {
+    const dirs = [...acc.dirs.values()]
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(
+        (d): FileTreeNode => ({
+          kind: "dir",
+          name: d.name,
+          path: d.path,
+          children: finalize(d),
+        }),
+      );
+    const files = acc.files.sort((a, b) => a.name.localeCompare(b.name));
+    return [...dirs, ...files];
+  };
+
+  return finalize(root);
 }
 
 export function buildFromBundle(bundle: OkfBundle) {
