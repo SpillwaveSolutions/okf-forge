@@ -1,0 +1,46 @@
+{
+ "edges": [
+  {
+   "from": "item/01KYZ24K4MKBE0VN4YAZ84V221",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZ24K90F9SS04CRSJRB65R4",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZ27EFFB9MG32Y3YVFHRTND",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  }
+ ],
+ "nodes": {
+  "item/01KYZ24K4MKBE0VN4YAZ84V221": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Nested collapsible file tree in the sidebar"
+  },
+  "item/01KYZ24K90F9SS04CRSJRB65R4": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Filesystem walkers pull in build output and flatten upload paths"
+  },
+  "item/01KYZ27EFFB9MG32Y3YVFHRTND": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Scaffold worklog and write the project agent guide"
+  },
+  "release/v0.1.0": {
+   "doc_type": "release"
+  },
+  "roadmap": {
+   "doc_type": "roadmap",
+   "source": "docs/roadmap.md",
+   "title": "Roadmap",
+   "truth_state": "current"
+  }
+ },
+ "version": 1
+}

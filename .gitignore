@@ -3,3 +3,9 @@ node_modules/
 .github_repo
 .env
 .env.*
+
+# Agent guides are project docs here, overriding the global ignore.
+!CLAUDE.md
+!AGENTS.md
+
+__pycache__/
