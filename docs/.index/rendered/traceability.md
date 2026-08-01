@@ -2,6 +2,10 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Dev server port collides with other projects on the same machine
+`01KYZF04XQY6T771RDTCZQRWSY` · status: todo
+- targets: release/v0.1.0
+
 ### End-to-end tests interact with the app before it hydrates
 `01KYZ9TRM50FCMFFZDVW2VZ2CC` · status: todo
 - targets: release/v0.1.0

@@ -34,6 +34,11 @@
    "from": "item/01KYZ9TRM50FCMFFZDVW2VZ2CC",
    "to": "release/v0.1.0",
    "type": "targets"
+  },
+  {
+   "from": "item/01KYZF04XQY6T771RDTCZQRWSY",
+   "to": "release/v0.1.0",
+   "type": "targets"
   }
  ],
  "nodes": {
@@ -77,6 +82,11 @@
    "doc_type": "item",
    "status": "todo",
    "title": "End-to-end tests interact with the app before it hydrates"
+  },
+  "item/01KYZF04XQY6T771RDTCZQRWSY": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Dev server port collides with other projects on the same machine"
   },
   "release/v0.1.0": {
    "doc_type": "release"

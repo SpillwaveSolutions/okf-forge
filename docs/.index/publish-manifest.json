@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "00d0c3d96ebe",
+   "render_hash": "04399b7f0a72",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -131,6 +131,16 @@
    "wiki_key": "item/01KYZ9TRM50FCMFFZDVW2VZ2CC"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KYZF04XQY6T771RDTCZQRWSY",
+   "render": "as-is",
+   "render_hash": "079fd929b4a0",
+   "source": "docs/.index/rendered/tickets/01KYZF04XQY6T771RDTCZQRWSY.md",
+   "title": "Dev server port collides with other projects on the same machine",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZF04XQY6T771RDTCZQRWSY"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-UI-Editor",
@@ -142,11 +152,11 @@
    "wiki_key": "design/ui-editor"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-01T18:36:53Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-01T20:07:12Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "14846119629e",
+   "render_hash": "841300abe967",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

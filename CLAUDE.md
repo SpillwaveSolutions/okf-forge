@@ -85,9 +85,16 @@ entry `tauri.html`, no Start/Nitro/fs plugins.
   (`isInsideWorkspace`/`is_inside_workspace`, `collectFiles`/`collect_files`, …)
   and share one jail rule: realpath both sides, then check containment
   **by path component** so `/ws-evil/x.md` cannot escape `/ws` via string prefix.
-- **`0.0.0.0:8080` is a contract**, not a preference. Changing it means also
-  updating `tauri.conf.json` `devUrl`, Playwright `baseURL`, and the preview proxy.
-  Never bind a second dev port in web mode.
+- **The dev port is resolved, never hardcoded.** `scripts/dev-port.mjs` is the
+  single source of truth: it probes for a free port at or above 8080, remembers
+  it in `.dev-port` (gitignored), and every consumer reads from it —
+  `vite.config.ts`, `playwright.config.ts`, the Tauri `devUrl` (via
+  `tauri dev --config`), `startup.sh`, and the smoke scripts. Several Tauri
+  projects share this machine and they all ship the same default port; a
+  collision used to make Playwright's `reuseExistingServer` silently run the
+  whole suite against *another project's app*. `npm run port` prints the
+  current one; `OKF_DEV_PORT=9000 npm run dev` overrides for one run. Never
+  reintroduce a literal port, and never bind a second dev port in web mode.
 - **Graph logic stays pure** in `src/lib/okf/*`; UI in `src/components/okf/*` wires
   through `store.ts`. Don't put graph algorithms in components.
 - **Never hand-edit `.work/*.jsonl` or `docs/roadmap.md`** — see the policy block below.

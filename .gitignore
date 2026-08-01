@@ -15,3 +15,6 @@ test-results/
 playwright-report/
 
 .work/wiki-checkout/
+
+# Machine-local dev-server port picked by scripts/dev-port.mjs.
+.dev-port
