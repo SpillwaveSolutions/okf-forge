@@ -50,42 +50,42 @@
   },
   "item/01KYZ24K4MKBE0VN4YAZ84V221": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Nested collapsible file tree in the sidebar"
   },
   "item/01KYZ24K90F9SS04CRSJRB65R4": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Filesystem walkers pull in build output and flatten upload paths"
   },
   "item/01KYZ27EFFB9MG32Y3YVFHRTND": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Scaffold worklog and write the project agent guide"
   },
   "item/01KYZ8TZY5GARKJKNC5NC1PE75": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Lint gate is unlandable: ignore holes plus prefer-const errors"
   },
   "item/01KYZ8V02N7W42QKDHYFK9ZS70": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Application quality gate on every pull request"
   },
   "item/01KYZ97ESCXSAG4KFAESST84QT": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "UI spec, wireframe and layout rubric for the Editor view"
   },
   "item/01KYZ9TRM50FCMFFZDVW2VZ2CC": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "End-to-end tests interact with the app before it hydrates"
   },
   "item/01KYZF04XQY6T771RDTCZQRWSY": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Dev server port collides with other projects on the same machine"
   },
   "release/v0.1.0": {
