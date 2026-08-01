@@ -20,6 +20,7 @@
     "test:e2e": "playwright test",
     "test:rust": "cd src-tauri && cargo test",
     "wireframes": "plantuml -tpng -nometadata docs/designs/wireframes/*.puml",
+    "wiki": "node scripts/publish-wiki.mjs",
     "verify": "npm run typecheck && npm run test && npm run test:e2e",
     "tauri": "tauri",
     "tauri:dev": "tauri dev",

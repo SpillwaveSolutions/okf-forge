@@ -153,6 +153,14 @@ Any change under `src/components/okf/` or `src/styles.css` follows this loop.
 6. **Iterate** from 2. Report `agent`-row concerns in the PR body; never block a
    merge on them.
 
+Wireframes: edit the `.puml`, run `npm run wireframes` to re-render, then
+`npm run wiki` to publish. `npm run wiki` renders the worklog manifest into the
+wiki checkout, strips frontmatter (Gollum shows it as raw text), copies wireframe
+PNGs to the flat wiki root, and corrects the banner on `docs/designs/ui-*.md` —
+worklog treats every design doc except `current_design_doc.md` as a frozen dated
+artifact, which these are not. Never patch `bin/` for this; it is re-copied on
+every worklog upgrade.
+
 E2E tests must call `gotoApp()` from `e2e/helpers.ts` before interacting. The web
 build is SSR, so static copy is visible before React hydrates — clicking earlier
 lands on a real, enabled element with no handler and fails with a symptom that
