@@ -1,0 +1,110 @@
+{
+ "pages": [
+  {
+   "frozen": false,
+   "page_name": "Home",
+   "render": "as-is",
+   "render_hash": "7a6e118df66d",
+   "source": "docs/.index/rendered/home.md",
+   "title": "Home",
+   "truth_state": "current",
+   "wiki_key": "home"
+  },
+  {
+   "frozen": false,
+   "page_name": "Index-Decisions",
+   "render": "as-is",
+   "render_hash": "d3182fbfb022",
+   "source": "docs/.index/rendered/decisions.md",
+   "title": "Decisions Index",
+   "truth_state": "current",
+   "wiki_key": "index/decisions"
+  },
+  {
+   "frozen": false,
+   "page_name": "Index-Releases",
+   "render": "as-is",
+   "render_hash": "f45668ba0034",
+   "source": "docs/.index/rendered/releases.md",
+   "title": "Releases Index",
+   "truth_state": "current",
+   "wiki_key": "index/releases"
+  },
+  {
+   "frozen": false,
+   "page_name": "Index-Status",
+   "render": "as-is",
+   "render_hash": "b8bcebbbbe23",
+   "source": "docs/.index/rendered/status.md",
+   "title": "Status Archive",
+   "truth_state": "current",
+   "wiki_key": "index/status"
+  },
+  {
+   "frozen": false,
+   "page_name": "Index-Traceability",
+   "render": "as-is",
+   "render_hash": "d4a20ca82ddf",
+   "source": "docs/.index/rendered/traceability.md",
+   "title": "Traceability Index",
+   "truth_state": "current",
+   "wiki_key": "index/traceability"
+  },
+  {
+   "frozen": false,
+   "page_name": "Release-v0.1.0",
+   "render": "as-is",
+   "render_hash": "84529d37dc5c",
+   "source": "docs/.index/rendered/releases/v0.1.0.md",
+   "title": "Release v0.1.0",
+   "truth_state": "shipped",
+   "wiki_key": "release/v0.1.0"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KYZ24K4MKBE0VN4YAZ84V221",
+   "render": "as-is",
+   "render_hash": "3d19252668e5",
+   "source": "docs/.index/rendered/tickets/01KYZ24K4MKBE0VN4YAZ84V221.md",
+   "title": "Nested collapsible file tree in the sidebar",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZ24K4MKBE0VN4YAZ84V221"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KYZ24K90F9SS04CRSJRB65R4",
+   "render": "as-is",
+   "render_hash": "16fcbbacb1ed",
+   "source": "docs/.index/rendered/tickets/01KYZ24K90F9SS04CRSJRB65R4.md",
+   "title": "Filesystem walkers pull in build output and flatten upload paths",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZ24K90F9SS04CRSJRB65R4"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KYZ27EFFB9MG32Y3YVFHRTND",
+   "render": "as-is",
+   "render_hash": "54b495b2e80f",
+   "source": "docs/.index/rendered/tickets/01KYZ27EFFB9MG32Y3YVFHRTND.md",
+   "title": "Scaffold worklog and write the project agent guide",
+   "truth_state": "open",
+   "wiki_key": "item/01KYZ27EFFB9MG32Y3YVFHRTND"
+  },
+  {
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-01T16:24:00Z. Historical snapshots are linked from [[Index-Releases]].",
+   "frozen": false,
+   "page_name": "Roadmap",
+   "render": "doc+banner",
+   "render_hash": "cc2c7f279606",
+   "source": "docs/roadmap.md",
+   "title": "Roadmap",
+   "truth_state": "current",
+   "wiki_key": "roadmap"
+  }
+ ],
+ "sidebar": {
+  "render_hash": "bf90917cf238",
+  "source": "docs/.index/rendered/_Sidebar.md"
+ },
+ "version": 1
+}
