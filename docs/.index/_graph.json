@@ -39,6 +39,21 @@
    "from": "item/01KYZF04XQY6T771RDTCZQRWSY",
    "to": "release/v0.1.0",
    "type": "targets"
+  },
+  {
+   "from": "item/01KYZN9KRDZ0CR758BA3XEJP6C",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZN9KX5FBTAMYCB2ZP4CSSY",
+   "to": "release/v0.1.0",
+   "type": "targets"
+  },
+  {
+   "from": "item/01KYZN9M26QS2EATG15KEZYMZ0",
+   "to": "release/v0.1.0",
+   "type": "targets"
   }
  ],
  "nodes": {
@@ -87,6 +102,21 @@
    "doc_type": "item",
    "status": "done",
    "title": "Dev server port collides with other projects on the same machine"
+  },
+  "item/01KYZN9KRDZ0CR758BA3XEJP6C": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Repository has a Prettier config but was never formatted"
+  },
+  "item/01KYZN9KX5FBTAMYCB2ZP4CSSY": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Desktop storage provider has no JavaScript test coverage"
+  },
+  "item/01KYZN9M26QS2EATG15KEZYMZ0": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Desktop app cannot be driven by automation"
   },
   "release/v0.1.0": {
    "doc_type": "release"
