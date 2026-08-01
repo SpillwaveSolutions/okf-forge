@@ -94,6 +94,26 @@ pub fn run() {
                         .build(),
                 )?;
             }
+            // Opt-in automation: an MCP bridge for agent-driven inspection and
+            // a WebDriver server for scripted runs. Registered under the cargo
+            // feature rather than `debug_assertions` so the crates are not even
+            // compiled into a release build. Never enable for a shipped binary.
+            #[cfg(feature = "automation")]
+            {
+                use tauri::Manager;
+                // The capability is added at runtime and its JSON lives outside
+                // capabilities/ on purpose: tauri-build scans that directory
+                // unconditionally, so a static file naming mcp-bridge:default
+                // fails every build with the feature off ("Permission
+                // mcp-bridge:default not found"). wdio-webdriver declares no
+                // permissions — it serves WebDriver, not IPC commands — so it
+                // needs no capability at all.
+                app.handle()
+                    .add_capability(include_str!("../automation-capability.json"))?;
+                app.handle().plugin(tauri_plugin_mcp_bridge::init())?;
+                app.handle().plugin(tauri_plugin_wdio::init())?;
+                app.handle().plugin(tauri_plugin_wdio_webdriver::init())?;
+            }
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![

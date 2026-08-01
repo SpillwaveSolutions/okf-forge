@@ -1,0 +1,45 @@
+# Desktop end-to-end against the real Tauri window.
+#
+# Deliberately NOT part of ci.yml and NOT a required check. It needs a full
+# cargo build plus a real window, which makes it both the slowest and the
+# flakiest tier in the repo. Blocking a docs-only PR on it would be a bad
+# trade. If this goes red you investigate; you do not stop merging.
+#
+# macOS runner because that is the platform whose desktop path is otherwise
+# untested — Playwright cannot drive Tauri there at all.
+name: desktop-e2e
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays, 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  desktop:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      - run: npm ci
+      # Builds dist/ (the SPA the webview loads) then the debug binary with the
+      # automation feature, which is what embeds the WebDriver server.
+      - run: npm run build:tauri
+      - run: npm run tauri:build:automation
+      - run: npm run test:desktop
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: desktop-e2e-logs
+          path: |
+            e2e-desktop/logs/
+            src-tauri/target/debug/build/*/output
+          retention-days: 7
+          if-no-files-found: ignore

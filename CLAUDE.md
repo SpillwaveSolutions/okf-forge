@@ -126,6 +126,38 @@ entry `tauri.html`, no Start/Nitro/fs plugins.
 - Rust edits need a `tauri:dev` restart; frontend HMR flows through the webview.
 - Stale desktop UI after a change: `rm -rf dist src-tauri/target/release`, rebuild.
 
+## Desktop automation (opt-in)
+
+`--features automation` compiles in an MCP bridge (agent-driven inspection) and
+an embedded WebDriver server. They are **optional cargo deps**, not
+`debug_assertions` gates, so a release build does not contain them at all.
+
+```
+npm run tauri:dev:automation      # dev window with both surfaces
+npm run tauri:build:automation    # debug binary (--no-bundle)
+npm run test:desktop              # WebdriverIO against that binary
+```
+
+Three traps, all already paid for:
+
+- **The capability is added at runtime**, from `src-tauri/automation-capability.json`
+  — deliberately *outside* `capabilities/`, which `tauri-build` scans
+  unconditionally. A static file naming `mcp-bridge:default` fails every build
+  with the feature off.
+- **`add_capability` needs `tauri/dynamic-acl`**, which the `automation` feature
+  pulls in so release builds skip it.
+- **WebdriverIO needs two Rust crates** — `tauri-plugin-wdio` (always) and
+  `-webdriver` (the embedded server that makes macOS work). Playwright cannot
+  drive Tauri on macOS at all: only Windows' WebView2 speaks CDP.
+
+`@wdio/native-utils` is pinned to 2.5.0 in `overrides` — `@wdio/tauri-service@1.2.0`
+pins 2.4.0 exactly but imports a symbol only 2.5.0 exports.
+
+`npm run test:desktop` is **not** a required check; it runs weekly and on demand
+(`.github/workflows/desktop-e2e.yml`). Scope it to what only the real runtime can
+prove — the native window, the FS jail, the picker. The React tree is identical
+in both runtimes by design.
+
 ## Conventions
 
 - Tests are **not colocated**: unit in `tests/`, e2e in `e2e/`. Unit tests use

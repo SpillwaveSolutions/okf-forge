@@ -1,0 +1,6 @@
+{
+  "identifier": "automation",
+  "description": "Debug-only automation surface for the MCP bridge. Added at runtime under the `automation` cargo feature — deliberately NOT in capabilities/, which tauri-build scans unconditionally and which would therefore break every build with the feature off.",
+  "windows": ["main"],
+  "permissions": ["mcp-bridge:default"]
+}

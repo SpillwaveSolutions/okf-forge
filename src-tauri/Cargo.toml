@@ -23,5 +23,28 @@ tauri-plugin-log = "2"
 tauri-plugin-fs = "2.4.5"
 tauri-plugin-dialog = "2.6.0"
 
+# Automation surfaces, opt-in only. Optional deps rather than a runtime flag:
+# with the feature off cargo does not compile them at all, so they are absent
+# from a release binary rather than merely disabled. `debug_assertions` (how
+# tauri-plugin-log is gated below) would still link them in.
+tauri-plugin-mcp-bridge = { version = "0.12", optional = true }
+tauri-plugin-wdio = { version = "1", optional = true }
+tauri-plugin-wdio-webdriver = { version = "1.2", optional = true }
+
+[features]
+# One feature, not two: both answer "let a machine drive this window", and two
+# flags means two more things to remember on every build command.
+automation = [
+    "dep:tauri-plugin-mcp-bridge",
+    # Two crates: tauri-plugin-wdio is always required by the service (execute
+    # API, log forwarding); -webdriver adds the embedded WebDriver server that
+    # makes macOS work at all.
+    "dep:tauri-plugin-wdio",
+    "dep:tauri-plugin-wdio-webdriver",
+    # add_capability() lives behind this tauri feature. Pulled in only with
+    # automation, so a release build does not carry the dynamic ACL machinery.
+    "tauri/dynamic-acl",
+]
+
 [dev-dependencies]
 tempfile = "3.24.0"
