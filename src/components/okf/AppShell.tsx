@@ -45,7 +45,10 @@ export function AppShell() {
           Wrapping sidebar+main in app-body collapsed both into the 280px
           left column so nav/editor panels looked dead. */}
       <Sidebar />
-      <main className="app-main" data-testid="app-main">
+      {/* data-view is how tests address a view: there is one route and all
+          seven panels are conditional renders, so nothing else identifies
+          which one is mounted. */}
+      <main className="app-main" data-testid="app-main" data-view={view}>
         {view === "learn" && <LearnPanel />}
         {view === "explorer" && <ExplorerPanel />}
         {view === "editor" && <EditorPane />}
@@ -54,7 +57,7 @@ export function AppShell() {
         {view === "deepagent" && <DeepAgentPanel />}
         {view === "integrations" && <IntegrationsPanel />}
       </main>
-      <footer className="status-bar">
+      <footer className="status-bar" data-testid="app-status">
         <div className="flex items-center gap-3 min-w-0">
           <span>{statusMessage ?? "OKFForge"}</span>
           {validation && (

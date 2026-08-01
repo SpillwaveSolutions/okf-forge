@@ -252,6 +252,9 @@ export function Sidebar() {
         className="flex-1 overflow-y-auto px-2 py-2 scrollbar-thin"
         role="listbox"
         aria-label="Workspace files"
+        // Rows below the fold are correct here, not a layout bug — opts this
+        // subtree out of the viewport-escape check in e2e/layout.spec.ts.
+        data-scroll
       >
         {Object.keys(concepts).length === 0 && (
           <p className="px-2 py-4 text-center text-xs text-fg-muted">

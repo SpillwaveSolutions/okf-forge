@@ -30,7 +30,7 @@ export function Header() {
   const isDesktop = useOkfStore((s) => s.isDesktop);
 
   return (
-    <header className="app-header">
+    <header className="app-header" data-testid="app-header">
       <div className="flex items-center gap-2 shrink-0">
         <div className="logo-mark" aria-hidden>
           <GitBranch className="size-3.5" />
@@ -72,6 +72,7 @@ export function Header() {
             key={m.id}
             type="button"
             className={`view-toggle-btn ${editorMode === m.id ? "active" : ""}`}
+            aria-pressed={editorMode === m.id}
             onClick={() => {
               setEditorMode(m.id);
               setView("editor");

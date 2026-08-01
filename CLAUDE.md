@@ -132,6 +132,32 @@ entry `tauri.html`, no Start/Nitro/fs plugins.
   verify` before pushing is manual discipline.
 - Before a desktop release, run the DEVELOPERS.md §8 checklist on a real host.
 
+## UI change loop
+
+Any change under `src/components/okf/` or `src/styles.css` follows this loop.
+
+1. **Read** `docs/designs/ui-<view>.md` — spec, element inventory, rubric. No spec
+   for the view you're changing? Write one first (template: `ui-editor.md`).
+2. **Implement.** The element inventory is a contract: adding or removing a control
+   means updating the spec and its `git_hash` in the same commit.
+3. **Screenshot.** Web: chrome-devtools MCP — resize to 1280×800, navigate to the
+   dev server, click `nav-<view>`, screenshot. Desktop-only behavior (native
+   picker, FS jail) needs the Tauri MCP. Screenshots go to the scratchpad, never
+   to `screenshots/` (those are README assets).
+4. **Judge** only the rubric rows marked `agent`. Also take an accessibility
+   snapshot and read console messages — a console error is a failure. **Never
+   compare a screenshot to the Salt wireframe**: it is authoritative for element
+   inventory, containment order, and ordinal sequence, not pixels.
+5. **Verify.** `npm run test:e2e -- layout.spec.ts`. Every rubric row with a named
+   Check must pass. Those are the gate; `agent` rows are advice.
+6. **Iterate** from 2. Report `agent`-row concerns in the PR body; never block a
+   merge on them.
+
+E2E tests must call `gotoApp()` from `e2e/helpers.ts` before interacting. The web
+build is SSR, so static copy is visible before React hydrates — clicking earlier
+lands on a real, enabled element with no handler and fails with a symptom that
+looks nothing like the cause.
+
 ## More docs
 
 `DEVELOPERS.md` (dev workflow, Tauri build/deploy, pre-release checklist),

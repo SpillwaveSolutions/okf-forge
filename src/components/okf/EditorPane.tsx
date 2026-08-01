@@ -199,7 +199,11 @@ export function EditorPane() {
           />
         )}
         {showPreview && (
-          <div className="overflow-y-auto p-4 md:p-6 scrollbar-thin border-t lg:border-t-0 border-border">
+          <div
+            className="overflow-y-auto p-4 md:p-6 scrollbar-thin border-t lg:border-t-0 border-border"
+            // Rendered markdown scrolls; links below the fold are expected.
+            data-scroll
+          >
             <MarkdownPreview source={editorDraft} />
             {graphData && graphData.root === selectedPath && (
               <div className="mt-8 space-y-2">
