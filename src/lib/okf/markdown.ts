@@ -10,7 +10,7 @@ function escapeHtml(s: string): string {
 
 export function markdownToHtml(md: string): string {
   // Strip frontmatter for preview body
-  let text = md.replace(/^---\s*\n[\s\S]*?\n---\s*\n?/, "");
+  const text = md.replace(/^---\s*\n[\s\S]*?\n---\s*\n?/, "");
   const lines = text.split("\n");
   const out: string[] = [];
   let inCode = false;

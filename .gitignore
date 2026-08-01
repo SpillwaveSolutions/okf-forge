@@ -9,3 +9,7 @@ node_modules/
 !AGENTS.md
 
 __pycache__/
+
+# Test/build output produced by the CI gate.
+test-results/
+playwright-report/

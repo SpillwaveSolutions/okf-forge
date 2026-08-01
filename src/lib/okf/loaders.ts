@@ -106,7 +106,8 @@ export async function loadGithubBundle(
   const parsed = parseGithubInput(input);
   if (!parsed) throw new Error("Enter owner/repo or a GitHub URL");
 
-  let { owner, repo, branch, subpath } = parsed;
+  const { owner, repo, branch } = parsed;
+  let { subpath } = parsed;
   if (preferredSubpath) subpath = preferredSubpath.replace(/\/$/, "");
 
   const tree = await fetchGithubTree(owner, repo, branch);
