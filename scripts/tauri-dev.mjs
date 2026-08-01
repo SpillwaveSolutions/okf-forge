@@ -21,14 +21,10 @@ const patch = JSON.stringify({ build: { devUrl } });
 
 console.log(`[tauri-dev] devUrl ${devUrl}`);
 
-const child = spawn(
-  "npx",
-  ["tauri", "dev", "--config", patch, ...process.argv.slice(2)],
-  {
-    stdio: "inherit",
-    env: { ...process.env, OKF_DEV_PORT: String(port) },
-  },
-);
+const child = spawn("npx", ["tauri", "dev", "--config", patch, ...process.argv.slice(2)], {
+  stdio: "inherit",
+  env: { ...process.env, OKF_DEV_PORT: String(port) },
+});
 
 child.on("exit", (code, signal) => {
   if (signal) process.kill(process.pid, signal);

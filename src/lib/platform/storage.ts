@@ -51,9 +51,7 @@ export class HttpStorage implements StorageProvider {
   }
 
   async readFile(path: string): Promise<string> {
-    const res = await fetch(
-      `/api/fs/read?path=${encodeURIComponent(path)}`,
-    );
+    const res = await fetch(`/api/fs/read?path=${encodeURIComponent(path)}`);
     if (!res.ok) return failed(res, `Failed to read ${path}`);
     const data = (await res.json()) as { content?: string };
     return data.content ?? "";
@@ -128,9 +126,7 @@ export function isTauriRuntime(): boolean {
   return (
     "__TAURI_INTERNALS__" in window ||
     "__TAURI__" in window ||
-    Boolean(
-      (window as unknown as { isTauri?: boolean }).isTauri,
-    )
+    Boolean((window as unknown as { isTauri?: boolean }).isTauri)
   );
 }
 

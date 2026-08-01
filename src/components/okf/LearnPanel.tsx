@@ -1,11 +1,4 @@
-import {
-  ArrowRight,
-  BookOpen,
-  CheckCircle2,
-  Network,
-  Sparkles,
-  Bot,
-} from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, Network, Sparkles, Bot } from "lucide-react";
 import { useOkfStore } from "@/lib/okf/store";
 
 const STEPS = [
@@ -77,8 +70,8 @@ export function LearnPanel() {
             >
               okf-graph-eng
             </a>
-            : edit Markdown, search the graph, classify docs into a searchable
-            repo, and wire skills into DeepAgents.
+            : edit Markdown, search the graph, classify docs into a searchable repo, and wire skills
+            into DeepAgents.
           </p>
         </div>
 
@@ -109,9 +102,7 @@ export function LearnPanel() {
                 <s.icon className="size-3.5" />
                 {s.label}
               </div>
-              <div className="text-lg font-semibold text-fg truncate">
-                {s.value}
-              </div>
+              <div className="text-lg font-semibold text-fg truncate">{s.value}</div>
             </div>
           ))}
         </div>
@@ -121,9 +112,7 @@ export function LearnPanel() {
             <h2 className="text-sm font-semibold text-fg">
               Step {step + 1} of {STEPS.length}: {current.title}
             </h2>
-            <span className="badge">
-              {Math.round(((step + 1) / STEPS.length) * 100)}%
-            </span>
+            <span className="badge">{Math.round(((step + 1) / STEPS.length) * 100)}%</span>
           </div>
           <div className="h-1.5 rounded-full bg-bg-subtle overflow-hidden">
             <div
@@ -144,9 +133,7 @@ export function LearnPanel() {
             <button
               type="button"
               className="btn btn-primary"
-              onClick={() =>
-                setLearnStep(Math.min(STEPS.length - 1, step + 1))
-              }
+              onClick={() => setLearnStep(Math.min(STEPS.length - 1, step + 1))}
               disabled={step >= STEPS.length - 1}
             >
               Next
@@ -211,13 +198,7 @@ export function LearnPanel() {
   );
 }
 
-function FileCue({
-  icon: Icon,
-  title,
-}: {
-  icon: typeof BookOpen;
-  title: string;
-}) {
+function FileCue({ icon: Icon, title }: { icon: typeof BookOpen; title: string }) {
   return (
     <div className="flex items-center gap-2 text-sm font-medium text-fg">
       <Icon className="size-4 text-primary" />

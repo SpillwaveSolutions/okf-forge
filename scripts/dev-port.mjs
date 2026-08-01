@@ -112,9 +112,7 @@ export async function resolveDevPort() {
     if (p === prev) continue; // already known bad
     if (await isFree(p)) {
       if (prev !== null) {
-        console.error(
-          `[dev-port] ${prev} is taken by another process; using ${p} instead.`,
-        );
+        console.error(`[dev-port] ${prev} is taken by another process; using ${p} instead.`);
       }
       return remember(p);
     }
@@ -147,11 +145,7 @@ export function peekDevPort() {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
   (async () => {
-    const port = args.includes("--peek")
-      ? peekDevPort()
-      : await resolveDevPort();
-    process.stdout.write(
-      args.includes("--url") ? `http://127.0.0.1:${port}/\n` : `${port}\n`,
-    );
+    const port = args.includes("--peek") ? peekDevPort() : await resolveDevPort();
+    process.stdout.write(args.includes("--url") ? `http://127.0.0.1:${port}/\n` : `${port}\n`);
   })();
 }

@@ -138,20 +138,9 @@ export const HARNESS_TYPES = [
   "TicketLink",
 ] as const;
 
-export const HIGH_IMPACT_TYPES = new Set([
-  "AgentNode",
-  "Workflow",
-  "Harness",
-  "SharedState",
-]);
+export const HIGH_IMPACT_TYPES = new Set(["AgentNode", "Workflow", "Harness", "SharedState"]);
 
-export const MEDIUM_IMPACT_TYPES = new Set([
-  "Dataset",
-  "Table",
-  "Metric",
-  "API",
-  "ToolCapability",
-]);
+export const MEDIUM_IMPACT_TYPES = new Set(["Dataset", "Table", "Metric", "API", "ToolCapability"]);
 
 export const KNOWN_RELS = new Set([
   "depends_on",
@@ -167,10 +156,4 @@ export const KNOWN_RELS = new Set([
 ]);
 
 export type AppView =
-  | "learn"
-  | "explorer"
-  | "editor"
-  | "search"
-  | "classify"
-  | "deepagent"
-  | "integrations";
+  "learn" | "explorer" | "editor" | "search" | "classify" | "deepagent" | "integrations";

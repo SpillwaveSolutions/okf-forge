@@ -1,4 +1,3 @@
-
 # Application quality gate. Deliberately NOT part of worklog.yml: that file is
 # scaffolded and re-copied by `worklog init`, so the next upgrade would silently
 # delete these jobs. Tool-owned file stays tool-owned.
@@ -26,6 +25,7 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
+      - run: npm run format:check
       # node:test over tests/** — the pure-function tier.
       - run: npm test
       # Vite + Nitro/Vercel SSR build. Verified locally before being made a

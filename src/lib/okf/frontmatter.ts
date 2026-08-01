@@ -42,11 +42,7 @@ export function parseFrontmatter(text: string): {
         }
         continue;
       }
-      if (
-        current &&
-        /^[A-Za-z0-9_]+:/.test(stripped) &&
-        !stripped.startsWith("-")
-      ) {
+      if (current && /^[A-Za-z0-9_]+:/.test(stripped) && !stripped.startsWith("-")) {
         if (line[0] === " " || line[0] === "\t") {
           const [k, ...restParts] = stripped.split(":");
           current[(k ?? "").trim()] = restParts
@@ -66,7 +62,10 @@ export function parseFrontmatter(text: string): {
     if (!stripped.includes(":")) continue;
     const colon = stripped.indexOf(":");
     const key = stripped.slice(0, colon).trim();
-    const val = stripped.slice(colon + 1).trim().replace(/^["']|["']$/g, "");
+    const val = stripped
+      .slice(colon + 1)
+      .trim()
+      .replace(/^["']|["']$/g, "");
     if (val.toLowerCase() === "true") meta[key] = true;
     else if (val.toLowerCase() === "false") meta[key] = false;
     else if (val.startsWith("[") && val.endsWith("]")) {
@@ -87,10 +86,7 @@ export function parseFrontmatter(text: string): {
   return { meta, body };
 }
 
-export function serializeFrontmatter(
-  meta: Record<string, unknown>,
-  body: string,
-): string {
+export function serializeFrontmatter(meta: Record<string, unknown>, body: string): string {
   const lines = ["---"];
   for (const [key, value] of Object.entries(meta)) {
     if (key === "links" && Array.isArray(value)) {
@@ -199,10 +195,7 @@ export function extractFrontmatterLinks(
   return edges;
 }
 
-export function mergeEdges(
-  mdEdges: TypedEdge[],
-  fmEdges: TypedEdge[],
-): TypedEdge[] {
+export function mergeEdges(mdEdges: TypedEdge[], fmEdges: TypedEdge[]): TypedEdge[] {
   const byTarget = new Map<string, TypedEdge>();
   for (const e of mdEdges) byTarget.set(e.target, e);
   for (const e of fmEdges) {

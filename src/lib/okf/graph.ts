@@ -19,31 +19,22 @@ import {
   type ValidateResult,
 } from "./types";
 
-export function loadConcepts(
-  files: Record<string, string>,
-): Record<string, Concept> {
+export function loadConcepts(files: Record<string, string>): Record<string, Concept> {
   const fileSet = new Set(Object.keys(files));
   const concepts: Record<string, Concept> = {};
 
   for (const path of Object.keys(files).sort()) {
-    if (!path.endsWith(".md") || path.split("/").pop()?.startsWith("."))
-      continue;
+    if (!path.endsWith(".md") || path.split("/").pop()?.startsWith(".")) continue;
     const raw = files[path] ?? "";
     const { meta, body } = parseFrontmatter(raw);
     const mdEdges = extractMarkdownLinks(raw, path, fileSet);
     const fmEdges = extractFrontmatterLinks(meta, path, fileSet);
     const edges = mergeEdges(mdEdges, fmEdges);
-    const tags = Array.isArray(meta.tags)
-      ? (meta.tags as unknown[]).map(String)
-      : [];
+    const tags = Array.isArray(meta.tags) ? (meta.tags as unknown[]).map(String) : [];
     concepts[path] = {
       path,
-      title: String(
-        meta.title || path.split("/").pop()?.replace(/\.md$/, "") || path,
-      ),
-      type: String(
-        meta.type || (path.endsWith("index.md") ? "Index" : "Unknown"),
-      ),
+      title: String(meta.title || path.split("/").pop()?.replace(/\.md$/, "") || path),
+      type: String(meta.type || (path.endsWith("index.md") ? "Index" : "Unknown")),
       status: String(meta.status || ""),
       verified: Boolean(meta.verified),
       tags,
@@ -61,9 +52,7 @@ export function loadConcepts(
   return concepts;
 }
 
-export function buildInbound(
-  concepts: Record<string, Concept>,
-): Record<string, string[]> {
+export function buildInbound(concepts: Record<string, Concept>): Record<string, string[]> {
   const inbound: Record<string, string[]> = {};
   for (const [rel, c] of Object.entries(concepts)) {
     for (const tgt of c.outbound) {
@@ -74,17 +63,13 @@ export function buildInbound(
   return inbound;
 }
 
-export function resolveConcept(
-  concepts: Record<string, Concept>,
-  query: string,
-): string | null {
+export function resolveConcept(concepts: Record<string, Concept>, query: string): string | null {
   const q = query.trim().replace(/^\/+/, "");
   if (q in concepts) return q;
   const qLower = q.toLowerCase();
   for (const [rel, c] of Object.entries(concepts)) {
     const stem = rel.split("/").pop()?.replace(/\.md$/, "") ?? "";
-    if (stem.toLowerCase() === qLower || c.title.toLowerCase() === qLower)
-      return rel;
+    if (stem.toLowerCase() === qLower || c.title.toLowerCase() === qLower) return rel;
     if (rel.endsWith(q) || rel.endsWith(q + ".md")) return rel;
   }
   return null;
@@ -176,8 +161,7 @@ export function impact(
   for (const [k, v] of Object.entries(concepts)) outboundMap[k] = v.outbound;
 
   const target = resolveConcept(concepts, conceptQuery);
-  if (!target || !concepts[target])
-    return { error: `concept not found: ${conceptQuery}` };
+  if (!target || !concepts[target]) return { error: `concept not found: ${conceptQuery}` };
 
   const c = concepts[target]!;
   const inbound = enrichNodes(concepts, bfsClosure(target, inboundMap));
@@ -189,8 +173,7 @@ export function impact(
   const direct_in: Array<{ from: string; rel: string; source: string }> = [];
   for (const [rel, concept] of Object.entries(concepts)) {
     for (const e of concept.edges) {
-      if (e.target === target)
-        direct_in.push({ from: rel, rel: e.rel, source: e.source });
+      if (e.target === target) direct_in.push({ from: rel, rel: e.rel, source: e.source });
     }
   }
 
@@ -217,8 +200,7 @@ export function pack(
   undirected = false,
 ): PackResult | { error: string } {
   const target = resolveConcept(concepts, conceptQuery);
-  if (!target || !concepts[target])
-    return { error: `concept not found: ${conceptQuery}` };
+  if (!target || !concepts[target]) return { error: `concept not found: ${conceptQuery}` };
 
   const outboundMap: Record<string, string[]> = {};
   for (const [k, v] of Object.entries(concepts))
@@ -233,9 +215,7 @@ export function pack(
         (g[o] ??= []).push(k);
       }
     }
-    graph = Object.fromEntries(
-      Object.entries(g).map(([k, v]) => [k, [...new Set(v)].sort()]),
-    );
+    graph = Object.fromEntries(Object.entries(g).map(([k, v]) => [k, [...new Set(v)].sort()]));
   } else {
     graph = outboundMap;
   }
@@ -250,11 +230,7 @@ export function pack(
   const scoreNums = (nid: string): number[] => {
     const c = concepts[nid];
     if (!c) return [9, 9, 9];
-    return [
-      nid === target ? 0 : 1,
-      c.verified ? 0 : 1,
-      HIGH_IMPACT_TYPES.has(c.type) ? 0 : 1,
-    ];
+    return [nid === target ? 0 : 1, c.verified ? 0 : 1, HIGH_IMPACT_TYPES.has(c.type) ? 0 : 1];
   };
 
   const ranked = [...new Set(neighborhood)]
@@ -284,10 +260,8 @@ export function pack(
     const cb = concepts[b]!;
     return (
       (a === target ? 0 : 1) - (b === target ? 0 : 1) ||
-      (HIGH_IMPACT_TYPES.has(ca.type) ? 0 : 1) -
-        (HIGH_IMPACT_TYPES.has(cb.type) ? 0 : 1) ||
-      (ca.type === "SharedState" ? 0 : 1) -
-        (cb.type === "SharedState" ? 0 : 1) ||
+      (HIGH_IMPACT_TYPES.has(ca.type) ? 0 : 1) - (HIGH_IMPACT_TYPES.has(cb.type) ? 0 : 1) ||
+      (ca.type === "SharedState" ? 0 : 1) - (cb.type === "SharedState" ? 0 : 1) ||
       ca.title.localeCompare(cb.title)
     );
   });
@@ -331,12 +305,9 @@ export function subgraph(
   concepts: Record<string, Concept>,
   conceptQuery: string,
   hops = 2,
-):
-  | { root: string; hops: number; nodes: GraphNode[]; edges: GraphEdge[] }
-  | { error: string } {
+): { root: string; hops: number; nodes: GraphNode[]; edges: GraphEdge[] } | { error: string } {
   const target = resolveConcept(concepts, conceptQuery);
-  if (!target || !concepts[target])
-    return { error: `concept not found: ${conceptQuery}` };
+  if (!target || !concepts[target]) return { error: `concept not found: ${conceptQuery}` };
 
   const inboundMap = buildInbound(concepts);
   const undirected: Record<string, string[]> = {};
@@ -356,10 +327,9 @@ export function subgraph(
     Object.entries(undirected).map(([k, v]) => [k, [...new Set(v)].sort()]),
   );
 
-  const nodes = [
-    target,
-    ...bfsClosure(target, graph, hops).map((x) => x.id),
-  ].filter((n, i, a) => a.indexOf(n) === i && n in concepts);
+  const nodes = [target, ...bfsClosure(target, graph, hops).map((x) => x.id)].filter(
+    (n, i, a) => a.indexOf(n) === i && n in concepts,
+  );
   const nodeSet = new Set(nodes);
   const edges: GraphEdge[] = [];
   for (const n of nodes) {
@@ -414,11 +384,7 @@ export function validateBundle(
 
   for (const [path, c] of Object.entries(concepts)) {
     edgeCount += c.edges.length;
-    if (
-      !path.endsWith("index.md") &&
-      path !== "log.md" &&
-      (!c.meta.type || c.type === "Unknown")
-    ) {
+    if (!path.endsWith("index.md") && path !== "log.md" && (!c.meta.type || c.type === "Unknown")) {
       issues.push({
         severity: "warn",
         code: "missing_type",
@@ -444,11 +410,7 @@ export function validateBundle(
         });
       }
     }
-    if (
-      HIGH_IMPACT_TYPES.has(c.type) &&
-      !c.verified &&
-      !path.endsWith("index.md")
-    ) {
+    if (HIGH_IMPACT_TYPES.has(c.type) && !c.verified && !path.endsWith("index.md")) {
       issues.push({
         severity: "warn",
         code: "unverified_high_impact",
@@ -496,10 +458,7 @@ export function listEdges(
   return out;
 }
 
-export function searchConcepts(
-  concepts: Record<string, Concept>,
-  query: string,
-): SearchHit[] {
+export function searchConcepts(concepts: Record<string, Concept>, query: string): SearchHit[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   const terms = q.split(/\s+/).filter(Boolean);
@@ -580,9 +539,7 @@ export type FileTreeNode =
 /**
  * Nested file tree from concept paths (agents/foo/bar.md → agents → foo → bar.md).
  */
-export function buildFileTree(
-  concepts: Record<string, Concept>,
-): FileTreeNode[] {
+export function buildFileTree(concepts: Record<string, Concept>): FileTreeNode[] {
   type DirAcc = {
     kind: "dir";
     name: string;
@@ -599,9 +556,7 @@ export function buildFileTree(
     files: [],
   };
 
-  const sorted = Object.values(concepts).sort((a, b) =>
-    a.path.localeCompare(b.path),
-  );
+  const sorted = Object.values(concepts).sort((a, b) => a.path.localeCompare(b.path));
 
   for (const c of sorted) {
     const parts = c.path.split("/").filter(Boolean);
@@ -635,14 +590,12 @@ export function buildFileTree(
   const finalize = (acc: DirAcc): FileTreeNode[] => {
     const dirs = [...acc.dirs.values()]
       .sort((a, b) => a.name.localeCompare(b.name))
-      .map(
-        (d): FileTreeNode => ({
-          kind: "dir",
-          name: d.name,
-          path: d.path,
-          children: finalize(d),
-        }),
-      );
+      .map((d): FileTreeNode => ({
+        kind: "dir",
+        name: d.name,
+        path: d.path,
+        children: finalize(d),
+      }));
     const files = acc.files.sort((a, b) => a.name.localeCompare(b.name));
     return [...dirs, ...files];
   };
@@ -657,13 +610,8 @@ export function buildFromBundle(bundle: OkfBundle) {
   return { concepts, inbound, validation };
 }
 
-export function toMermaid(
-  nodes: GraphNode[],
-  edges: GraphEdge[],
-  title = "OKF graph",
-): string {
-  const id = (p: string) =>
-    "n_" + p.replace(/[^a-zA-Z0-9]/g, "_").replace(/_+/g, "_");
+export function toMermaid(nodes: GraphNode[], edges: GraphEdge[], title = "OKF graph"): string {
+  const id = (p: string) => "n_" + p.replace(/[^a-zA-Z0-9]/g, "_").replace(/_+/g, "_");
   const lines = [`flowchart LR`, `  %% ${title}`];
   for (const n of nodes) {
     const label = `${n.title}\\n(${n.type})`;

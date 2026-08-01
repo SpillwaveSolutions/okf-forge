@@ -1,27 +1,12 @@
 import { useEffect } from "react";
-import {
-  Bold,
-  Code,
-  Heading1,
-  Heading2,
-  List,
-  ListOrdered,
-  Save,
-} from "lucide-react";
+import { Bold, Code, Heading1, Heading2, List, ListOrdered, Save } from "lucide-react";
 import { useOkfStore } from "@/lib/okf/store";
 import { MarkdownPreview } from "./MarkdownPreview";
 import { GraphCanvas } from "./GraphCanvas";
 
-function wrapSelection(
-  text: string,
-  start: number,
-  end: number,
-  before: string,
-  after: string,
-) {
+function wrapSelection(text: string, start: number, end: number, before: string, after: string) {
   const selected = text.slice(start, end) || "text";
-  const next =
-    text.slice(0, start) + before + selected + after + text.slice(end);
+  const next = text.slice(0, start) + before + selected + after + text.slice(end);
   return {
     next,
     cursor: start + before.length + selected.length + after.length,
@@ -55,20 +40,12 @@ export function EditorPane() {
   const concept = selectedPath ? concepts[selectedPath] : null;
 
   const applyWrap = (before: string, after: string) => {
-    const ta = document.getElementById(
-      "okf-md-editor",
-    ) as HTMLTextAreaElement | null;
+    const ta = document.getElementById("okf-md-editor") as HTMLTextAreaElement | null;
     if (!ta) {
       setEditorDraft(before + after + editorDraft);
       return;
     }
-    const { next } = wrapSelection(
-      editorDraft,
-      ta.selectionStart,
-      ta.selectionEnd,
-      before,
-      after,
-    );
+    const { next } = wrapSelection(editorDraft, ta.selectionStart, ta.selectionEnd, before, after);
     setEditorDraft(next);
   };
 
@@ -78,8 +55,8 @@ export function EditorPane() {
         <div className="max-w-md text-center space-y-3">
           <h2 className="text-lg font-semibold text-fg">No file selected</h2>
           <p className="text-sm text-fg-muted">
-            Open an OKF repository and pick a concept from the sidebar — or
-            start from the Learn tab.
+            Open an OKF repository and pick a concept from the sidebar — or start from the Learn
+            tab.
           </p>
         </div>
       </div>
@@ -99,9 +76,7 @@ export function EditorPane() {
         {concept && (
           <>
             <span className="badge badge-primary">{concept.type}</span>
-            {concept.verified && (
-              <span className="badge badge-success">verified</span>
-            )}
+            {concept.verified && <span className="badge badge-success">verified</span>}
           </>
         )}
         <div className="toolbar-divider" />
@@ -183,9 +158,7 @@ export function EditorPane() {
 
       <div
         className={`flex-1 min-h-0 grid ${
-          editorMode === "split"
-            ? "grid-cols-1 lg:grid-cols-2"
-            : "grid-cols-1"
+          editorMode === "split" ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"
         }`}
       >
         {showMd && (

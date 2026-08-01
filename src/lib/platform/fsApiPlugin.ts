@@ -100,8 +100,7 @@ export function okfFsApiPlugin(): Plugin {
           json(res, 404, { error: "not found" });
         } catch (e) {
           if (e instanceof FsError) {
-            const status =
-              e.code === "denied" ? 403 : e.code === "not-found" ? 404 : 400;
+            const status = e.code === "denied" ? 403 : e.code === "not-found" ? 404 : 400;
             json(res, status, { error: e.message, code: e.code });
             return;
           }

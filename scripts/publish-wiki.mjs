@@ -50,8 +50,7 @@ const LIVING_SPEC_BANNER =
   "> **Living spec** — edited in place; the `git_hash` in the source " +
   "frontmatter records the commit it was last drawn against.";
 
-const sh = (cmd, args, cwd = ROOT) =>
-  execFileSync(cmd, args, { cwd, encoding: "utf8" }).trim();
+const sh = (cmd, args, cwd = ROOT) => execFileSync(cmd, args, { cwd, encoding: "utf8" }).trim();
 
 const stripFrontmatter = (t) => t.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "");
 const hash = (buf) => createHash("sha256").update(buf).digest("hex").slice(0, 12);
@@ -83,11 +82,8 @@ function main() {
   syncCheckout();
 
   const manifest = JSON.parse(readFileSync(MANIFEST, "utf8"));
-  const ledger = existsSync(LEDGER)
-    ? JSON.parse(readFileSync(LEDGER, "utf8"))
-    : {};
-  const base =
-    sh("git", ["remote", "get-url", "origin"]).replace(/\.git$/, "") + "/wiki/";
+  const ledger = existsSync(LEDGER) ? JSON.parse(readFileSync(LEDGER, "utf8")) : {};
+  const base = sh("git", ["remote", "get-url", "origin"]).replace(/\.git$/, "") + "/wiki/";
 
   const written = [];
   for (const page of manifest.pages) {

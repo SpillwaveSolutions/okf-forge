@@ -10,13 +10,7 @@ interface Props {
 }
 
 /** Force-free radial layout around root for subgraph visualization. */
-export function GraphCanvas({
-  nodes,
-  edges,
-  root,
-  onSelect,
-  height = 320,
-}: Props) {
+export function GraphCanvas({ nodes, edges, root, onSelect, height = 320 }: Props) {
   const layout = useMemo(() => {
     if (!nodes.length) return [] as Array<GraphNode & { x: number; y: number }>;
     const w = 640;
@@ -143,13 +137,7 @@ export function GraphCanvas({
                 stroke={isRoot ? "#58a6ff" : "#30363d"}
                 strokeWidth={isRoot ? 2 : 1}
               />
-              <text
-                x={n.x}
-                y={n.y + r + 12}
-                fill="#e6edf3"
-                fontSize="10"
-                textAnchor="middle"
-              >
+              <text x={n.x} y={n.y + r + 12} fill="#e6edf3" fontSize="10" textAnchor="middle">
                 {n.title.length > 22 ? n.title.slice(0, 20) + "…" : n.title}
               </text>
             </g>
