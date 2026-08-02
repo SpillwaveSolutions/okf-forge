@@ -16,10 +16,7 @@ import {
 } from "lucide-react";
 import { useOkfStore } from "@/lib/okf/store";
 import type { AppView, Concept } from "@/lib/okf/types";
-import {
-  buildFileTree,
-  type FileTreeNode,
-} from "@/lib/okf/graph";
+import { buildFileTree, type FileTreeNode } from "@/lib/okf/graph";
 
 const NAV: { id: AppView; label: string; icon: typeof BookOpen }[] = [
   { id: "learn", label: "Learn OKF", icon: BookOpen },
@@ -146,9 +143,7 @@ function TreeBranch({
             <FileText className="size-3.5 shrink-0 opacity-60" />
             <span className="truncate flex-1">{n.name}</span>
             {c.type && c.type !== "Unknown" && c.type !== "Index" && (
-              <span className={`badge ${typeBadge(c.type)}`}>
-                {c.type.replace("Node", "")}
-              </span>
+              <span className={`badge ${typeBadge(c.type)}`}>{c.type.replace("Node", "")}</span>
             )}
           </button>
         );
@@ -230,9 +225,7 @@ export function Sidebar() {
               className={`badge ${validation.error_count ? "badge-danger" : "badge-success"}`}
               title={`${validation.error_count} errors, ${validation.warn_count} warnings`}
             >
-              {validation.error_count
-                ? `${validation.error_count} err`
-                : "valid"}
+              {validation.error_count ? `${validation.error_count} err` : "valid"}
             </span>
           )}
         </div>

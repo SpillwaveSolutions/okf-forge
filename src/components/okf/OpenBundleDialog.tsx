@@ -16,9 +16,7 @@ export function OpenBundleDialog() {
   const error = useOkfStore((s) => s.error);
   const isDesktop = useOkfStore((s) => s.isDesktop);
 
-  const [github, setGithub] = useState(
-    "SpillwaveSolutions/okf-plugin/sample-okf",
-  );
+  const [github, setGithub] = useState("SpillwaveSolutions/okf-plugin/sample-okf");
   const [name, setName] = useState("my-okf");
   const fileRef = useRef<HTMLInputElement>(null);
   const dirRef = useRef<HTMLInputElement>(null);
@@ -109,11 +107,10 @@ export function OpenBundleDialog() {
                 <Layers className="size-4" />
               </div>
               <div>
-                <div className="text-sm font-medium text-fg">
-                  Sample: okf-plugin / sample-okf
-                </div>
+                <div className="text-sm font-medium text-fg">Sample: okf-plugin / sample-okf</div>
                 <p className="text-xs text-fg-muted mt-1">
-                  Bundled dual knowledge + agent graph (read-only in-memory until you save to a folder)
+                  Bundled dual knowledge + agent graph (read-only in-memory until you save to a
+                  folder)
                 </p>
               </div>
             </div>

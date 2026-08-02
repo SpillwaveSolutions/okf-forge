@@ -8,10 +8,7 @@ import { normalizeUploadPath } from "../src/lib/okf/loaders.ts";
 
 describe("normalizeUploadPath", () => {
   it("strips top folder and keeps nested structure", () => {
-    assert.equal(
-      normalizeUploadPath("LinkedIn/notes/posts/a.md"),
-      "notes/posts/a.md",
-    );
+    assert.equal(normalizeUploadPath("LinkedIn/notes/posts/a.md"), "notes/posts/a.md");
   });
 
   it("skips node_modules", () => {

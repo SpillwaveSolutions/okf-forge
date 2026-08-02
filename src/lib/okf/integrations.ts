@@ -128,8 +128,7 @@ export const DEFAULT_PLUGINS: ClaudePluginConfig[] = [
     source: "SpillwaveSolutions/okf-plugin",
     version: "0.2.0",
     enabled: true,
-    description:
-      "Graph engineering for OKF — impact, agent graphs, progressive disclosure",
+    description: "Graph engineering for OKF — impact, agent graphs, progressive disclosure",
     kind: "claude-plugin",
   },
 ];
@@ -202,9 +201,7 @@ export function loadIntegrations(): IntegrationsState {
       ...parsed,
       plugins: parsed.plugins?.length ? parsed.plugins : base.plugins,
       mcps: parsed.mcps?.length ? parsed.mcps : base.mcps,
-      skillMappings: parsed.skillMappings?.length
-        ? parsed.skillMappings
-        : base.skillMappings,
+      skillMappings: parsed.skillMappings?.length ? parsed.skillMappings : base.skillMappings,
     };
   } catch {
     return defaultIntegrations();
@@ -244,8 +241,7 @@ export function buildDeepAgentExport(
   if (enabledSkills.length) {
     subagents.unshift({
       name: "graph_engineer",
-      description:
-        "Orchestrator for OKF dual-graph reasoning, impact, and curation",
+      description: "Orchestrator for OKF dual-graph reasoning, impact, and curation",
       skills: enabledSkills.map((s) => s.skillId),
       system_prompt:
         "You are Graph Engineer. Treat the OKF repo as knowledge + agent/harness graph. Run impact before structural edits. Pack minimal context for long runs. Validate after writes.",

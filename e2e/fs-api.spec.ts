@@ -30,18 +30,14 @@ test.describe("/api/fs workspace", () => {
     });
     expect(write.ok()).toBeTruthy();
 
-    const read = await request.get(
-      `/api/fs/read?path=${encodeURIComponent(path)}`,
-    );
+    const read = await request.get(`/api/fs/read?path=${encodeURIComponent(path)}`);
     expect(read.ok()).toBeTruthy();
     const body = await read.json();
     expect(body.content).toContain("# E2E write");
   });
 
   test("denies path escape", async ({ request }) => {
-    const res = await request.get(
-      `/api/fs/read?path=${encodeURIComponent("../../etc/passwd")}`,
-    );
+    const res = await request.get(`/api/fs/read?path=${encodeURIComponent("../../etc/passwd")}`);
     expect(res.status()).toBeGreaterThanOrEqual(400);
   });
 });

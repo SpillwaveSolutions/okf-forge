@@ -1,9 +1,5 @@
 import { serializeFrontmatter } from "./frontmatter";
-import {
-  HARNESS_TYPES,
-  KNOWLEDGE_TYPES,
-  type OkfBundle,
-} from "./types";
+import { HARNESS_TYPES, KNOWLEDGE_TYPES, type OkfBundle } from "./types";
 
 export interface SourceDoc {
   id: string;
@@ -119,12 +115,14 @@ const TYPE_HINTS: Array<{
 ];
 
 function slugify(name: string): string {
-  return name
-    .replace(/\.md$/i, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 48) || "concept";
+  return (
+    name
+      .replace(/\.md$/i, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+      .slice(0, 48) || "concept"
+  );
 }
 
 function titleFromName(name: string, content: string): string {
@@ -159,8 +157,7 @@ export function classifyDocuments(docs: SourceDoc[]): ClassificationSuggestion[]
       }
       if (score > 0) {
         const prev = scores.get(hint.type);
-        if (!prev || score > prev.score)
-          scores.set(hint.type, { score, reasons });
+        if (!prev || score > prev.score) scores.set(hint.type, { score, reasons });
       }
     }
 
@@ -253,7 +250,10 @@ export function suggestionsToBundle(
       sources: [s.sourceName],
     };
     if (s.links.length) meta.links = s.links;
-    files[s.path] = serializeFrontmatter(meta, s.body.startsWith("#") ? s.body : `# ${s.title}\n\n${s.body}\n`);
+    files[s.path] = serializeFrontmatter(
+      meta,
+      s.body.startsWith("#") ? s.body : `# ${s.title}\n\n${s.body}\n`,
+    );
   }
 
   for (const [dir, items] of Object.entries(byDir)) {
@@ -298,9 +298,4 @@ export function suggestionsToBundle(
   };
 }
 
-export const ALL_OKF_TYPES = [
-  ...KNOWLEDGE_TYPES,
-  ...HARNESS_TYPES,
-  "Index",
-  "Unknown",
-] as const;
+export const ALL_OKF_TYPES = [...KNOWLEDGE_TYPES, ...HARNESS_TYPES, "Index", "Unknown"] as const;

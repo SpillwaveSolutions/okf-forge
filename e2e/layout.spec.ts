@@ -26,9 +26,7 @@ async function gotoView(page: Page, view: string) {
 }
 
 test.describe("app shell layout", () => {
-  test("grid topology: sidebar and main are side-by-side columns", async ({
-    page,
-  }) => {
+  test("grid topology: sidebar and main are side-by-side columns", async ({ page }) => {
     await gotoView(page, "editor");
 
     const side = (await page.getByTestId("app-sidebar").boundingBox())!;
@@ -44,9 +42,7 @@ test.describe("app shell layout", () => {
     expect(main.y).toBeGreaterThanOrEqual(head.y + head.height - 1);
   });
 
-  test("no interactive element renders outside the viewport", async ({
-    page,
-  }) => {
+  test("no interactive element renders outside the viewport", async ({ page }) => {
     await gotoView(page, "editor");
 
     const escaped = await page.evaluate(() => {
@@ -62,9 +58,7 @@ test.describe("app shell layout", () => {
           r.bottom > window.innerHeight + 1 ||
           r.top < -1
         ) {
-          bad.push(
-            `${el.tagName}.${el.className} @ ${Math.round(r.left)},${Math.round(r.top)}`,
-          );
+          bad.push(`${el.tagName}.${el.className} @ ${Math.round(r.left)},${Math.round(r.top)}`);
         }
       }
       return bad;
@@ -78,9 +72,7 @@ test.describe("app shell layout", () => {
 
     const clipped = await page.evaluate(() => {
       const bad: string[] = [];
-      for (const el of document.querySelectorAll<HTMLElement>(
-        "h1, h2, h3, button",
-      )) {
+      for (const el of document.querySelectorAll<HTMLElement>("h1, h2, h3, button")) {
         // .truncate is deliberate: file names, type badges and the status-bar
         // path are all designed to ellipsize.
         if (el.closest(".truncate") || el.querySelector(".truncate")) continue;
@@ -94,9 +86,7 @@ test.describe("app shell layout", () => {
     expect(clipped, clipped.join("\n")).toEqual([]);
   });
 
-  test("editor view-mode toggle exposes exactly one pressed button", async ({
-    page,
-  }) => {
+  test("editor view-mode toggle exposes exactly one pressed button", async ({ page }) => {
     await gotoView(page, "editor");
 
     const group = page.getByRole("group", { name: "Editor view mode" });
@@ -130,10 +120,7 @@ test.describe("app shell layout", () => {
     // all before this: a runtime crash in any of them shipped silently.
     for (const view of VIEWS) {
       await page.getByTestId(`nav-${view}`).click();
-      await expect(page.getByTestId("app-main")).toHaveAttribute(
-        "data-view",
-        view,
-      );
+      await expect(page.getByTestId("app-main")).toHaveAttribute("data-view", view);
     }
 
     expect(errors, `console/page errors:\n${errors.join("\n")}`).toEqual([]);

@@ -5,13 +5,7 @@ import {
   type ClassificationSuggestion,
   type SourceDoc,
 } from "./classify";
-import {
-  buildFromBundle,
-  impact,
-  pack,
-  searchConcepts,
-  subgraph,
-} from "./graph";
+import { buildFromBundle, impact, pack, searchConcepts, subgraph } from "./graph";
 import {
   emptyScaffoldBundle,
   loadBundledSample,
@@ -118,10 +112,7 @@ interface OkfState {
   scaffoldNew: (name?: string) => void;
   setClassifyDocs: (docs: SourceDoc[]) => void;
   runClassify: () => void;
-  updateClassification: (
-    id: string,
-    patch: Partial<ClassificationSuggestion>,
-  ) => void;
+  updateClassification: (id: string, patch: Partial<ClassificationSuggestion>) => void;
   applyClassifications: (name?: string) => void;
   setIntegrations: (patch: Partial<IntegrationsState>) => void;
   updatePlugin: (id: string, patch: Partial<ClaudePluginConfig>) => void;
@@ -130,10 +121,7 @@ interface OkfState {
   updateMcp: (id: string, patch: Partial<McpServerConfig>) => void;
   addMcp: (m: McpServerConfig) => void;
   removeMcp: (id: string) => void;
-  updateSkillMapping: (
-    id: string,
-    patch: Partial<DeepAgentSkillMapping>,
-  ) => void;
+  updateSkillMapping: (id: string, patch: Partial<DeepAgentSkillMapping>) => void;
   exportDeepAgentJson: () => string;
   exportDeepAgentPython: () => string;
   exportClaudeSettings: () => string;
@@ -152,9 +140,7 @@ function recompute(bundle: OkfBundle) {
 
 function pickDefaultPath(concepts: Record<string, Concept>): string | null {
   if ("agents/graph-engineer.md" in concepts) return "agents/graph-engineer.md";
-  const nonIndex = Object.keys(concepts).find(
-    (p) => !p.endsWith("index.md") && p !== "log.md",
-  );
+  const nonIndex = Object.keys(concepts).find((p) => !p.endsWith("index.md") && p !== "log.md");
   return nonIndex ?? Object.keys(concepts)[0] ?? null;
 }
 
@@ -226,9 +212,7 @@ function resolveWorkspaceSelection(allPaths: string[]): {
   return { relative: paths, diskPrefix: "", name: "workspace" };
 }
 
-async function loadBundleFromStorage(
-  rootLabel: string,
-): Promise<{
+async function loadBundleFromStorage(rootLabel: string): Promise<{
   bundle: OkfBundle;
   truncated: number;
   skipped: number;
@@ -240,9 +224,7 @@ async function loadBundleFromStorage(
     throw new Error("No markdown files in workspace");
   }
 
-  const normalized = listed.map((p) =>
-    p.replace(/^\/+/, "").replace(/\\/g, "/"),
-  );
+  const normalized = listed.map((p) => p.replace(/^\/+/, "").replace(/\\/g, "/"));
   const junkFree = normalized.filter((p) => !shouldSkipPath(p));
   const skipped = normalized.length - junkFree.length;
   const { relative, diskPrefix, name } = resolveWorkspaceSelection(junkFree);
@@ -255,9 +237,7 @@ async function loadBundleFromStorage(
   }
 
   if (!selected.length) {
-    throw new Error(
-      "No markdown files left after filtering (or empty OKF root)",
-    );
+    throw new Error("No markdown files left after filtering (or empty OKF root)");
   }
 
   const files: Record<string, string> = {};
@@ -401,9 +381,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       void getStorage()
         .writeFile(prefix + selectedPath, editorDraft)
         .catch((e) => {
-          get().showToast(
-            `Disk save failed: ${e instanceof Error ? e.message : String(e)}`,
-          );
+          get().showToast(`Disk save failed: ${e instanceof Error ? e.message : String(e)}`);
         });
     }
   },
@@ -453,8 +431,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
     set({ graphData: result, graphFocus: t });
   },
 
-  setPackOpts: (hops, maxNodes) =>
-    set({ packHops: hops, packMaxNodes: maxNodes }),
+  setPackOpts: (hops, maxNodes) => set({ packHops: hops, packMaxNodes: maxNodes }),
   setGraphHops: (hops) => {
     set({ graphHops: hops });
     get().runGraph();
@@ -521,9 +498,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
         statusMessage: `Loaded ${bundle.name} · ${Object.keys(concepts).length} concepts`,
       });
       if (first) get().runGraph(first);
-      get().showToast(
-        `Loaded ${bundle.name} (${Object.keys(concepts).length} concepts)`,
-      );
+      get().showToast(`Loaded ${bundle.name} (${Object.keys(concepts).length} concepts)`);
     } catch (e) {
       set({
         loading: false,
@@ -572,8 +547,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
         set({ loading: false });
         return;
       }
-      const { bundle, truncated, skipped, diskPrefix } =
-        await loadBundleFromStorage(root);
+      const { bundle, truncated, skipped, diskPrefix } = await loadBundleFromStorage(root);
       const { concepts, validation } = recompute(bundle);
       const first = pickDefaultPath(concepts);
       const n = Object.keys(concepts).length;
@@ -600,18 +574,14 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       });
       if (first) get().runGraph(first);
       get().showToast(
-        notes
-          ? `Opened workspace · ${n} files (${notes})`
-          : `Opened workspace (${n} files)`,
+        notes ? `Opened workspace · ${n} files (${notes})` : `Opened workspace (${n} files)`,
       );
     } catch (e) {
       set({
         loading: false,
         error: e instanceof Error ? e.message : String(e),
       });
-      get().showToast(
-        `Open failed: ${e instanceof Error ? e.message : String(e)}`,
-      );
+      get().showToast(`Open failed: ${e instanceof Error ? e.message : String(e)}`);
     }
   },
 
@@ -621,15 +591,11 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       const storage = getStorage();
       const root = await storage.getWorkspaceRoot();
       if (!root) throw new Error("No web workspace configured (OKF_WORKSPACE)");
-      const { bundle, truncated, skipped, diskPrefix } =
-        await loadBundleFromStorage(root);
+      const { bundle, truncated, skipped, diskPrefix } = await loadBundleFromStorage(root);
       const { concepts, validation } = recompute(bundle);
       const first = pickDefaultPath(concepts);
       const n = Object.keys(concepts).length;
-      const notes = [
-        truncated ? `capped at ${n}` : null,
-        skipped ? `skipped ${skipped}` : null,
-      ]
+      const notes = [truncated ? `capped at ${n}` : null, skipped ? `skipped ${skipped}` : null]
         .filter(Boolean)
         .join(" · ");
       set({
@@ -649,18 +615,14 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       });
       if (first) get().runGraph(first);
       get().showToast(
-        notes
-          ? `Loaded web workspace · ${n} files (${notes})`
-          : "Loaded web workspace via /api/fs",
+        notes ? `Loaded web workspace · ${n} files (${notes})` : "Loaded web workspace via /api/fs",
       );
     } catch (e) {
       set({
         loading: false,
         error: e instanceof Error ? e.message : String(e),
       });
-      get().showToast(
-        `Load failed: ${e instanceof Error ? e.message : String(e)}`,
-      );
+      get().showToast(`Load failed: ${e instanceof Error ? e.message : String(e)}`);
     }
   },
 
@@ -696,17 +658,12 @@ export const useOkfStore = create<OkfState>((set, get) => ({
 
   updateClassification: (id, patch) => {
     set({
-      classifications: get().classifications.map((c) =>
-        c.id === id ? { ...c, ...patch } : c,
-      ),
+      classifications: get().classifications.map((c) => (c.id === id ? { ...c, ...patch } : c)),
     });
   },
 
   applyClassifications: (name) => {
-    const bundle = suggestionsToBundle(
-      name || "classified-okf",
-      get().classifications,
-    );
+    const bundle = suggestionsToBundle(name || "classified-okf", get().classifications);
     const { concepts, validation } = recompute(bundle);
     const first = pickDefaultPath(concepts);
     set({
@@ -720,9 +677,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       workspaceRoot: null,
       workspacePrefix: "",
     });
-    get().showToast(
-      `Created OKF repo with ${Object.keys(concepts).length} files`,
-    );
+    get().showToast(`Created OKF repo with ${Object.keys(concepts).length} files`);
   },
 
   setIntegrations: (patch) => {
@@ -732,9 +687,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   },
 
   updatePlugin: (id, patch) => {
-    const plugins = get().integrations.plugins.map((p) =>
-      p.id === id ? { ...p, ...patch } : p,
-    );
+    const plugins = get().integrations.plugins.map((p) => (p.id === id ? { ...p, ...patch } : p));
     get().setIntegrations({ plugins });
   },
 
@@ -751,9 +704,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   },
 
   updateMcp: (id, patch) => {
-    const mcps = get().integrations.mcps.map((m) =>
-      m.id === id ? { ...m, ...patch } : m,
-    );
+    const mcps = get().integrations.mcps.map((m) => (m.id === id ? { ...m, ...patch } : m));
     get().setIntegrations({ mcps });
   },
 
@@ -777,11 +728,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   exportDeepAgentJson: () => {
     const { integrations, bundle, pluginSkills } = get();
     return JSON.stringify(
-      buildDeepAgentExport(
-        integrations,
-        bundle?.name ?? "okf-bundle",
-        pluginSkills,
-      ),
+      buildDeepAgentExport(integrations, bundle?.name ?? "okf-bundle", pluginSkills),
       null,
       2,
     );
@@ -789,11 +736,7 @@ export const useOkfStore = create<OkfState>((set, get) => ({
 
   exportDeepAgentPython: () => {
     const { integrations, bundle, pluginSkills } = get();
-    const exp = buildDeepAgentExport(
-      integrations,
-      bundle?.name ?? "okf-bundle",
-      pluginSkills,
-    );
+    const exp = buildDeepAgentExport(integrations, bundle?.name ?? "okf-bundle", pluginSkills);
     return buildPythonDeepAgentSnippet(exp);
   },
 

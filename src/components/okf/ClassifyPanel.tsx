@@ -32,19 +32,16 @@ export function ClassifyPanel() {
     <div className="flex-1 overflow-y-auto p-4 md:p-6 scrollbar-thin">
       <div className="max-w-4xl mx-auto space-y-6">
         <div>
-          <h1 className="text-xl font-semibold text-fg">
-            Classify into OKF
-          </h1>
+          <h1 className="text-xl font-semibold text-fg">Classify into OKF</h1>
           <p className="text-sm text-fg-muted mt-1">
-            Drop a pile of documents — we suggest types, paths, tags, and
-            frontmatter, then build a searchable OKF bundle (okf-author style).
+            Drop a pile of documents — we suggest types, paths, tags, and frontmatter, then build a
+            searchable OKF bundle (okf-author style).
           </p>
           <p className="text-xs text-fg-subtle mt-2 rounded-md border border-border bg-bg-subtle px-3 py-2">
-            <strong className="text-fg-muted">Safe by default:</strong> Classify
-            only works on files you upload or paste here. It does{" "}
-            <strong className="text-fg-muted">not</strong> scan or rewrite your
-            open workspace on disk. Applying results creates a new in-memory
-            bundle; nothing is written until you explicitly Save to a workspace.
+            <strong className="text-fg-muted">Safe by default:</strong> Classify only works on files
+            you upload or paste here. It does <strong className="text-fg-muted">not</strong> scan or
+            rewrite your open workspace on disk. Applying results creates a new in-memory bundle;
+            nothing is written until you explicitly Save to a workspace.
           </p>
         </div>
 
@@ -148,9 +145,7 @@ export function ClassifyPanel() {
                     <select
                       className="field-input"
                       value={c.type}
-                      onChange={(e) =>
-                        updateClassification(c.id, { type: e.target.value })
-                      }
+                      onChange={(e) => updateClassification(c.id, { type: e.target.value })}
                     >
                       {ALL_OKF_TYPES.map((t) => (
                         <option key={t} value={t}>
@@ -164,9 +159,7 @@ export function ClassifyPanel() {
                     <input
                       className="field-input font-mono text-xs"
                       value={c.path}
-                      onChange={(e) =>
-                        updateClassification(c.id, { path: e.target.value })
-                      }
+                      onChange={(e) => updateClassification(c.id, { path: e.target.value })}
                     />
                   </div>
                   <div>
@@ -174,9 +167,7 @@ export function ClassifyPanel() {
                     <input
                       className="field-input"
                       value={c.title}
-                      onChange={(e) =>
-                        updateClassification(c.id, { title: e.target.value })
-                      }
+                      onChange={(e) => updateClassification(c.id, { title: e.target.value })}
                     />
                   </div>
                   <div>
@@ -196,9 +187,7 @@ export function ClassifyPanel() {
                   </div>
                 </div>
                 <p className="text-xs text-fg-muted">{c.description}</p>
-                <p className="text-[11px] text-fg-subtle">
-                  Reasons: {c.reasons.join(" · ")}
-                </p>
+                <p className="text-[11px] text-fg-subtle">Reasons: {c.reasons.join(" · ")}</p>
               </div>
             ))}
           </div>

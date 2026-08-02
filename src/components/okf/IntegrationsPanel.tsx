@@ -20,8 +20,8 @@ export function IntegrationsPanel() {
         <div>
           <h1 className="text-xl font-semibold text-fg">Plugins & MCP</h1>
           <p className="text-sm text-fg-muted mt-1">
-            Configure Claude Code plugins (including okf-graph-eng) and MCP
-            servers. Settings persist in this browser.
+            Configure Claude Code plugins (including okf-graph-eng) and MCP servers. Settings
+            persist in this browser.
           </p>
         </div>
 
@@ -52,17 +52,13 @@ export function IntegrationsPanel() {
                   <input
                     type="checkbox"
                     checked={p.enabled}
-                    onChange={(e) =>
-                      updatePlugin(p.id, { enabled: e.target.checked })
-                    }
+                    onChange={(e) => updatePlugin(p.id, { enabled: e.target.checked })}
                     aria-label={`Enable ${p.name}`}
                   />
                   <input
                     className="field-input flex-1"
                     value={p.name}
-                    onChange={(e) =>
-                      updatePlugin(p.id, { name: e.target.value })
-                    }
+                    onChange={(e) => updatePlugin(p.id, { name: e.target.value })}
                     aria-label="Plugin name"
                   />
                   <button
@@ -77,18 +73,14 @@ export function IntegrationsPanel() {
                 <input
                   className="field-input font-mono text-xs"
                   value={p.source}
-                  onChange={(e) =>
-                    updatePlugin(p.id, { source: e.target.value })
-                  }
+                  onChange={(e) => updatePlugin(p.id, { source: e.target.value })}
                   placeholder="owner/repo or local path"
                   aria-label="Plugin source"
                 />
                 <input
                   className="field-input"
                   value={p.description ?? ""}
-                  onChange={(e) =>
-                    updatePlugin(p.id, { description: e.target.value })
-                  }
+                  onChange={(e) => updatePlugin(p.id, { description: e.target.value })}
                   placeholder="Description"
                 />
               </div>
@@ -120,9 +112,7 @@ export function IntegrationsPanel() {
                   <input
                     type="checkbox"
                     checked={m.enabled}
-                    onChange={(e) =>
-                      updateMcp(m.id, { enabled: e.target.checked })
-                    }
+                    onChange={(e) => updateMcp(m.id, { enabled: e.target.checked })}
                   />
                   <input
                     className="field-input flex-1"
@@ -155,9 +145,7 @@ export function IntegrationsPanel() {
                     <input
                       className="field-input font-mono text-xs"
                       value={m.command ?? ""}
-                      onChange={(e) =>
-                        updateMcp(m.id, { command: e.target.value })
-                      }
+                      onChange={(e) => updateMcp(m.id, { command: e.target.value })}
                       placeholder="command"
                     />
                     <input
@@ -179,9 +167,7 @@ export function IntegrationsPanel() {
                     placeholder="https://…"
                   />
                 )}
-                {m.notes && (
-                  <p className="text-[11px] text-fg-subtle">{m.notes}</p>
-                )}
+                {m.notes && <p className="text-[11px] text-fg-subtle">{m.notes}</p>}
               </div>
             ))}
             <button
@@ -225,8 +211,8 @@ export function IntegrationsPanel() {
               {exportClaudeSettings()}
             </pre>
             <p className="text-[11px] text-fg-subtle">
-              Illustrative merge target for Claude Code / host MCP config — adapt
-              keys to your host schema.
+              Illustrative merge target for Claude Code / host MCP config — adapt keys to your host
+              schema.
             </p>
           </div>
         )}

@@ -12,14 +12,7 @@ import {
   statSync,
   writeFileSync,
 } from "node:fs";
-import {
-  basename,
-  dirname,
-  isAbsolute,
-  join,
-  relative,
-  resolve,
-} from "node:path";
+import { basename, dirname, isAbsolute, join, relative, resolve } from "node:path";
 
 export type FsErrorCode = "denied" | "not-found" | "not-a-directory";
 
@@ -51,9 +44,7 @@ function realOrThrow(path: string): string {
 
 export function resolveInWorkspace(root: string, requested: string): string {
   const rootReal = realOrThrow(root);
-  const absolute = isAbsolute(requested)
-    ? requested
-    : join(rootReal, requested);
+  const absolute = isAbsolute(requested) ? requested : join(rootReal, requested);
 
   let resolved: string;
   if (existsSync(absolute)) {
@@ -65,10 +56,7 @@ export function resolveInWorkspace(root: string, requested: string): string {
   }
 
   if (!isInsideWorkspace(rootReal, resolved)) {
-    throw new FsError(
-      "denied",
-      "Access denied: path is outside the opened workspace",
-    );
+    throw new FsError("denied", "Access denied: path is outside the opened workspace");
   }
   return resolved;
 }
@@ -94,10 +82,7 @@ const SKIP_DIRS = new Set([
   "__pycache__",
 ]);
 
-export function collectFiles(
-  root: string,
-  extensions: readonly string[],
-): string[] {
+export function collectFiles(root: string, extensions: readonly string[]): string[] {
   const rootReal = assertDirectory(root);
   const out: string[] = [];
 
@@ -130,19 +115,12 @@ export function readWorkspaceFile(root: string, requested: string): string {
   return readFileSync(path, "utf8");
 }
 
-export function writeWorkspaceFile(
-  root: string,
-  requested: string,
-  content: string,
-): void {
+export function writeWorkspaceFile(root: string, requested: string, content: string): void {
   const path = resolveInWorkspace(root, requested);
   const rootReal = realOrThrow(root);
   const parent = dirname(path);
   if (!isInsideWorkspace(rootReal, parent)) {
-    throw new FsError(
-      "denied",
-      "Access denied: path is outside the opened workspace",
-    );
+    throw new FsError("denied", "Access denied: path is outside the opened workspace");
   }
   if (!existsSync(parent)) {
     mkdirSync(parent, { recursive: true });

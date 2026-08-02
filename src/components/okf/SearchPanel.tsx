@@ -23,9 +23,7 @@ export function SearchPanel() {
   const validation = useOkfStore((s) => s.validation);
   const setView = useOkfStore((s) => s.setView);
 
-  const conceptList = Object.values(concepts).sort((a, b) =>
-    a.title.localeCompare(b.title),
-  );
+  const conceptList = Object.values(concepts).sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <div className="flex-1 overflow-y-auto p-4 md:p-6 scrollbar-thin">
@@ -33,8 +31,8 @@ export function SearchPanel() {
         <div>
           <h1 className="text-xl font-semibold text-fg">Graph & search</h1>
           <p className="text-sm text-fg-muted mt-1">
-            Full-text search over concepts plus okf-graph ops: impact, pack,
-            neighborhood, validation.
+            Full-text search over concepts plus okf-graph ops: impact, pack, neighborhood,
+            validation.
           </p>
         </div>
 
@@ -66,21 +64,13 @@ export function SearchPanel() {
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-fg">
-                        {h.title}
-                      </span>
+                      <span className="text-sm font-medium text-fg">{h.title}</span>
                       <span className="badge">{h.type}</span>
-                      <span className="text-[10px] text-fg-subtle ml-auto">
-                        score {h.score}
-                      </span>
+                      <span className="text-[10px] text-fg-subtle ml-auto">score {h.score}</span>
                     </div>
-                    <p className="text-xs text-fg-muted mt-0.5 font-mono">
-                      {h.path}
-                    </p>
+                    <p className="text-xs text-fg-muted mt-0.5 font-mono">{h.path}</p>
                     {h.snippet && (
-                      <p className="text-xs text-fg-subtle mt-1 line-clamp-2">
-                        {h.snippet}
-                      </p>
+                      <p className="text-xs text-fg-subtle mt-1 line-clamp-2">{h.snippet}</p>
                     )}
                   </button>
                 </li>
@@ -105,11 +95,7 @@ export function SearchPanel() {
                 </option>
               ))}
             </select>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={() => runImpact()}
-            >
+            <button type="button" className="btn btn-secondary" onClick={() => runImpact()}>
               Compute impact
             </button>
             {impactResult && (
@@ -118,12 +104,8 @@ export function SearchPanel() {
                   <span className="badge badge-primary">
                     inbound {impactResult.stats.inbound_count}
                   </span>
-                  <span className="badge">
-                    outbound {impactResult.stats.outbound_count}
-                  </span>
-                  <span className="badge">
-                    typed {impactResult.stats.typed_edge_count}
-                  </span>
+                  <span className="badge">outbound {impactResult.stats.outbound_count}</span>
+                  <span className="badge">typed {impactResult.stats.typed_edge_count}</span>
                 </div>
                 <div>
                   <div className="field-label">Suggested update order</div>
@@ -139,10 +121,7 @@ export function SearchPanel() {
                         </button>
                         {impactResult.inbound.find((n) => n.id === id) && (
                           <span className="ml-1 badge">
-                            {
-                              impactResult.inbound.find((n) => n.id === id)!
-                                .criticality
-                            }
+                            {impactResult.inbound.find((n) => n.id === id)!.criticality}
                           </span>
                         )}
                       </li>
@@ -154,9 +133,7 @@ export function SearchPanel() {
           </div>
 
           <div className="panel-card space-y-3">
-            <h2 className="text-sm font-semibold text-fg">
-              Progressive disclosure pack
-            </h2>
+            <h2 className="text-sm font-semibold text-fg">Progressive disclosure pack</h2>
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <label className="field-label">Hops</label>
@@ -166,9 +143,7 @@ export function SearchPanel() {
                   max={5}
                   className="field-input"
                   value={packHops}
-                  onChange={(e) =>
-                    setPackOpts(Number(e.target.value) || 2, packMaxNodes)
-                  }
+                  onChange={(e) => setPackOpts(Number(e.target.value) || 2, packMaxNodes)}
                 />
               </div>
               <div>
@@ -179,30 +154,20 @@ export function SearchPanel() {
                   max={50}
                   className="field-input"
                   value={packMaxNodes}
-                  onChange={(e) =>
-                    setPackOpts(packHops, Number(e.target.value) || 20)
-                  }
+                  onChange={(e) => setPackOpts(packHops, Number(e.target.value) || 20)}
                 />
               </div>
             </div>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={() => runPack()}
-            >
+            <button type="button" className="btn btn-secondary" onClick={() => runPack()}>
               Build pack
             </button>
             {packResult && (
               <div className="space-y-2">
                 <div className="flex flex-wrap gap-2 text-xs">
-                  <span className="badge badge-primary">
-                    {packResult.nodes.length} nodes
-                  </span>
+                  <span className="badge badge-primary">{packResult.nodes.length} nodes</span>
                   <span className="badge">{packResult.mode}</span>
                   {packResult.excluded.length > 0 && (
-                    <span className="badge badge-warn">
-                      {packResult.excluded.length} trimmed
-                    </span>
+                    <span className="badge badge-warn">{packResult.excluded.length} trimmed</span>
                   )}
                 </div>
                 <div className="max-h-64 overflow-y-auto rounded-md border border-border bg-bg p-3">
@@ -247,18 +212,14 @@ export function SearchPanel() {
           <div className="panel-card space-y-2">
             <h2 className="text-sm font-semibold text-fg">Validation</h2>
             <div className="flex flex-wrap gap-2 text-xs">
-              <span className="badge">
-                {validation.concept_count} concepts
-              </span>
+              <span className="badge">{validation.concept_count} concepts</span>
               <span className="badge">{validation.edge_count} edges</span>
               <span
                 className={`badge ${validation.error_count ? "badge-danger" : "badge-success"}`}
               >
                 {validation.error_count} errors
               </span>
-              <span className="badge badge-warn">
-                {validation.warn_count} warnings
-              </span>
+              <span className="badge badge-warn">{validation.warn_count} warnings</span>
             </div>
             <ul className="text-xs space-y-1 max-h-48 overflow-y-auto">
               {validation.issues.slice(0, 40).map((iss, i) => (

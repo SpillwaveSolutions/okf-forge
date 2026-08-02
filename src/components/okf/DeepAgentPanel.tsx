@@ -35,14 +35,10 @@ export function DeepAgentPanel() {
     <div className="flex-1 overflow-y-auto p-4 md:p-6 scrollbar-thin">
       <div className="max-w-4xl mx-auto space-y-6">
         <div>
-          <h1 className="text-xl font-semibold text-fg">
-            LangChain DeepAgents
-          </h1>
+          <h1 className="text-xl font-semibold text-fg">LangChain DeepAgents</h1>
           <p className="text-sm text-fg-muted mt-1">
-            Install{" "}
-            <code className="text-primary">okf-graph-eng</code> skills as
-            DeepAgent skills and specialist subagents. Export JSON config or
-            Python scaffolding for your harness.
+            Install <code className="text-primary">okf-graph-eng</code> skills as DeepAgent skills
+            and specialist subagents. Export JSON config or Python scaffolding for your harness.
           </p>
         </div>
 
@@ -52,9 +48,7 @@ export function DeepAgentPanel() {
             <input
               className="field-input"
               value={integrations.deepagentName}
-              onChange={(e) =>
-                setIntegrations({ deepagentName: e.target.value })
-              }
+              onChange={(e) => setIntegrations({ deepagentName: e.target.value })}
             />
           </div>
           <div>
@@ -64,9 +58,7 @@ export function DeepAgentPanel() {
                 type="number"
                 className="field-input"
                 value={integrations.packHops}
-                onChange={(e) =>
-                  setIntegrations({ packHops: Number(e.target.value) || 2 })
-                }
+                onChange={(e) => setIntegrations({ packHops: Number(e.target.value) || 2 })}
               />
               <input
                 type="number"
@@ -85,9 +77,7 @@ export function DeepAgentPanel() {
             <textarea
               className="field-textarea min-h-[72px]"
               value={integrations.deepagentDescription}
-              onChange={(e) =>
-                setIntegrations({ deepagentDescription: e.target.value })
-              }
+              onChange={(e) => setIntegrations({ deepagentDescription: e.target.value })}
             />
           </div>
         </div>
@@ -167,9 +157,7 @@ export function DeepAgentPanel() {
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() =>
-                  download("okf-deepagent.json", exportDeepAgentJson())
-                }
+                onClick={() => download("okf-deepagent.json", exportDeepAgentJson())}
               >
                 <Download className="size-3.5" />
                 Download
@@ -195,9 +183,7 @@ export function DeepAgentPanel() {
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() =>
-                  download("okf_deepagent.py", exportDeepAgentPython())
-                }
+                onClick={() => download("okf_deepagent.py", exportDeepAgentPython())}
               >
                 <Download className="size-3.5" />
                 Download

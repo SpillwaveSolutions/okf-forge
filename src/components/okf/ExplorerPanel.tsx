@@ -26,9 +26,7 @@ export function ExplorerPanel() {
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <h1 className="text-xl font-semibold text-fg">
-              {bundle?.name ?? "Workspace"}
-            </h1>
+            <h1 className="text-xl font-semibold text-fg">{bundle?.name ?? "Workspace"}</h1>
             <p className="text-sm text-fg-muted mt-1">
               {bundle?.sourceUrl ? (
                 <a
@@ -46,16 +44,12 @@ export function ExplorerPanel() {
           </div>
           {validation && (
             <div className="flex flex-wrap gap-2">
-              <span className="badge">
-                {validation.concept_count} concepts
-              </span>
+              <span className="badge">{validation.concept_count} concepts</span>
               <span className="badge">{validation.edge_count} edges</span>
               <span
                 className={`badge ${validation.error_count ? "badge-danger" : "badge-success"}`}
               >
-                {validation.error_count
-                  ? `${validation.error_count} errors`
-                  : "valid"}
+                {validation.error_count ? `${validation.error_count} errors` : "valid"}
               </span>
             </div>
           )}
@@ -71,9 +65,7 @@ export function ExplorerPanel() {
 
         {graphData && (
           <div className="panel-card space-y-2">
-            <h2 className="text-sm font-semibold text-fg">
-              Focus: {graphData.root}
-            </h2>
+            <h2 className="text-sm font-semibold text-fg">Focus: {graphData.root}</h2>
             <GraphCanvas
               nodes={graphData.nodes}
               edges={graphData.edges}
@@ -99,18 +91,14 @@ export function ExplorerPanel() {
                     <button
                       type="button"
                       className={`w-full text-left text-sm px-2 py-1.5 rounded-md hover:bg-bg-subtle ${
-                        selectedPath === c.path
-                          ? "bg-primary-muted text-primary"
-                          : "text-fg-muted"
+                        selectedPath === c.path ? "bg-primary-muted text-primary" : "text-fg-muted"
                       }`}
                       onClick={() => {
                         selectPath(c.path);
                         setView("editor");
                       }}
                     >
-                      <span className="block truncate font-medium">
-                        {c.title}
-                      </span>
+                      <span className="block truncate font-medium">{c.title}</span>
                       <span className="block text-[10px] opacity-70 font-mono truncate">
                         {c.path}
                       </span>

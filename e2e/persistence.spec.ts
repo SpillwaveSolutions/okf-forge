@@ -2,10 +2,7 @@ import { test, expect } from "@playwright/test";
 import { gotoApp } from "./helpers";
 
 test.describe("workspace open + save", () => {
-  test("opens web workspace and persists an edit via /api/fs", async ({
-    page,
-    request,
-  }) => {
+  test("opens web workspace and persists an edit via /api/fs", async ({ page, request }) => {
     await gotoApp(page);
 
     const openBtn = page.getByTestId("header-open");
@@ -28,9 +25,7 @@ test.describe("workspace open + save", () => {
       data: { path, content },
     });
     expect(write.ok()).toBeTruthy();
-    const read = await request.get(
-      `/api/fs/read?path=${encodeURIComponent(path)}`,
-    );
+    const read = await request.get(`/api/fs/read?path=${encodeURIComponent(path)}`);
     expect(read.ok()).toBeTruthy();
     const body = await read.json();
     expect(body.content).toContain(marker);

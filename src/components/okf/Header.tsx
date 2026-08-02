@@ -1,10 +1,4 @@
-import {
-  BookOpen,
-  FolderOpen,
-  GitBranch,
-  Search,
-  Sparkles,
-} from "lucide-react";
+import { BookOpen, FolderOpen, GitBranch, Search, Sparkles } from "lucide-react";
 import { useOkfStore, type EditorViewMode } from "@/lib/okf/store";
 
 const MODES: { id: EditorViewMode; label: string }[] = [
@@ -36,9 +30,7 @@ export function Header() {
           <GitBranch className="size-3.5" />
         </div>
         <div className="leading-tight">
-          <div className="text-sm font-semibold tracking-tight text-fg">
-            OKFForge
-          </div>
+          <div className="text-sm font-semibold tracking-tight text-fg">OKFForge</div>
           <div className="text-[10px] text-fg-subtle hidden sm:block">
             {isDesktop ? "Desktop workbench" : "Graph engineering workbench"}
           </div>
@@ -62,11 +54,7 @@ export function Header() {
         />
       </div>
 
-      <div
-        className="view-toggle hide-mobile"
-        role="group"
-        aria-label="Editor view mode"
-      >
+      <div className="view-toggle hide-mobile" role="group" aria-label="Editor view mode">
         {MODES.map((m) => (
           <button
             key={m.id}

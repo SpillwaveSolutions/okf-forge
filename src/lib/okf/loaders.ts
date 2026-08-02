@@ -73,9 +73,7 @@ async function fetchGithubTree(
   });
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(
-      `GitHub tree fetch failed (${res.status}): ${text.slice(0, 200)}`,
-    );
+    throw new Error(`GitHub tree fetch failed (${res.status}): ${text.slice(0, 200)}`);
   }
   const data = (await res.json()) as {
     tree?: Array<{ path: string; type: string }>;
@@ -119,20 +117,16 @@ export async function loadGithubBundle(
   if (!subpath) {
     const hasSample = mdFiles.some((f) => f.path.startsWith("sample-okf/"));
     const hasOkf = mdFiles.some((f) => f.path.startsWith(".okf/"));
-    if (hasSample && !mdFiles.some((f) => f.path === "index.md"))
-      subpath = "sample-okf";
+    if (hasSample && !mdFiles.some((f) => f.path === "index.md")) subpath = "sample-okf";
     else if (hasOkf) subpath = ".okf";
   }
 
   const prefix = subpath ? subpath + "/" : "";
-  const selected = mdFiles.filter((f) =>
-    subpath ? f.path.startsWith(prefix) : true,
-  );
+  const selected = mdFiles.filter((f) => (subpath ? f.path.startsWith(prefix) : true));
 
   // Cap for browser safety
   const limited = selected.slice(0, 200);
-  if (!limited.length)
-    throw new Error("No markdown files found in that path");
+  if (!limited.length) throw new Error("No markdown files found in that path");
 
   const files: Record<string, string> = {};
   // Fetch in small batches
@@ -183,17 +177,14 @@ export function normalizeUploadPath(relativePath: string): string | null {
   return parts[0] ?? null;
 }
 
-export async function loadFilesFromUpload(
-  fileList: FileList | File[],
-): Promise<OkfBundle> {
+export async function loadFilesFromUpload(fileList: FileList | File[]): Promise<OkfBundle> {
   const files: Record<string, string> = {};
   const list = Array.from(fileList);
   let topName = "uploaded-bundle";
 
   for (const file of list) {
     if (!file.name.endsWith(".md") && file.type !== "text/markdown") continue;
-    const webkit =
-      (file as File & { webkitRelativePath?: string }).webkitRelativePath || "";
+    const webkit = (file as File & { webkitRelativePath?: string }).webkitRelativePath || "";
     if (webkit) {
       const top = webkit.replace(/\\/g, "/").split("/").filter(Boolean)[0];
       if (top) topName = top;
@@ -205,8 +196,7 @@ export async function loadFilesFromUpload(
       files[file.name] = await file.text();
     }
   }
-  if (!Object.keys(files).length)
-    throw new Error("No markdown files in upload");
+  if (!Object.keys(files).length) throw new Error("No markdown files in upload");
 
   // Cap large folder picks so the UI stays responsive
   const keys = Object.keys(files).sort();
@@ -300,12 +290,28 @@ Dual knowledge + agent/harness graph.
 - [Shared state](/shared/index.md)
 - [Tickets](/tickets/index.md)
 `,
-      "log.md": index("Change log", "Structural changes", `# Log\n\n- ${now.slice(0, 10)} — Scaffolded bundle\n`),
-      "agents/index.md": index("Agents", "AgentNode catalog", `# Agents\n\n- [Research Agent](/agents/research-agent.md)\n`),
+      "log.md": index(
+        "Change log",
+        "Structural changes",
+        `# Log\n\n- ${now.slice(0, 10)} — Scaffolded bundle\n`,
+      ),
+      "agents/index.md": index(
+        "Agents",
+        "AgentNode catalog",
+        `# Agents\n\n- [Research Agent](/agents/research-agent.md)\n`,
+      ),
       "agents/research-agent.md": agent,
-      "workflows/index.md": index("Workflows", "Workflow catalog", `# Workflows\n\n- [Research Flow](/workflows/research-flow.md)\n`),
+      "workflows/index.md": index(
+        "Workflows",
+        "Workflow catalog",
+        `# Workflows\n\n- [Research Flow](/workflows/research-flow.md)\n`,
+      ),
       "workflows/research-flow.md": workflow,
-      "knowledge/index.md": index("Knowledge", "Knowledge catalog", `# Knowledge\n\n_Add concepts with the Author panel or Classify tool._\n`),
+      "knowledge/index.md": index(
+        "Knowledge",
+        "Knowledge catalog",
+        `# Knowledge\n\n_Add concepts with the Author panel or Classify tool._\n`,
+      ),
       "decisions/index.md": index("Decisions", "Decision records", `# Decisions\n\n`),
       "shared/index.md": index("Shared state", "Shared state catalog", `# Shared state\n\n`),
       "tickets/index.md": index("Tickets", "TicketLink catalog", `# Tickets\n\n`),

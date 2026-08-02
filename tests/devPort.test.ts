@@ -11,11 +11,7 @@ import { existsSync, readFileSync, writeFileSync, rmSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
-import {
-  resolveDevPort,
-  peekDevPort,
-  BASE_PORT,
-} from "../scripts/dev-port.mjs";
+import { resolveDevPort, peekDevPort, BASE_PORT } from "../scripts/dev-port.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PORT_FILE = join(ROOT, ".dev-port");

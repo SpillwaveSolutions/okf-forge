@@ -27,9 +27,9 @@ test.describe("OKFForge web smoke", () => {
     await gotoApp(page);
 
     await page.getByRole("button", { name: "Graph & Search" }).click();
-    await expect(
-      page.getByRole("heading", { name: "Graph & search" }),
-    ).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByRole("heading", { name: "Graph & search" })).toBeVisible({
+      timeout: 10_000,
+    });
     await expect(page.getByText("Impact analysis")).toBeVisible();
 
     await page.getByRole("button", { name: "Editor" }).click();
@@ -43,8 +43,6 @@ test.describe("OKFForge web smoke", () => {
     await openBtn.click();
     await expect(page.getByRole("dialog")).toBeVisible({ timeout: 8_000 });
     await expect(page.getByTestId("open-workspace")).toBeVisible();
-    await expect(
-      page.getByText("Sample: okf-plugin / sample-okf"),
-    ).toBeVisible();
+    await expect(page.getByText("Sample: okf-plugin / sample-okf")).toBeVisible();
   });
 });
