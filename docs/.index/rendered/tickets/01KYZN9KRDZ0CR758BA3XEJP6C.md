@@ -1,6 +1,6 @@
 # Repository has a Prettier config but was never formatted
 
-`01KYZN9KRDZ0CR758BA3XEJP6C` · task/ops · **open**
+`01KYZN9KRDZ0CR758BA3XEJP6C` · task/ops · **done**
 
 The repository ships a Prettier config but was never formatted with it: around 29 source files fail a check at any print width.
 

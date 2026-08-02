@@ -3,15 +3,15 @@
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
 ### Desktop app cannot be driven by automation
-`01KYZN9M26QS2EATG15KEZYMZ0` · status: todo
+`01KYZN9M26QS2EATG15KEZYMZ0` · status: done
 - targets: release/v0.1.0
 
 ### Desktop storage provider has no JavaScript test coverage
-`01KYZN9KX5FBTAMYCB2ZP4CSSY` · status: todo
+`01KYZN9KX5FBTAMYCB2ZP4CSSY` · status: done
 - targets: release/v0.1.0
 
 ### Repository has a Prettier config but was never formatted
-`01KYZN9KRDZ0CR758BA3XEJP6C` · status: todo
+`01KYZN9KRDZ0CR758BA3XEJP6C` · status: done
 - targets: release/v0.1.0
 
 ### Dev server port collides with other projects on the same machine
