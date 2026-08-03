@@ -2,6 +2,9 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Fields use placeholder as their only visible label
+`01KZ3ZNR42R45HYJR4EDQ8VS0S` · status: done
+
 ### Panel tab strips expose as plain buttons
 `01KZ310MPRYBVR1PXBM4ADY53P` · status: done
 - belongs-to: UI specs and wireframes for all views
