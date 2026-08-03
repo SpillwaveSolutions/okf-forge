@@ -1,6 +1,17 @@
 {
  "docs": [
   {
+   "canonical_key": "design/2026-08-02-view-preferences-design",
+   "doc_type": "design",
+   "git_hash": "e5e5be6",
+   "slug": "2026-08-02-view-preferences-design",
+   "source": "docs/designs/2026-08-02-view-preferences-design.md",
+   "title": "Design \u2014 view preferences (theme + zoom)",
+   "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-2026-08-02-View-Preferences",
+   "wiki_key": "design/2026-08-02-view-preferences-design"
+  },
+  {
    "canonical_key": "design/ui-editor",
    "doc_type": "design",
    "git_hash": "6d72f85",

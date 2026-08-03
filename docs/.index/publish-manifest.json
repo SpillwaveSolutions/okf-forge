@@ -173,6 +173,17 @@
   {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
+   "page_name": "Design-2026-08-02-View-Preferences",
+   "render": "doc+banner",
+   "render_hash": "24b7df2827f3",
+   "source": "docs/designs/2026-08-02-view-preferences-design.md",
+   "title": "Design \u2014 view preferences (theme + zoom)",
+   "truth_state": "current",
+   "wiki_key": "design/2026-08-02-view-preferences-design"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
    "page_name": "Design-UI-Editor",
    "render": "doc+banner",
    "render_hash": "ddd525c79efd",
