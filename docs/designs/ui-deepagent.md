@@ -62,9 +62,11 @@ model judgement has "the model was in a mood" as a failure mode.
 | 4 | Zero console or page errors on mount | `views.spec.ts › deepagent view renders its documented structure` |
 | 5 | No interactive element escapes sideways at 1280×800 | `views.spec.ts › no view lets an interactive element escape sideways` |
 | 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
-| 7 | The three output modes are mutually exclusive and one is always active | agent |
-| 8 | Skill rows state what each skill does, not only its identifier | agent |
-| 9 | The generated export is visibly code, not prose | agent |
+| 7 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
+| 8 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
+| 9 | The three output modes are mutually exclusive and one is always active | agent |
+| 10 | Skill rows state what each skill does, not only its identifier | agent |
+| 11 | The generated export is visibly code, not prose | agent |
 
 ### Acceptable differences
 
@@ -89,9 +91,7 @@ model judgement has "the model was in a mood" as a failure mode.
 
 Tracked separately, deliberately not fixed by writing this spec:
 
-- **Fourteen checkboxes carry no `aria-label`.** They sit beside their skill
-  titles but are not programmatically associated, so assistive tech announces
-  fourteen unnamed checkboxes.
-- The name, description, and numeric inputs are likewise unlabelled.
-- The output mode strip is a tab strip rendered as plain buttons — same gap as
-  Classify and Plugins & MCP.
+- The skill checkboxes are wrapped in `<label>` and therefore correctly named;
+  an earlier draft of this spec claimed otherwise on the strength of a scan
+  that read `textContent` before `aria-label`.
+- Skill rows state an identifier rather than what the skill does.

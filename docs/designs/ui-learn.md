@@ -61,9 +61,11 @@ model judgement has "the model was in a mood" as a failure mode.
 | 4 | Zero console or page errors on mount | `views.spec.ts › learn view renders its documented structure` |
 | 5 | No interactive element escapes sideways at 1280×800 | `views.spec.ts › no view lets an interactive element escape sideways` |
 | 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
-| 7 | The step counter reads “Step N of 8” and Back is unavailable on step 1 | agent |
-| 8 | The four shortcut cards each state an action and its payoff | agent |
-| 9 | The tour reads as an invitation, not a wall of text | agent |
+| 7 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
+| 8 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
+| 9 | The step counter reads “Step N of 8” and Back is unavailable on step 1 | agent |
+| 10 | The four shortcut cards each state an action and its payoff | agent |
+| 11 | The tour reads as an invitation, not a wall of text | agent |
 
 ### Acceptable differences
 

@@ -406,7 +406,7 @@
   },
   "item/01KZ310KAGP5JPFD23WNZTJH44": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "UI specs and wireframes for all views"
   },
   "item/01KZ310KGJ6ECASHNKX6KEAD6T": {
@@ -441,12 +441,12 @@
   },
   "item/01KZ310MHH13W1Q0Q2421CRM02": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Delete buttons in Plugins & MCP have no accessible name"
   },
   "item/01KZ310MPRYBVR1PXBM4ADY53P": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Panel tab strips expose as plain buttons"
   },
   "plan/2026-08-02-view-preferences": {

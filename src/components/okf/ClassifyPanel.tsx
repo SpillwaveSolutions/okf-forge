@@ -86,6 +86,7 @@ export function ClassifyPanel() {
             value={paste}
             onChange={(e) => setPaste(e.target.value)}
             placeholder="# Incident runbook&#10;&#10;When the API errors..."
+            aria-label="Paste raw markdown"
           />
           <button type="button" className="btn btn-secondary" onClick={addPaste}>
             Add pasted doc

@@ -66,8 +66,10 @@ model judgement has "the model was in a mood" as a failure mode.
 | 5 | No interactive element escapes sideways at 1280×800 | `views.spec.ts › no view lets an interactive element escape sideways` |
 | 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
 | 7 | The four sections appear in this order: Impact, Pack, Neighborhood, Validation | `views.spec.ts › search view renders its documented structure` |
-| 8 | Empty result regions read as “not run yet”, not as “no results” | agent |
-| 9 | The three numeric inputs are visibly associated with their card | agent |
+| 8 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
+| 9 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
+| 10 | Empty result regions read as “not run yet”, not as “no results” | agent |
+| 11 | The three numeric inputs are visibly associated with their card | agent |
 
 ### Acceptable differences
 
@@ -92,7 +94,8 @@ model judgement has "the model was in a mood" as a failure mode.
 
 Tracked separately, deliberately not fixed by writing this spec:
 
-- The three `input[type=number]` controls have no `aria-label`; they are
-  positioned next to their captions but not programmatically associated.
+- The three `input[type=number]` controls sit beside visible `<label>` elements
+  that are not associated via `htmlFor`. They now carry an `aria-label`, so the
+  name is correct, but the visible label is still decorative markup.
 - Search results and impact results are plain lists with no landmark, so a
   screen-reader user gets no announcement when a result set changes.

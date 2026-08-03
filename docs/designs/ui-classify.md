@@ -62,9 +62,11 @@ model judgement has "the model was in a mood" as a failure mode.
 | 4 | Zero console or page errors on mount | `views.spec.ts › classify view renders its documented structure` |
 | 5 | No interactive element escapes sideways at 1280×800 | `views.spec.ts › no view lets an interactive element escape sideways` |
 | 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
-| 7 | Suggestion cards make the proposed type and path editable in place | agent |
-| 8 | The empty state explains what to drop in, rather than showing bare controls | agent |
-| 9 | It is obvious which suggestions are included before applying | agent |
+| 7 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
+| 8 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
+| 9 | Suggestion cards make the proposed type and path editable in place | agent |
+| 10 | The empty state explains what to drop in, rather than showing bare controls | agent |
+| 11 | It is obvious which suggestions are included before applying | agent |
 
 ### Acceptable differences
 
@@ -89,9 +91,7 @@ model judgement has "the model was in a mood" as a failure mode.
 
 Tracked separately, deliberately not fixed by writing this spec:
 
-- The mode buttons at the top are a tab strip rendered as plain buttons, with
-  no `role="tablist"` or `aria-selected`. The header view-mode toggle solves
-  the identical problem correctly with `aria-pressed`.
-- The file input is unlabelled beyond its native control text.
+- This view has no tab strip; an earlier draft of this spec said it did, having
+  mistaken the Upload / Paste action buttons for one.
 - Suggestion cards carry no `data-testid`, so a test cannot address the Nth
   suggestion without relying on document order.
