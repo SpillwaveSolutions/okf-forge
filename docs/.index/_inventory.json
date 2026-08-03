@@ -80,7 +80,7 @@
   {
    "canonical_key": "design/ui-classify",
    "doc_type": "design",
-   "git_hash": "d3d7c7a",
+   "git_hash": "6cd5b53",
    "slug": "ui-classify",
    "source": "docs/designs/ui-classify.md",
    "title": "UI spec \u2014 Classify view",
@@ -91,7 +91,7 @@
   {
    "canonical_key": "design/ui-deepagent",
    "doc_type": "design",
-   "git_hash": "d3d7c7a",
+   "git_hash": "6cd5b53",
    "slug": "ui-deepagent",
    "source": "docs/designs/ui-deepagent.md",
    "title": "UI spec \u2014 DeepAgents view",
@@ -102,7 +102,7 @@
   {
    "canonical_key": "design/ui-editor",
    "doc_type": "design",
-   "git_hash": "50c21cc",
+   "git_hash": "6cd5b53",
    "slug": "ui-editor",
    "source": "docs/designs/ui-editor.md",
    "title": "UI spec \u2014 Editor view",
@@ -113,7 +113,7 @@
   {
    "canonical_key": "design/ui-explorer",
    "doc_type": "design",
-   "git_hash": "d3d7c7a",
+   "git_hash": "6cd5b53",
    "slug": "ui-explorer",
    "source": "docs/designs/ui-explorer.md",
    "title": "UI spec \u2014 Explorer view",
@@ -124,7 +124,7 @@
   {
    "canonical_key": "design/ui-integrations",
    "doc_type": "design",
-   "git_hash": "d3d7c7a",
+   "git_hash": "6cd5b53",
    "slug": "ui-integrations",
    "source": "docs/designs/ui-integrations.md",
    "title": "UI spec \u2014 Plugins & MCP view",
@@ -135,7 +135,7 @@
   {
    "canonical_key": "design/ui-learn",
    "doc_type": "design",
-   "git_hash": "d3d7c7a",
+   "git_hash": "6cd5b53",
    "slug": "ui-learn",
    "source": "docs/designs/ui-learn.md",
    "title": "UI spec \u2014 Learn view",
@@ -146,13 +146,24 @@
   {
    "canonical_key": "design/ui-search",
    "doc_type": "design",
-   "git_hash": "d3d7c7a",
+   "git_hash": "6cd5b53",
    "slug": "ui-search",
    "source": "docs/designs/ui-search.md",
    "title": "UI spec \u2014 Graph & search view",
    "truth_state": "current",
    "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Search",
    "wiki_key": "design/ui-search"
+  },
+  {
+   "canonical_key": "design/ui-settings",
+   "doc_type": "design",
+   "git_hash": "6cd5b53",
+   "slug": "ui-settings",
+   "source": "docs/designs/ui-settings.md",
+   "title": "UI spec \u2014 Settings view",
+   "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Settings",
+   "wiki_key": "design/ui-settings"
   },
   {
    "canonical_key": "plan/2026-08-02-view-preferences",
@@ -168,12 +179,32 @@
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
+   "canonical_key": "plan/2026-08-03-okff-cli",
+   "date": "2026-08-03",
+   "doc_type": "plan",
+   "epic": "01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "items": [
+    "01KZ4EZ2HJF3T9ZFZH4D0ZEW8N",
+    "01KZ4EZ2HJ4TSZGNDTVGNQ7FPG",
+    "01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM",
+    "01KZ4EZ2HJSX39N7Q8FY0WVPQK",
+    "01KZ4EZ2HJ8GDJPQC6DNEKN51E",
+    "01KZ4EZ2HJ0SB94Y32K3C3V9MN"
+   ],
+   "slug": "okff-cli",
+   "source": "docs/plans/2026-08-03-okff-cli.md",
+   "status": "planned",
+   "title": "okff CLI launcher and Settings view",
+   "truth_state": "current",
+   "wiki_key": "plan/2026-08-03-okff-cli"
+  },
+  {
    "canonical_key": "roadmap",
    "doc_type": "roadmap",
-   "generated_at": "2026-08-03T17:55:11Z",
+   "generated_at": "2026-08-03T18:54:55Z",
    "slug": "roadmap",
    "source": "docs/roadmap.md",
-   "source_hash": "b9ad3294",
+   "source_hash": "3a3deccc",
    "title": "Roadmap",
    "truth_state": "current",
    "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",

@@ -171,6 +171,36 @@
    "type": "belongs-to"
   },
   {
+   "from": "item/01KZ4EZ2HJ0SB94Y32K3C3V9MN",
+   "to": "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM",
+   "to": "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ4EZ2HJ4TSZGNDTVGNQ7FPG",
+   "to": "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ4EZ2HJ8GDJPQC6DNEKN51E",
+   "to": "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ4EZ2HJF3T9ZFZH4D0ZEW8N",
+   "to": "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ4EZ2HJSX39N7Q8FY0WVPQK",
+   "to": "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "type": "belongs-to"
+  },
+  {
    "from": "plan/2026-08-02-view-preferences",
    "to": "item/01KZ2M32GWWQ4PP29HVE0AMPX7",
    "type": "produces"
@@ -203,6 +233,41 @@
   {
    "from": "plan/2026-08-02-view-preferences",
    "to": "item/01KZ2M33EZ4KPYJ8G9SEQ4NFBG",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-03-okff-cli",
+   "to": "item/01KZ4EZ2HJ0SB94Y32K3C3V9MN",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-03-okff-cli",
+   "to": "item/01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-03-okff-cli",
+   "to": "item/01KZ4EZ2HJ4TSZGNDTVGNQ7FPG",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-03-okff-cli",
+   "to": "item/01KZ4EZ2HJ8GDJPQC6DNEKN51E",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-03-okff-cli",
+   "to": "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-03-okff-cli",
+   "to": "item/01KZ4EZ2HJF3T9ZFZH4D0ZEW8N",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-03-okff-cli",
+   "to": "item/01KZ4EZ2HJSX39N7Q8FY0WVPQK",
    "type": "produces"
   },
   {
@@ -287,6 +352,12 @@
    "doc_type": "design",
    "source": "docs/designs/ui-search.md",
    "title": "UI spec \u2014 Graph & search view",
+   "truth_state": "current"
+  },
+  "design/ui-settings": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-settings.md",
+   "title": "UI spec \u2014 Settings view",
    "truth_state": "current"
   },
   "item/01KYZ24K4MKBE0VN4YAZ84V221": {
@@ -469,10 +540,56 @@
    "status": "done",
    "title": "DMG bundling fails on macOS"
   },
+  "item/01KZ4EZ2HJ0SB94Y32K3C3V9MN": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Tests: vitest, cargo, and Playwright coverage for the new surfaces"
+  },
+  "item/01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Frontend: rename loadWebWorkspace and seed the desktop workspace on init"
+  },
+  "item/01KZ4EZ2HJ4TSZGNDTVGNQ7FPG": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Rust: shim rendering plus install_cli / uninstall_cli / cli_status commands"
+  },
+  "item/01KZ4EZ2HJ8GDJPQC6DNEKN51E": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Docs: ui-settings spec, wireframe, and the nav line in seven existing specs"
+  },
+  "item/01KZ4EZ2HJ8P0WNRQJRGE1T3S7": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "okff CLI launcher and Settings view"
+  },
+  "item/01KZ4EZ2HJF3T9ZFZH4D0ZEW8N": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Rust: parse `--workspace` from argv and seed WorkspaceState"
+  },
+  "item/01KZ4EZ2HJSX39N7Q8FY0WVPQK": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Frontend: Settings view, 8th nav item, CLI install card"
+  },
+  "item/01KZ4FN7VEE25SEF6JCFG5J90T": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "e2e persistence spec writes into the tracked public/sample-okf fixture"
+  },
   "plan/2026-08-02-view-preferences": {
    "doc_type": "plan",
    "source": "docs/plans/2026-08-02-view-preferences.md",
    "title": "View preferences (theme + zoom) Implementation Plan",
+   "truth_state": "current"
+  },
+  "plan/2026-08-03-okff-cli": {
+   "doc_type": "plan",
+   "source": "docs/plans/2026-08-03-okff-cli.md",
+   "title": "okff CLI launcher and Settings view",
    "truth_state": "current"
   },
   "release/v0.1.0": {

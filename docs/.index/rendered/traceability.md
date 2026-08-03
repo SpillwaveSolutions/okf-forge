@@ -2,6 +2,49 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### e2e persistence spec writes into the tracked public/sample-okf fixture
+`01KZ4FN7VEE25SEF6JCFG5J90T` · status: todo
+
+### Frontend: Settings view, 8th nav item, CLI install card
+`01KZ4EZ2HJSX39N7Q8FY0WVPQK` · status: todo
+- belongs-to: okff CLI launcher and Settings view
+- produced-by: [[Plan-okff-cli]]
+
+### Rust: parse `--workspace` from argv and seed WorkspaceState
+`01KZ4EZ2HJF3T9ZFZH4D0ZEW8N` · status: todo
+- belongs-to: okff CLI launcher and Settings view
+- produced-by: [[Plan-okff-cli]]
+
+### okff CLI launcher and Settings view
+`01KZ4EZ2HJ8P0WNRQJRGE1T3S7` · status: todo
+- contains: Tests: vitest, cargo, and Playwright coverage for the new surfaces
+- contains: Frontend: rename loadWebWorkspace and seed the desktop workspace on init
+- contains: Rust: shim rendering plus install_cli / uninstall_cli / cli_status commands
+- contains: Docs: ui-settings spec, wireframe, and the nav line in seven existing specs
+- contains: Rust: parse `--workspace` from argv and seed WorkspaceState
+- contains: Frontend: Settings view, 8th nav item, CLI install card
+- produced-by: [[Plan-okff-cli]]
+
+### Docs: ui-settings spec, wireframe, and the nav line in seven existing specs
+`01KZ4EZ2HJ8GDJPQC6DNEKN51E` · status: todo
+- belongs-to: okff CLI launcher and Settings view
+- produced-by: [[Plan-okff-cli]]
+
+### Rust: shim rendering plus install_cli / uninstall_cli / cli_status commands
+`01KZ4EZ2HJ4TSZGNDTVGNQ7FPG` · status: todo
+- belongs-to: okff CLI launcher and Settings view
+- produced-by: [[Plan-okff-cli]]
+
+### Frontend: rename loadWebWorkspace and seed the desktop workspace on init
+`01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM` · status: todo
+- belongs-to: okff CLI launcher and Settings view
+- produced-by: [[Plan-okff-cli]]
+
+### Tests: vitest, cargo, and Playwright coverage for the new surfaces
+`01KZ4EZ2HJ0SB94Y32K3C3V9MN` · status: todo
+- belongs-to: okff CLI launcher and Settings view
+- produced-by: [[Plan-okff-cli]]
+
 ### DMG bundling fails on macOS
 `01KZ4C2QK870TH9JV341WM4ZXS` · status: done
 
