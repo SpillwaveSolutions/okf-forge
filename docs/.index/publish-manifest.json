@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "f995f52dfa77",
+   "render_hash": "93042316ac7a",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -411,6 +411,16 @@
    "wiki_key": "item/01KZ4BZAG33322PY4G37WRYBY1"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZ4C2QK870TH9JV341WM4ZXS",
+   "render": "as-is",
+   "render_hash": "879834cce1b3",
+   "source": "docs/.index/rendered/tickets/01KZ4C2QK870TH9JV341WM4ZXS.md",
+   "title": "DMG bundling fails on macOS",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ4C2QK870TH9JV341WM4ZXS"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -459,7 +469,7 @@
    "frozen": false,
    "page_name": "Design-Doc",
    "render": "doc+banner",
-   "render_hash": "b7a72a400d38",
+   "render_hash": "5d0accea596e",
    "source": "docs/designs/current_design_doc.md",
    "title": "OKF Forge \u2014 Design Document",
    "truth_state": "current",
@@ -554,11 +564,11 @@
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T17:52:00Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T17:55:11Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "c36b8e029934",
+   "render_hash": "119e655c4285",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

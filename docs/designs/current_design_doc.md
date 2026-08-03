@@ -240,8 +240,10 @@ through `tauri build` into `src-tauri/target/release/bundle/`. Note that
 `.vercel/output/`, `dist/`, and `src-tauri/target/` are **committed** — the
 `.gitignore` is minimal, so build artifacts appear in diffs.
 
-DMG bundling currently fails in the maintainer's environment
-(`bundle_dmg.sh`), so desktop verification uses `--no-bundle`.
+`npm run tauri:build` produces both artifacts on macOS: `OKFForge.app` and a
+checksum-valid `.dmg` carrying the app plus the conventional `/Applications`
+symlink. The `--no-bundle` flag used by the automation build is a speed
+choice for the WebdriverIO binary, which is launched directly.
 
 ## 14. Known Weaknesses
 

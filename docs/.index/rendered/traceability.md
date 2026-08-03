@@ -2,6 +2,9 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### DMG bundling fails on macOS
+`01KZ4C2QK870TH9JV341WM4ZXS` · status: done
+
 ### Sidebar forgets expanded folders on every save
 `01KZ4BZAG33322PY4G37WRYBY1` · status: done
 

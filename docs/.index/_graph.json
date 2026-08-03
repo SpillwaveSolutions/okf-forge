@@ -464,6 +464,11 @@
    "status": "done",
    "title": "Sidebar forgets expanded folders on every save"
   },
+  "item/01KZ4C2QK870TH9JV341WM4ZXS": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "DMG bundling fails on macOS"
+  },
   "plan/2026-08-02-view-preferences": {
    "doc_type": "plan",
    "source": "docs/plans/2026-08-02-view-preferences.md",

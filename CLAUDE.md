@@ -146,8 +146,10 @@ entry `tauri.html`, no Start/Nitro/fs plugins.
   stay px deliberately. Use `text-[0.6875rem]`, never `text-[11px]`.
 - **Zoom keybindings are desktop-only**, gated on `isTauriRuntime()`. In a browser
   `Cmd +/-` belongs to the browser, which already persists it per origin.
-- DMG bundling currently fails on macOS here (`bundle_dmg.sh`); desktop builds are
-  verified with `--no-bundle`.
+- `npm run tauri:build` produces a working `.dmg` and `.app` on macOS. The
+  `--no-bundle` flag on `tauri:build:automation` is a *speed* choice for the
+  test binary, not a workaround: WebdriverIO launches the bare executable at
+  `target/debug/okfforge`, so packaging it would be wasted minutes.
 
 ## Desktop automation (opt-in)
 
