@@ -2,8 +2,51 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Panel tab strips expose as plain buttons
+`01KZ310MPRYBVR1PXBM4ADY53P` · status: todo
+- belongs-to: UI specs and wireframes for all views
+
+### Delete buttons in Plugins & MCP have no accessible name
+`01KZ310MHH13W1Q0Q2421CRM02` · status: todo
+- belongs-to: UI specs and wireframes for all views
+
+### UI spec and wireframe: integrations view
+`01KZ310MBKRS0X05XEC85ZYD8N` · status: done
+- belongs-to: UI specs and wireframes for all views
+
+### UI spec and wireframe: deepagent view
+`01KZ310M5WKY73X6TYSEYRAJFN` · status: done
+- belongs-to: UI specs and wireframes for all views
+
+### UI spec and wireframe: classify view
+`01KZ310M0PYPD21TQWWSXKY1W0` · status: done
+- belongs-to: UI specs and wireframes for all views
+
+### UI spec and wireframe: search view
+`01KZ310KVM2C8EGTBAQATCAVY2` · status: done
+- belongs-to: UI specs and wireframes for all views
+
+### UI spec and wireframe: explorer view
+`01KZ310KPD830HD4QFZKN70ETJ` · status: done
+- belongs-to: UI specs and wireframes for all views
+
+### UI spec and wireframe: learn view
+`01KZ310KGJ6ECASHNKX6KEAD6T` · status: done
+- belongs-to: UI specs and wireframes for all views
+
+### UI specs and wireframes for all views
+`01KZ310KAGP5JPFD23WNZTJH44` · status: todo
+- contains: UI spec and wireframe: learn view
+- contains: UI spec and wireframe: explorer view
+- contains: UI spec and wireframe: search view
+- contains: UI spec and wireframe: classify view
+- contains: UI spec and wireframe: deepagent view
+- contains: UI spec and wireframe: integrations view
+- contains: Delete buttons in Plugins & MCP have no accessible name
+- contains: Panel tab strips expose as plain buttons
+
 ### Refresh CLAUDE.md after v0.1.0
-`01KZ30X0899FM2XNYRV70VFV68` · status: todo
+`01KZ30X0899FM2XNYRV70VFV68` · status: done
 
 ### Cut v0.1.0
 `01KZ2S1VAJNPP9M0CA9S877WE5` · status: done

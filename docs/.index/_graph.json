@@ -131,6 +131,46 @@
    "type": "belongs-to"
   },
   {
+   "from": "item/01KZ310KGJ6ECASHNKX6KEAD6T",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ310KPD830HD4QFZKN70ETJ",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ310KVM2C8EGTBAQATCAVY2",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ310M0PYPD21TQWWSXKY1W0",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ310M5WKY73X6TYSEYRAJFN",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ310MBKRS0X05XEC85ZYD8N",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ310MHH13W1Q0Q2421CRM02",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ310MPRYBVR1PXBM4ADY53P",
+   "to": "item/01KZ310KAGP5JPFD23WNZTJH44",
+   "type": "belongs-to"
+  },
+  {
    "from": "plan/2026-08-02-view-preferences",
    "to": "item/01KZ2M32GWWQ4PP29HVE0AMPX7",
    "type": "produces"
@@ -207,10 +247,46 @@
    "title": "OKF Forge \u2014 Design Document",
    "truth_state": "current"
   },
+  "design/ui-classify": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-classify.md",
+   "title": "UI spec \u2014 Classify view",
+   "truth_state": "current"
+  },
+  "design/ui-deepagent": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-deepagent.md",
+   "title": "UI spec \u2014 DeepAgents view",
+   "truth_state": "current"
+  },
   "design/ui-editor": {
    "doc_type": "design",
    "source": "docs/designs/ui-editor.md",
    "title": "UI spec \u2014 Editor view",
+   "truth_state": "current"
+  },
+  "design/ui-explorer": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-explorer.md",
+   "title": "UI spec \u2014 Explorer view",
+   "truth_state": "current"
+  },
+  "design/ui-integrations": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-integrations.md",
+   "title": "UI spec \u2014 Plugins & MCP view",
+   "truth_state": "current"
+  },
+  "design/ui-learn": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-learn.md",
+   "title": "UI spec \u2014 Learn view",
+   "truth_state": "current"
+  },
+  "design/ui-search": {
+   "doc_type": "design",
+   "source": "docs/designs/ui-search.md",
+   "title": "UI spec \u2014 Graph & search view",
    "truth_state": "current"
   },
   "item/01KYZ24K4MKBE0VN4YAZ84V221": {
@@ -325,8 +401,53 @@
   },
   "item/01KZ30X0899FM2XNYRV70VFV68": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "Refresh CLAUDE.md after v0.1.0"
+  },
+  "item/01KZ310KAGP5JPFD23WNZTJH44": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "UI specs and wireframes for all views"
+  },
+  "item/01KZ310KGJ6ECASHNKX6KEAD6T": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "UI spec and wireframe: learn view"
+  },
+  "item/01KZ310KPD830HD4QFZKN70ETJ": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "UI spec and wireframe: explorer view"
+  },
+  "item/01KZ310KVM2C8EGTBAQATCAVY2": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "UI spec and wireframe: search view"
+  },
+  "item/01KZ310M0PYPD21TQWWSXKY1W0": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "UI spec and wireframe: classify view"
+  },
+  "item/01KZ310M5WKY73X6TYSEYRAJFN": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "UI spec and wireframe: deepagent view"
+  },
+  "item/01KZ310MBKRS0X05XEC85ZYD8N": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "UI spec and wireframe: integrations view"
+  },
+  "item/01KZ310MHH13W1Q0Q2421CRM02": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Delete buttons in Plugins & MCP have no accessible name"
+  },
+  "item/01KZ310MPRYBVR1PXBM4ADY53P": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Panel tab strips expose as plain buttons"
   },
   "plan/2026-08-02-view-preferences": {
    "doc_type": "plan",

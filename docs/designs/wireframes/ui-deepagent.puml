@@ -1,0 +1,65 @@
+@startsalt
+'
+' Wireframe — DeepAgents view. Authoritative for THREE things only:
+'   1. element inventory (which named controls exist)
+'   2. containment and reading order (header / sidebar | main / status)
+'   3. ordinal sequence (nav order)
+'
+' NOT authoritative for pixels, spacing, colour, typography, icons, density or
+' state styling. Salt draws monochrome boxes; the real UI is a dense workbench
+' with two themes. Never diff a screenshot against this render.
+'
+' Render: npm run wireframes
+'
+{
+  {* <&git-branch> OKFForge | "  Search concepts, types, tags...  " | [Preview] | [Markdown] | [Split] | [theme] | [Learn] | [Open] | [Classify] | [Save] }
+  {
+    {
+      <b>NAV
+      [Learn OKF]
+      [Explorer]
+      [Editor]
+      [Graph & Search]
+      [Classify]
+      [<b>DeepAgents]
+      [Plugins & MCP]
+      --
+      <b>SAMPLE-OKF | valid
+      "  Filter files...  "
+      --
+      {T
+      + agents
+      ++ graph-engineer.md
+      ++ index.md
+      + knowledge
+      ++ index.md
+      }
+    } |
+    {
+        <b>LangChain DeepAgents
+        "Map okf-graph-eng skills to a DeepAgent definition."
+        ==
+        {
+          Agent name: | "  okf-graph-engineer  "
+          Description: | "  Graph engineering for OKF  "
+          hops: | "2" | max nodes: | "40"
+        }
+        ==
+        <b>Skill mappings
+        {
+          [X] | okf-impact | "blast radius"
+          [X] | okf-query | "search and packs"
+          [X] | okf-validate | "structural checks"
+        }
+        ==
+        {
+          [Skill map] | [JSON export] | [Python]
+        }
+        {
+          "  generated export ...  "
+        }
+      }
+  }
+  {- 22 concepts - 83 edges - healthy | agents/graph-engineer.md }
+}
+@endsalt
