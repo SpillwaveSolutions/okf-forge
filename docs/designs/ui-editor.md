@@ -2,7 +2,7 @@
 wiki_key: design/ui-editor
 doc_type: design
 truth_state: current
-git_hash: 50c21cc
+git_hash: 6cd5b53
 title: "UI spec — Editor view"
 # Pins the wiki page name. Without this, ia_render's page_name() maps every
 # design doc whose filename lacks "design_doc" onto "Code-Walkthrough" and this
@@ -39,7 +39,7 @@ and its `git_hash` in the same commit.
 | header | view-mode toggle (Preview, Markdown, Split — in that order) | `role="group"` name `Editor view mode`; one `aria-pressed="true"` |
 | header | theme toggle, cycling system → light → dark | `theme-toggle`, `data-theme-pref`; accessible name states current state and next action |
 | header | Learn, Open, Classify, Save | `header-open`, `header-save` |
-| sidebar | 7 nav items, in order: Learn, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
+| sidebar | 8 nav items, in order: Learn, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP, Settings | `nav-learn` … `nav-settings` |
 | sidebar | bundle name + validation badge | — |
 | sidebar | file filter | `aria-label="Filter files"` |
 | sidebar | nested file tree, dirs collapsible | `role="tree"` / `role="treeitem"`, `aria-expanded` on dirs, `aria-level`, `data-depth`, `data-kind` |

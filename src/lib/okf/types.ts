@@ -156,4 +156,11 @@ export const KNOWN_RELS = new Set([
 ]);
 
 export type AppView =
-  "learn" | "explorer" | "editor" | "search" | "classify" | "deepagent" | "integrations";
+  | "learn"
+  | "explorer"
+  | "editor"
+  | "search"
+  | "classify"
+  | "deepagent"
+  | "integrations"
+  | "settings";

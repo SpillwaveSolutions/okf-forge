@@ -1,0 +1,65 @@
+@startsalt
+'
+' Wireframe — Settings view. Authoritative for THREE things only:
+'   1. element inventory (which named controls exist)
+'   2. containment and reading order (header / sidebar | main / status)
+'   3. ordinal sequence (nav order)
+'
+' NOT authoritative for pixels, spacing, colour, typography, icons, density or
+' state styling. Salt draws monochrome boxes; the real UI is a dense workbench
+' with two themes. Never diff a screenshot against this render.
+'
+' Drawn in the DESKTOP install state, which is the one with the most controls.
+' The web build drops [Install okff] / [Remove] and shows the desktop-only note
+' in their place — see the runtime-split table in ui-settings.md.
+'
+' Render: npm run wireframes
+'
+{
+  {* <&git-branch> OKFForge | "  Search concepts, types, tags...  " | [Preview] | [Markdown] | [Split] | [theme] | [Learn] | [Open] | [Classify] | [Save] }
+  {
+    {
+      <b>NAV
+      [Learn OKF]
+      [Explorer]
+      [Editor]
+      [Graph & Search]
+      [Classify]
+      [DeepAgents]
+      [Plugins & MCP]
+      [<b>Settings]
+      --
+      <b>SAMPLE-OKF | valid
+      "  Filter files...  "
+      --
+      {T
+      + agents
+      ++ graph-engineer.md
+      ++ index.md
+      + knowledge
+      ++ index.md
+      }
+    } |
+    {
+        <b>Settings
+        "Theme and zoom live in the header."
+        ==
+        <b>Command line
+        "Install okff to open a folder from any terminal."
+        ' Salt eats a literal ~ as markup, so the second line reads <dir>
+        ' rather than the real ~/my-okf. Copy is not part of the contract.
+        {#
+          okff .
+          okff <dir>
+          okff --help
+        }
+        "Installed at /usr/local/bin/okff"
+        {
+          [Install okff] | [Remove]
+        }
+        "Each okff opens its own window; windows share preferences."
+      }
+  }
+  {- 22 concepts - 83 edges - healthy | agents/graph-engineer.md }
+}
+@endsalt

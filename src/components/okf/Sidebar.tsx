@@ -12,6 +12,7 @@ import {
   Plug,
   Search,
   Settings2,
+  SlidersHorizontal,
   Sparkles,
 } from "lucide-react";
 import { useOkfStore } from "@/lib/okf/store";
@@ -27,6 +28,7 @@ const NAV: { id: AppView; label: string; icon: typeof BookOpen }[] = [
   { id: "classify", label: "Classify", icon: Sparkles },
   { id: "deepagent", label: "DeepAgents", icon: Bot },
   { id: "integrations", label: "Plugins & MCP", icon: Plug },
+  { id: "settings", label: "Settings", icon: SlidersHorizontal },
 ];
 
 function typeBadge(type: string) {
