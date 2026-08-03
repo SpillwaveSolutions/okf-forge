@@ -3,6 +3,35 @@
 All notable changes to OKF Forge are recorded here. Dated sections are frozen:
 corrections go in the next release's notes, never into a shipped section.
 
+## 0.1.1 — unreleased
+
+### Fixed
+
+- Saving a file no longer collapses the sidebar tree. `recompute` rebuilds the
+  concepts map, giving the memoized tree a new identity, and the effect that
+  seeds expanded folders listed that identity in its dependencies.
+
+### Added
+
+- The file tree is a real `role="tree"`: roving tabindex, arrow navigation,
+  Home/End, typeahead, and `aria-level`/`setsize`/`posinset`. It was
+  `role="listbox"` with directory buttons interleaved, which is invalid.
+- Visible labels on the plugin and MCP fields, which previously showed their
+  caption only as placeholder text.
+- Accessible names on thirteen controls, and `aria-pressed` on the DeepAgents
+  and Plugins & MCP tab strips.
+
+### Corrections to 0.1.0
+
+Released sections are frozen, so the fix is recorded here.
+
+- **0.1.0's Known gaps wrongly stated that DMG bundling fails on macOS.** It
+  does not. `npm run tauri:build` produces `OKFForge.app` and a checksum-valid
+  `OKFForge_0.1.0_aarch64.dmg` that mounts and carries the conventional
+  `/Applications` symlink. The `--no-bundle` flag on the automation build is a
+  speed choice for the WebdriverIO binary, which is launched directly, and was
+  mistaken for a workaround.
+
 ## 0.1.0 — 2026-08-03
 
 First tagged release. The application already existed — this is the release
