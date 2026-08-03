@@ -2,6 +2,14 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Design spec for view preferences
+`01KZ2KCSAW39DDVYWER1DEDAQQ` · status: done
+- belongs-to: View preferences: theme and zoom
+
+### View preferences: theme and zoom
+`01KZ2KCJKX6S20SBVHBEQDZA0K` · status: todo
+- contains: Design spec for view preferences
+
 ### Desktop app cannot be driven by automation
 `01KYZN9M26QS2EATG15KEZYMZ0` · status: done
 - targets: release/v0.1.0

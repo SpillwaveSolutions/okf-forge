@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "a29860509ca3",
+   "render_hash": "672810a78006",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -171,6 +171,26 @@
    "wiki_key": "item/01KYZN9M26QS2EATG15KEZYMZ0"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "render": "as-is",
+   "render_hash": "98e14a78daba",
+   "source": "docs/.index/rendered/tickets/01KZ2KCJKX6S20SBVHBEQDZA0K.md",
+   "title": "View preferences: theme and zoom",
+   "truth_state": "open",
+   "wiki_key": "item/01KZ2KCJKX6S20SBVHBEQDZA0K"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ2KCSAW39DDVYWER1DEDAQQ",
+   "render": "as-is",
+   "render_hash": "e7d49fb8d0ea",
+   "source": "docs/.index/rendered/tickets/01KZ2KCSAW39DDVYWER1DEDAQQ.md",
+   "title": "Design spec for view preferences",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ2KCSAW39DDVYWER1DEDAQQ"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -193,11 +213,11 @@
    "wiki_key": "design/ui-editor"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-02T23:26:47Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T01:21:50Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "efb0c549333a",
+   "render_hash": "7ae4d15744ed",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

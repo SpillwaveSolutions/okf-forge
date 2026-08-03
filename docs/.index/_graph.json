@@ -54,6 +54,11 @@
    "from": "item/01KYZN9M26QS2EATG15KEZYMZ0",
    "to": "release/v0.1.0",
    "type": "targets"
+  },
+  {
+   "from": "item/01KZ2KCSAW39DDVYWER1DEDAQQ",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
   }
  ],
  "nodes": {
@@ -123,6 +128,16 @@
    "doc_type": "item",
    "status": "done",
    "title": "Desktop app cannot be driven by automation"
+  },
+  "item/01KZ2KCJKX6S20SBVHBEQDZA0K": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "View preferences: theme and zoom"
+  },
+  "item/01KZ2KCSAW39DDVYWER1DEDAQQ": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "Design spec for view preferences"
   },
   "release/v0.1.0": {
    "doc_type": "release"
