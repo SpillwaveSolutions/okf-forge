@@ -1,6 +1,6 @@
 # Pure preference logic in prefs.ts
 
-`01KZ2M32GWWQ4PP29HVE0AMPX7` · task/feature · **open**
+`01KZ2M32GWWQ4PP29HVE0AMPX7` · task/feature · **done**
 
 Resolve, cycle, clamp, persist, and one DOM writer.
 

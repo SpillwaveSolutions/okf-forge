@@ -1,6 +1,6 @@
 # Theme control wired through the store
 
-`01KZ2M32ZY8G5RVEB2F0EK9G1E` · task/feature · **open**
+`01KZ2M32ZY8G5RVEB2F0EK9G1E` · task/feature · **done**
 
 Store state and actions, the cycling header button whose accessible name states both current state and next action, and a prefers-color-scheme listener that re-resolves while the preference is system.
 

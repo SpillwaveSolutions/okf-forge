@@ -14,7 +14,7 @@
   {
    "canonical_key": "design/ui-editor",
    "doc_type": "design",
-   "git_hash": "6d72f85",
+   "git_hash": "50c21cc",
    "slug": "ui-editor",
    "source": "docs/designs/ui-editor.md",
    "title": "UI spec \u2014 Editor view",
@@ -37,10 +37,10 @@
   {
    "canonical_key": "roadmap",
    "doc_type": "roadmap",
-   "generated_at": "2026-08-03T01:33:55Z",
+   "generated_at": "2026-08-03T01:48:21Z",
    "slug": "roadmap",
    "source": "docs/roadmap.md",
-   "source_hash": "8d8b37f0",
+   "source_hash": "afc0699e",
    "title": "Roadmap",
    "truth_state": "current",
    "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",

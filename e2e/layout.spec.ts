@@ -125,4 +125,67 @@ test.describe("app shell layout", () => {
 
     expect(errors, `console/page errors:\n${errors.join("\n")}`).toEqual([]);
   });
+
+  test("theme toggle cycles system, light, and dark", async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(e.message));
+    page.on("console", (m) => {
+      if (m.type() === "error") errors.push(m.text());
+    });
+
+    await page.setViewportSize(DESKTOP);
+    await gotoApp(page);
+
+    const toggle = page.getByTestId("theme-toggle");
+    const html = page.locator("html");
+
+    // The starting preference depends on the runner's OS setting, so cycle to
+    // a known state rather than assuming one.
+    for (let i = 0; i < 3; i++) {
+      if ((await toggle.getAttribute("data-theme-pref")) === "system") break;
+      await toggle.click();
+    }
+    await expect(toggle).toHaveAttribute("data-theme-pref", "system");
+
+    for (const expected of ["light", "dark"]) {
+      await toggle.click();
+      await expect(toggle).toHaveAttribute("data-theme-pref", expected);
+      await expect(html).toHaveAttribute("data-theme", expected);
+    }
+
+    // The accessible name must carry state AND next action: an icon alone
+    // cannot convey a three-state cycle to a screen reader.
+    await expect(toggle).toHaveAccessibleName("Theme: dark. Switch to system.");
+
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("data-theme-pref", "system");
+
+    expect(errors, `console/page errors:\n${errors.join("\n")}`).toEqual([]);
+  });
+
+  test("the light theme actually repaints the surface", async ({ page }) => {
+    await page.setViewportSize(DESKTOP);
+    await gotoApp(page);
+
+    const toggle = page.getByTestId("theme-toggle");
+    const html = page.locator("html");
+    const bodyBg = () => page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+
+    const settle = async (want: string) => {
+      for (let i = 0; i < 3; i++) {
+        if ((await html.getAttribute("data-theme")) === want) return;
+        await toggle.click();
+      }
+      throw new Error(`could not reach ${want}`);
+    };
+
+    await settle("dark");
+    const dark = await bodyBg();
+    await settle("light");
+
+    // This is the one that catches a missing `inline` on @theme: without it
+    // Tailwind bakes the resolved colour into every utility, so data-theme
+    // flips but nothing repaints.
+    expect(await bodyBg()).not.toBe(dark);
+  });
 });

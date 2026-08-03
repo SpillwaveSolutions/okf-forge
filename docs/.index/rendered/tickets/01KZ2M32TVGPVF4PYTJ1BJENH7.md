@@ -1,6 +1,6 @@
 # Resolve the theme before first paint
 
-`01KZ2M32TVGPVF4PYTJ1BJENH7` · task/feature · **open**
+`01KZ2M32TVGPVF4PYTJ1BJENH7` · task/feature · **done**
 
 An inlined head script in both the SSR shell and the desktop HTML entry.
 

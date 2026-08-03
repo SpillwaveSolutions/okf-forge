@@ -1,6 +1,6 @@
 # Two-layer palette in styles.css
 
-`01KZ2M32NY8ZWMW8GWRZ7G3WQD` · task/feature · **open**
+`01KZ2M32NY8ZWMW8GWRZ7G3WQD` · task/feature · **done**
 
 A --okf-* variable layer for light and dark that @theme inline points at, so a data-theme attribute re-themes every existing utility class without touching a component.
 

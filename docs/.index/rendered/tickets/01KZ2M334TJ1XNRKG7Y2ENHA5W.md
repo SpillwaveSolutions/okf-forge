@@ -1,6 +1,6 @@
 # Desktop font zoom
 
-`01KZ2M334TJ1XNRKG7Y2ENHA5W` · task/feature · **open**
+`01KZ2M334TJ1XNRKG7Y2ENHA5W` · task/feature · **done**
 
 Cmd +, Cmd -, and Cmd 0 guarded by isTauriRuntime, the status-bar readout, and the thirteen text-[Npx] literals converted to rem so they scale with everything else.
 

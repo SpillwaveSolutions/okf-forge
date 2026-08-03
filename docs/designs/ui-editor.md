@@ -2,7 +2,7 @@
 wiki_key: design/ui-editor
 doc_type: design
 truth_state: current
-git_hash: 6d72f85
+git_hash: 50c21cc
 title: "UI spec — Editor view"
 # Pins the wiki page name. Without this, ia_render's page_name() maps every
 # design doc whose filename lacks "design_doc" onto "Code-Walkthrough" and this
@@ -37,6 +37,7 @@ and its `git_hash` in the same commit.
 | header | brand / logo | `aria-hidden` decoration |
 | header | concept search | `type="search"`, `aria-label="Search notes and graph"` |
 | header | view-mode toggle (Preview, Markdown, Split — in that order) | `role="group"` name `Editor view mode`; one `aria-pressed="true"` |
+| header | theme toggle, cycling system → light → dark | `theme-toggle`, `data-theme-pref`; accessible name states current state and next action |
 | header | Learn, Open, Classify, Save | `header-open`, `header-save` |
 | sidebar | 7 nav items, in order: Learn, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
 | sidebar | bundle name + validation badge | — |
@@ -47,6 +48,7 @@ and its `git_hash` in the same commit.
 | main | rendered preview | — |
 | main | neighborhood graph | `role="img"` name `OKF concept graph` |
 | status | concept/edge counts, selected path, dirty marker | `app-status` |
+| status | zoom level, desktop only, hidden at 100% | `zoom-level` |
 
 ## Acceptance criteria
 
@@ -73,10 +75,14 @@ model judgement has "the model was in a mood" as a failure mode.
 | 4 | Headings and button labels are not clipped (except deliberate `.truncate`) | `layout.spec.ts › headings and button labels are not clipped` |
 | 5 | The view-mode toggle has 3 buttons and exactly one `aria-pressed="true"` | `layout.spec.ts › editor view-mode toggle exposes exactly one pressed button` |
 | 6 | All 7 views mount and identify themselves with zero console errors | `layout.spec.ts › every view mounts and identifies itself` |
-| 7 | Toolbar reads as a grouped toolbar, not a row of loose buttons | agent |
-| 8 | Source and preview panes are visually balanced in Split mode | agent |
-| 9 | Type badges are legible against the elevated surface | agent |
-| 10 | The empty state ("no file selected") reads as intentional, not broken | agent |
+| 7 | The theme toggle cycles all three states and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
+| 8 | Switching to light changes the computed body background | `layout.spec.ts › the light theme actually repaints the surface` |
+| 9 | Every control stays reachable at 200% zoom | `zoom.e2e.ts › keeps every control reachable at maximum zoom` |
+| 10 | Toolbar reads as a grouped toolbar, not a row of loose buttons | agent |
+| 11 | Source and preview panes are visually balanced in Split mode | agent |
+| 12 | Type badges are legible against the elevated surface | agent |
+| 13 | The empty state ("no file selected") reads as intentional, not broken | agent |
+| 14 | Both themes read as the same product, not two skins | agent |
 
 ### Acceptable differences
 
@@ -85,6 +91,10 @@ model judgement has "the model was in a mood" as a failure mode.
 - Truncation on file paths, badges, and the status bar — deliberate.
 - Wireframe geometry and proportion. Topology and inventory only.
 - Dynamic content: concept counts, edge counts, timestamps.
+- Either theme. Visual rows are judged **within** a theme, never across the two:
+  light and dark are different palettes, not a defect in one of them.
+- Any zoom level. Density at 200% is not a finding; a control that has become
+  unreachable is, and row 9 gates that.
 
 ### Failure criteria
 

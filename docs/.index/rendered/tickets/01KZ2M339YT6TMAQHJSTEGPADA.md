@@ -1,6 +1,6 @@
 # Theme and zoom end-to-end coverage
 
-`01KZ2M339YT6TMAQHJSTEGPADA` · task/feature · **open**
+`01KZ2M339YT6TMAQHJSTEGPADA` · task/feature · **done**
 
 Two Playwright rows including one that catches a missing inline on @theme, and three WebdriverIO rows including viewport containment at maximum zoom, which the web suite cannot check because it only runs at 100 percent.
 

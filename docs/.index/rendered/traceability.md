@@ -2,38 +2,42 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### GraphCanvas hardcodes the dark palette in SVG attributes
+`01KZ2M8DF9ZY5WMB968Y54WT8R` · status: done
+- belongs-to: View preferences: theme and zoom
+
 ### Editor spec inventory and rubric rows
-`01KZ2M33EZ4KPYJ8G9SEQ4NFBG` · status: todo
+`01KZ2M33EZ4KPYJ8G9SEQ4NFBG` · status: done
 - belongs-to: View preferences: theme and zoom
 - produced-by: [[Plan-2026-08-02-view-preferences]]
 
 ### Theme and zoom end-to-end coverage
-`01KZ2M339YT6TMAQHJSTEGPADA` · status: todo
+`01KZ2M339YT6TMAQHJSTEGPADA` · status: done
 - belongs-to: View preferences: theme and zoom
 - produced-by: [[Plan-2026-08-02-view-preferences]]
 
 ### Desktop font zoom
-`01KZ2M334TJ1XNRKG7Y2ENHA5W` · status: todo
+`01KZ2M334TJ1XNRKG7Y2ENHA5W` · status: done
 - belongs-to: View preferences: theme and zoom
 - produced-by: [[Plan-2026-08-02-view-preferences]]
 
 ### Theme control wired through the store
-`01KZ2M32ZY8G5RVEB2F0EK9G1E` · status: todo
+`01KZ2M32ZY8G5RVEB2F0EK9G1E` · status: done
 - belongs-to: View preferences: theme and zoom
 - produced-by: [[Plan-2026-08-02-view-preferences]]
 
 ### Resolve the theme before first paint
-`01KZ2M32TVGPVF4PYTJ1BJENH7` · status: todo
+`01KZ2M32TVGPVF4PYTJ1BJENH7` · status: done
 - belongs-to: View preferences: theme and zoom
 - produced-by: [[Plan-2026-08-02-view-preferences]]
 
 ### Two-layer palette in styles.css
-`01KZ2M32NY8ZWMW8GWRZ7G3WQD` · status: todo
+`01KZ2M32NY8ZWMW8GWRZ7G3WQD` · status: done
 - belongs-to: View preferences: theme and zoom
 - produced-by: [[Plan-2026-08-02-view-preferences]]
 
 ### Pure preference logic in prefs.ts
-`01KZ2M32GWWQ4PP29HVE0AMPX7` · status: todo
+`01KZ2M32GWWQ4PP29HVE0AMPX7` · status: done
 - belongs-to: View preferences: theme and zoom
 - produced-by: [[Plan-2026-08-02-view-preferences]]
 
@@ -42,7 +46,7 @@ _The evidence chain: plan → item → ticket → code → release, forward and 
 - belongs-to: View preferences: theme and zoom
 
 ### View preferences: theme and zoom
-`01KZ2KCJKX6S20SBVHBEQDZA0K` · status: todo
+`01KZ2KCJKX6S20SBVHBEQDZA0K` · status: done
 - contains: Design spec for view preferences
 - contains: Pure preference logic in prefs.ts
 - contains: Two-layer palette in styles.css
@@ -51,6 +55,7 @@ _The evidence chain: plan → item → ticket → code → release, forward and 
 - contains: Desktop font zoom
 - contains: Theme and zoom end-to-end coverage
 - contains: Editor spec inventory and rubric rows
+- contains: GraphCanvas hardcodes the dark palette in SVG attributes
 
 ### Desktop app cannot be driven by automation
 `01KYZN9M26QS2EATG15KEZYMZ0` · status: done
