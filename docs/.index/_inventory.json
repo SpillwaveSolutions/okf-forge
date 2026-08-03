@@ -1,9 +1,20 @@
 {
  "docs": [
   {
+   "canonical_key": "design/2026-08-02-view-preferences-design",
+   "doc_type": "design",
+   "git_hash": "e5e5be6",
+   "slug": "2026-08-02-view-preferences-design",
+   "source": "docs/designs/2026-08-02-view-preferences-design.md",
+   "title": "Design \u2014 view preferences (theme + zoom)",
+   "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-2026-08-02-View-Preferences",
+   "wiki_key": "design/2026-08-02-view-preferences-design"
+  },
+  {
    "canonical_key": "design/ui-editor",
    "doc_type": "design",
-   "git_hash": "6d72f85",
+   "git_hash": "50c21cc",
    "slug": "ui-editor",
    "source": "docs/designs/ui-editor.md",
    "title": "UI spec \u2014 Editor view",
@@ -12,12 +23,24 @@
    "wiki_key": "design/ui-editor"
   },
   {
+   "canonical_key": "plan/2026-08-02-view-preferences",
+   "date": "2026-08-02",
+   "doc_type": "plan",
+   "items": [],
+   "slug": "2026-08-02-view-preferences",
+   "source": "docs/plans/2026-08-02-view-preferences.md",
+   "status": "completed",
+   "title": "View preferences (theme + zoom) Implementation Plan",
+   "truth_state": "current",
+   "wiki_key": "plan/2026-08-02-view-preferences"
+  },
+  {
    "canonical_key": "roadmap",
    "doc_type": "roadmap",
-   "generated_at": "2026-08-02T23:26:47Z",
+   "generated_at": "2026-08-03T01:48:21Z",
    "slug": "roadmap",
    "source": "docs/roadmap.md",
-   "source_hash": "082804d2",
+   "source_hash": "afc0699e",
    "title": "Roadmap",
    "truth_state": "current",
    "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",

@@ -1,4 +1,14 @@
-import { BookOpen, FolderOpen, GitBranch, Search, Sparkles } from "lucide-react";
+import {
+  BookOpen,
+  FolderOpen,
+  GitBranch,
+  Moon,
+  MonitorCog,
+  Search,
+  Sparkles,
+  Sun,
+} from "lucide-react";
+import { themeLabel } from "@/lib/okf/prefs";
 import { useOkfStore, type EditorViewMode } from "@/lib/okf/store";
 
 const MODES: { id: EditorViewMode; label: string }[] = [
@@ -22,16 +32,23 @@ export function Header() {
   const bundle = useOkfStore((s) => s.bundle);
   const loading = useOkfStore((s) => s.loading);
   const isDesktop = useOkfStore((s) => s.isDesktop);
+  const themePref = useOkfStore((s) => s.themePref);
+  const resolvedTheme = useOkfStore((s) => s.resolvedTheme);
+  const cycleThemePref = useOkfStore((s) => s.cycleThemePref);
 
   return (
-    <header className="app-header" data-testid="app-header">
+    // data-scroll opts this out of the viewport-containment checks: at high
+    // zoom the header scrolls horizontally, and a control you can scroll to is
+    // reachable, not lost. The desktop zoom spec still asserts nothing is
+    // clipped beyond the header's own scrollWidth.
+    <header className="app-header" data-testid="app-header" data-scroll>
       <div className="flex items-center gap-2 shrink-0">
         <div className="logo-mark" aria-hidden>
           <GitBranch className="size-3.5" />
         </div>
         <div className="leading-tight">
           <div className="text-sm font-semibold tracking-tight text-fg">OKFForge</div>
-          <div className="text-[10px] text-fg-subtle hidden sm:block">
+          <div className="text-[0.625rem] text-fg-subtle hidden sm:block">
             {isDesktop ? "Desktop workbench" : "Graph engineering workbench"}
           </div>
         </div>
@@ -72,6 +89,27 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-1.5 ml-auto shrink-0">
+        {/* The accessible name carries both the current state and the next
+            action, because a single icon cannot convey a three-state cycle.
+            data-theme-pref gives the e2e tests something to assert against
+            that is not an icon glyph. */}
+        <button
+          type="button"
+          className="btn btn-ghost"
+          onClick={() => cycleThemePref()}
+          data-testid="theme-toggle"
+          data-theme-pref={themePref}
+          aria-label={themeLabel(themePref, resolvedTheme)}
+          title={themeLabel(themePref, resolvedTheme)}
+        >
+          {themePref === "system" ? (
+            <MonitorCog className="size-3.5" aria-hidden />
+          ) : themePref === "light" ? (
+            <Sun className="size-3.5" aria-hidden />
+          ) : (
+            <Moon className="size-3.5" aria-hidden />
+          )}
+        </button>
         <button
           type="button"
           className="btn btn-ghost hide-mobile"

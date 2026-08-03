@@ -4,8 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OKFForge</title>
-    <script type="module" crossorigin src="./assets/tauri-CHIPWxuI.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/tauri-CY33HUbN.css">
+    <script>
+      // Duplicated from src/routes/__root.tsx by design: this must run before
+      // first paint, and importing a module would cost a round trip and
+      // reintroduce the flash of the wrong theme it exists to prevent.
+      try {
+        var p = JSON.parse(localStorage.getItem("okf-workbench-prefs-v1") || "{}");
+        var t =
+          p.theme === "light" || p.theme === "dark"
+            ? p.theme
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", t);
+        if (typeof p.zoom === "number" && p.zoom >= 0.8 && p.zoom <= 2) {
+          document.documentElement.style.setProperty("--okf-zoom", String(p.zoom));
+        }
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="./assets/tauri-CyhRUHpb.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/tauri-BFxigfkd.css">
   </head>
   <body class="bg-bg text-fg antialiased">
     <div id="root"></div>

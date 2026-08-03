@@ -66,7 +66,9 @@ export function SearchPanel() {
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-medium text-fg">{h.title}</span>
                       <span className="badge">{h.type}</span>
-                      <span className="text-[10px] text-fg-subtle ml-auto">score {h.score}</span>
+                      <span className="text-[0.625rem] text-fg-subtle ml-auto">
+                        score {h.score}
+                      </span>
                     </div>
                     <p className="text-xs text-fg-muted mt-0.5 font-mono">{h.path}</p>
                     {h.snippet && (
