@@ -2,6 +2,41 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Editor spec inventory and rubric rows
+`01KZ2M33EZ4KPYJ8G9SEQ4NFBG` · status: todo
+- belongs-to: View preferences: theme and zoom
+- produced-by: [[Plan-2026-08-02-view-preferences]]
+
+### Theme and zoom end-to-end coverage
+`01KZ2M339YT6TMAQHJSTEGPADA` · status: todo
+- belongs-to: View preferences: theme and zoom
+- produced-by: [[Plan-2026-08-02-view-preferences]]
+
+### Desktop font zoom
+`01KZ2M334TJ1XNRKG7Y2ENHA5W` · status: todo
+- belongs-to: View preferences: theme and zoom
+- produced-by: [[Plan-2026-08-02-view-preferences]]
+
+### Theme control wired through the store
+`01KZ2M32ZY8G5RVEB2F0EK9G1E` · status: todo
+- belongs-to: View preferences: theme and zoom
+- produced-by: [[Plan-2026-08-02-view-preferences]]
+
+### Resolve the theme before first paint
+`01KZ2M32TVGPVF4PYTJ1BJENH7` · status: todo
+- belongs-to: View preferences: theme and zoom
+- produced-by: [[Plan-2026-08-02-view-preferences]]
+
+### Two-layer palette in styles.css
+`01KZ2M32NY8ZWMW8GWRZ7G3WQD` · status: todo
+- belongs-to: View preferences: theme and zoom
+- produced-by: [[Plan-2026-08-02-view-preferences]]
+
+### Pure preference logic in prefs.ts
+`01KZ2M32GWWQ4PP29HVE0AMPX7` · status: todo
+- belongs-to: View preferences: theme and zoom
+- produced-by: [[Plan-2026-08-02-view-preferences]]
+
 ### Design spec for view preferences
 `01KZ2KCSAW39DDVYWER1DEDAQQ` · status: done
 - belongs-to: View preferences: theme and zoom
@@ -9,6 +44,13 @@ _The evidence chain: plan → item → ticket → code → release, forward and 
 ### View preferences: theme and zoom
 `01KZ2KCJKX6S20SBVHBEQDZA0K` · status: todo
 - contains: Design spec for view preferences
+- contains: Pure preference logic in prefs.ts
+- contains: Two-layer palette in styles.css
+- contains: Resolve the theme before first paint
+- contains: Theme control wired through the store
+- contains: Desktop font zoom
+- contains: Theme and zoom end-to-end coverage
+- contains: Editor spec inventory and rubric rows
 
 ### Desktop app cannot be driven by automation
 `01KYZN9M26QS2EATG15KEZYMZ0` · status: done

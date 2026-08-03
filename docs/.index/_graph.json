@@ -59,6 +59,76 @@
    "from": "item/01KZ2KCSAW39DDVYWER1DEDAQQ",
    "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
    "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ2M32GWWQ4PP29HVE0AMPX7",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ2M32NY8ZWMW8GWRZ7G3WQD",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ2M32TVGPVF4PYTJ1BJENH7",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ2M32ZY8G5RVEB2F0EK9G1E",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ2M334TJ1XNRKG7Y2ENHA5W",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ2M339YT6TMAQHJSTEGPADA",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
+  },
+  {
+   "from": "item/01KZ2M33EZ4KPYJ8G9SEQ4NFBG",
+   "to": "item/01KZ2KCJKX6S20SBVHBEQDZA0K",
+   "type": "belongs-to"
+  },
+  {
+   "from": "plan/2026-08-02-view-preferences",
+   "to": "item/01KZ2M32GWWQ4PP29HVE0AMPX7",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-02-view-preferences",
+   "to": "item/01KZ2M32NY8ZWMW8GWRZ7G3WQD",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-02-view-preferences",
+   "to": "item/01KZ2M32TVGPVF4PYTJ1BJENH7",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-02-view-preferences",
+   "to": "item/01KZ2M32ZY8G5RVEB2F0EK9G1E",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-02-view-preferences",
+   "to": "item/01KZ2M334TJ1XNRKG7Y2ENHA5W",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-02-view-preferences",
+   "to": "item/01KZ2M339YT6TMAQHJSTEGPADA",
+   "type": "produces"
+  },
+  {
+   "from": "plan/2026-08-02-view-preferences",
+   "to": "item/01KZ2M33EZ4KPYJ8G9SEQ4NFBG",
+   "type": "produces"
   }
  ],
  "nodes": {
@@ -138,6 +208,47 @@
    "doc_type": "item",
    "status": "done",
    "title": "Design spec for view preferences"
+  },
+  "item/01KZ2M32GWWQ4PP29HVE0AMPX7": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Pure preference logic in prefs.ts"
+  },
+  "item/01KZ2M32NY8ZWMW8GWRZ7G3WQD": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Two-layer palette in styles.css"
+  },
+  "item/01KZ2M32TVGPVF4PYTJ1BJENH7": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Resolve the theme before first paint"
+  },
+  "item/01KZ2M32ZY8G5RVEB2F0EK9G1E": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Theme control wired through the store"
+  },
+  "item/01KZ2M334TJ1XNRKG7Y2ENHA5W": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Desktop font zoom"
+  },
+  "item/01KZ2M339YT6TMAQHJSTEGPADA": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Theme and zoom end-to-end coverage"
+  },
+  "item/01KZ2M33EZ4KPYJ8G9SEQ4NFBG": {
+   "doc_type": "item",
+   "status": "todo",
+   "title": "Editor spec inventory and rubric rows"
+  },
+  "plan/2026-08-02-view-preferences": {
+   "doc_type": "plan",
+   "source": "docs/plans/2026-08-02-view-preferences.md",
+   "title": "View preferences (theme + zoom) Implementation Plan",
+   "truth_state": "current"
   },
   "release/v0.1.0": {
    "doc_type": "release"

@@ -33,8 +33,12 @@ holds twenty hardcoded hex tokens, with `color-scheme: dark` and
 `src/routes/__root.tsx:25` carries `className="dark"`, which matches no
 selector in the codebase. It is vestigial and gets replaced.
 
-The Zustand store holds no persisted state at all — no `localStorage`, no
-`persist` middleware. Everything is in memory and dies with the tab.
+The Zustand store itself holds no persisted state — no `localStorage` calls, no
+`persist` middleware. It does, however, delegate to one: `integrations.ts:167`
+owns `okf-workbench-integrations-v1`, read through a `loadIntegrations()` /
+`saveIntegrations()` pair that guards `typeof localStorage === "undefined"` for
+SSR and falls back to defaults inside a `try`/`catch`. That is the house
+pattern, and `prefs.ts` follows it rather than inventing a second convention.
 
 Zoom, by contrast, is mostly pre-wired: `styles.css` uses `rem` in 64 places,
 and the 59 Tailwind `text-xs` / `text-sm` / `text-lg` / `text-xl` usages are
@@ -223,7 +227,12 @@ clamping at both ends, resolving `system`, recovering from a corrupt
 
 `localStorage` rather than Zustand's `persist` middleware: the middleware would
 wrap the entire store, and the store holds parsed bundles and graph results
-that must not be serialized. Two scalars do not justify it.
+that must not be serialized. Two scalars do not justify it — and the codebase
+already answers this question the same way in `integrations.ts`.
+
+The storage key is `okf-workbench-prefs-v1`, matching the existing naming. A
+corrupt or out-of-range stored value falls back to defaults rather than
+throwing; a preferences read must never be able to prevent the app booting.
 
 ---
 
