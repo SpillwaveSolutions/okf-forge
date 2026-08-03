@@ -449,6 +449,11 @@
    "status": "done",
    "title": "Panel tab strips expose as plain buttons"
   },
+  "item/01KZ3ZNR42R45HYJR4EDQ8VS0S": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "Fields use placeholder as their only visible label"
+  },
   "plan/2026-08-02-view-preferences": {
    "doc_type": "plan",
    "source": "docs/plans/2026-08-02-view-preferences.md",

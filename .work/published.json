@@ -1,479 +1,539 @@
 {
- "design/2026-08-02-view-preferences-design": {
-  "source": "docs/designs/2026-08-02-view-preferences-design.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-2026-08-02-View-Preferences",
-  "page_id": "Design-2026-08-02-View-Preferences",
-  "source_hash": "60add018af06",
-  "render_hash": "71541acbca9b",
-  "frozen": true,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/2026-08-03_v0.1.0-release-code-walkthrough": {
-  "source": "docs/designs/2026-08-03_v0.1.0-release_code_walkthrough.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Code-Walkthrough-2026-08-03_v0.1.0-release",
-  "page_id": "Code-Walkthrough-2026-08-03_v0.1.0-release",
-  "source_hash": "af8c45b7fb47",
-  "render_hash": "f0f748c82f75",
-  "frozen": true,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/2026-08-03_v0.1.0-release-design-doc": {
-  "source": "docs/designs/2026-08-03_v0.1.0-release_design_doc.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-Doc-2026-08-03_v0.1.0-release",
-  "page_id": "Design-Doc-2026-08-03_v0.1.0-release",
-  "source_hash": "b09e4577f978",
-  "render_hash": "6f1eb465c72e",
-  "frozen": true,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/current-code-walkthrough": {
-  "source": "docs/designs/current_code_walkthrough.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Code-Walkthrough",
-  "page_id": "Code-Walkthrough",
-  "source_hash": "de81484cf69b",
-  "render_hash": "9c731b56bcfb",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/current-design-doc": {
-  "source": "docs/designs/current_design_doc.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-Doc",
-  "page_id": "Design-Doc",
-  "source_hash": "57536ee5dad8",
-  "render_hash": "b7a72a400d38",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/ui-classify": {
-  "source": "docs/designs/ui-classify.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Classify",
-  "page_id": "Design-UI-Classify",
-  "source_hash": "dd5a47b4784b",
-  "render_hash": "bcf7920c1f12",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/ui-deepagent": {
-  "source": "docs/designs/ui-deepagent.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Deepagent",
-  "page_id": "Design-UI-Deepagent",
-  "source_hash": "f112908e3f9a",
-  "render_hash": "a0b3a8f71891",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/ui-editor": {
-  "source": "docs/designs/ui-editor.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Editor",
-  "page_id": "Design-UI-Editor",
-  "source_hash": "26cae22fac08",
-  "render_hash": "5c1156e812ee",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/ui-explorer": {
-  "source": "docs/designs/ui-explorer.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Explorer",
-  "page_id": "Design-UI-Explorer",
-  "source_hash": "a57de91550b4",
-  "render_hash": "e28f4d559478",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/ui-integrations": {
-  "source": "docs/designs/ui-integrations.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Integrations",
-  "page_id": "Design-UI-Integrations",
-  "source_hash": "a296c0c331b4",
-  "render_hash": "e0d6b11f05a5",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/ui-learn": {
-  "source": "docs/designs/ui-learn.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Learn",
-  "page_id": "Design-UI-Learn",
-  "source_hash": "96d3b1bc51b8",
-  "render_hash": "9b5e05ecd428",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "design/ui-search": {
-  "source": "docs/designs/ui-search.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Search",
-  "page_id": "Design-UI-Search",
-  "source_hash": "fc69d555abb0",
-  "render_hash": "a6850326e1c4",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "home": {
-  "source": "docs/.index/rendered/home.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Home",
-  "page_id": "Home",
-  "source_hash": "7a6e118df66d",
-  "render_hash": "7a6e118df66d",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "index/decisions": {
-  "source": "docs/.index/rendered/decisions.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Decisions",
-  "page_id": "Index-Decisions",
-  "source_hash": "a380f6c498ee",
-  "render_hash": "a380f6c498ee",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "index/releases": {
-  "source": "docs/.index/rendered/releases.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Releases",
-  "page_id": "Index-Releases",
-  "source_hash": "39bcebdf8477",
-  "render_hash": "39bcebdf8477",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "index/status": {
-  "source": "docs/.index/rendered/status.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Status",
-  "page_id": "Index-Status",
-  "source_hash": "b8bcebbbbe23",
-  "render_hash": "b8bcebbbbe23",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "index/traceability": {
-  "source": "docs/.index/rendered/traceability.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Traceability",
-  "page_id": "Index-Traceability",
-  "source_hash": "784817e635ce",
-  "render_hash": "784817e635ce",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZ24K4MKBE0VN4YAZ84V221": {
-  "source": "docs/.index/rendered/tickets/01KYZ24K4MKBE0VN4YAZ84V221.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ24K4MKBE0VN4YAZ84V221",
-  "page_id": "Ticket-01KYZ24K4MKBE0VN4YAZ84V221",
-  "source_hash": "e9875ab15c28",
-  "render_hash": "e9875ab15c28",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZ24K90F9SS04CRSJRB65R4": {
-  "source": "docs/.index/rendered/tickets/01KYZ24K90F9SS04CRSJRB65R4.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ24K90F9SS04CRSJRB65R4",
-  "page_id": "Ticket-01KYZ24K90F9SS04CRSJRB65R4",
-  "source_hash": "96f3c100db5c",
-  "render_hash": "96f3c100db5c",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZ27EFFB9MG32Y3YVFHRTND": {
-  "source": "docs/.index/rendered/tickets/01KYZ27EFFB9MG32Y3YVFHRTND.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ27EFFB9MG32Y3YVFHRTND",
-  "page_id": "Ticket-01KYZ27EFFB9MG32Y3YVFHRTND",
-  "source_hash": "fc39f6b005fc",
-  "render_hash": "fc39f6b005fc",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZ8TZY5GARKJKNC5NC1PE75": {
-  "source": "docs/.index/rendered/tickets/01KYZ8TZY5GARKJKNC5NC1PE75.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ8TZY5GARKJKNC5NC1PE75",
-  "page_id": "Ticket-01KYZ8TZY5GARKJKNC5NC1PE75",
-  "source_hash": "540381519756",
-  "render_hash": "540381519756",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZ8V02N7W42QKDHYFK9ZS70": {
-  "source": "docs/.index/rendered/tickets/01KYZ8V02N7W42QKDHYFK9ZS70.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ8V02N7W42QKDHYFK9ZS70",
-  "page_id": "Ticket-01KYZ8V02N7W42QKDHYFK9ZS70",
-  "source_hash": "3661dac20d54",
-  "render_hash": "3661dac20d54",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZ97ESCXSAG4KFAESST84QT": {
-  "source": "docs/.index/rendered/tickets/01KYZ97ESCXSAG4KFAESST84QT.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ97ESCXSAG4KFAESST84QT",
-  "page_id": "Ticket-01KYZ97ESCXSAG4KFAESST84QT",
-  "source_hash": "8a188964f538",
-  "render_hash": "8a188964f538",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZ9TRM50FCMFFZDVW2VZ2CC": {
-  "source": "docs/.index/rendered/tickets/01KYZ9TRM50FCMFFZDVW2VZ2CC.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ9TRM50FCMFFZDVW2VZ2CC",
-  "page_id": "Ticket-01KYZ9TRM50FCMFFZDVW2VZ2CC",
-  "source_hash": "937001d35783",
-  "render_hash": "937001d35783",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZF04XQY6T771RDTCZQRWSY": {
-  "source": "docs/.index/rendered/tickets/01KYZF04XQY6T771RDTCZQRWSY.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZF04XQY6T771RDTCZQRWSY",
-  "page_id": "Ticket-01KYZF04XQY6T771RDTCZQRWSY",
-  "source_hash": "29e38ae4b843",
-  "render_hash": "29e38ae4b843",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZN9KRDZ0CR758BA3XEJP6C": {
-  "source": "docs/.index/rendered/tickets/01KYZN9KRDZ0CR758BA3XEJP6C.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZN9KRDZ0CR758BA3XEJP6C",
-  "page_id": "Ticket-01KYZN9KRDZ0CR758BA3XEJP6C",
-  "source_hash": "04dc70961e08",
-  "render_hash": "04dc70961e08",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZN9KX5FBTAMYCB2ZP4CSSY": {
-  "source": "docs/.index/rendered/tickets/01KYZN9KX5FBTAMYCB2ZP4CSSY.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZN9KX5FBTAMYCB2ZP4CSSY",
-  "page_id": "Ticket-01KYZN9KX5FBTAMYCB2ZP4CSSY",
-  "source_hash": "65aff6e8fde8",
-  "render_hash": "65aff6e8fde8",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KYZN9M26QS2EATG15KEZYMZ0": {
-  "source": "docs/.index/rendered/tickets/01KYZN9M26QS2EATG15KEZYMZ0.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZN9M26QS2EATG15KEZYMZ0",
-  "page_id": "Ticket-01KYZN9M26QS2EATG15KEZYMZ0",
-  "source_hash": "875bb4649831",
-  "render_hash": "875bb4649831",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2KCJKX6S20SBVHBEQDZA0K": {
-  "source": "docs/.index/rendered/tickets/01KZ2KCJKX6S20SBVHBEQDZA0K.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2KCJKX6S20SBVHBEQDZA0K",
-  "page_id": "Ticket-01KZ2KCJKX6S20SBVHBEQDZA0K",
-  "source_hash": "404b15c9f4c0",
-  "render_hash": "404b15c9f4c0",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2KCSAW39DDVYWER1DEDAQQ": {
-  "source": "docs/.index/rendered/tickets/01KZ2KCSAW39DDVYWER1DEDAQQ.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2KCSAW39DDVYWER1DEDAQQ",
-  "page_id": "Ticket-01KZ2KCSAW39DDVYWER1DEDAQQ",
-  "source_hash": "e7d49fb8d0ea",
-  "render_hash": "e7d49fb8d0ea",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M32GWWQ4PP29HVE0AMPX7": {
-  "source": "docs/.index/rendered/tickets/01KZ2M32GWWQ4PP29HVE0AMPX7.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32GWWQ4PP29HVE0AMPX7",
-  "page_id": "Ticket-01KZ2M32GWWQ4PP29HVE0AMPX7",
-  "source_hash": "684884fbe1d4",
-  "render_hash": "684884fbe1d4",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M32NY8ZWMW8GWRZ7G3WQD": {
-  "source": "docs/.index/rendered/tickets/01KZ2M32NY8ZWMW8GWRZ7G3WQD.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32NY8ZWMW8GWRZ7G3WQD",
-  "page_id": "Ticket-01KZ2M32NY8ZWMW8GWRZ7G3WQD",
-  "source_hash": "4ab7814057c0",
-  "render_hash": "4ab7814057c0",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M32TVGPVF4PYTJ1BJENH7": {
-  "source": "docs/.index/rendered/tickets/01KZ2M32TVGPVF4PYTJ1BJENH7.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32TVGPVF4PYTJ1BJENH7",
-  "page_id": "Ticket-01KZ2M32TVGPVF4PYTJ1BJENH7",
-  "source_hash": "f51c5bd62d4f",
-  "render_hash": "f51c5bd62d4f",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M32ZY8G5RVEB2F0EK9G1E": {
-  "source": "docs/.index/rendered/tickets/01KZ2M32ZY8G5RVEB2F0EK9G1E.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32ZY8G5RVEB2F0EK9G1E",
-  "page_id": "Ticket-01KZ2M32ZY8G5RVEB2F0EK9G1E",
-  "source_hash": "082f1bb5db23",
-  "render_hash": "082f1bb5db23",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M334TJ1XNRKG7Y2ENHA5W": {
-  "source": "docs/.index/rendered/tickets/01KZ2M334TJ1XNRKG7Y2ENHA5W.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M334TJ1XNRKG7Y2ENHA5W",
-  "page_id": "Ticket-01KZ2M334TJ1XNRKG7Y2ENHA5W",
-  "source_hash": "7ce2ba56de8a",
-  "render_hash": "7ce2ba56de8a",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M339YT6TMAQHJSTEGPADA": {
-  "source": "docs/.index/rendered/tickets/01KZ2M339YT6TMAQHJSTEGPADA.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M339YT6TMAQHJSTEGPADA",
-  "page_id": "Ticket-01KZ2M339YT6TMAQHJSTEGPADA",
-  "source_hash": "b695ad4e3886",
-  "render_hash": "b695ad4e3886",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M33EZ4KPYJ8G9SEQ4NFBG": {
-  "source": "docs/.index/rendered/tickets/01KZ2M33EZ4KPYJ8G9SEQ4NFBG.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M33EZ4KPYJ8G9SEQ4NFBG",
-  "page_id": "Ticket-01KZ2M33EZ4KPYJ8G9SEQ4NFBG",
-  "source_hash": "34d32acb8e62",
-  "render_hash": "34d32acb8e62",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2M8DF9ZY5WMB968Y54WT8R": {
-  "source": "docs/.index/rendered/tickets/01KZ2M8DF9ZY5WMB968Y54WT8R.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M8DF9ZY5WMB968Y54WT8R",
-  "page_id": "Ticket-01KZ2M8DF9ZY5WMB968Y54WT8R",
-  "source_hash": "c9a1dbaa7740",
-  "render_hash": "c9a1dbaa7740",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ2S1VAJNPP9M0CA9S877WE5": {
-  "source": "docs/.index/rendered/tickets/01KZ2S1VAJNPP9M0CA9S877WE5.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2S1VAJNPP9M0CA9S877WE5",
-  "page_id": "Ticket-01KZ2S1VAJNPP9M0CA9S877WE5",
-  "source_hash": "fa03232d3ccb",
-  "render_hash": "fa03232d3ccb",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ30X0899FM2XNYRV70VFV68": {
-  "source": "docs/.index/rendered/tickets/01KZ30X0899FM2XNYRV70VFV68.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ30X0899FM2XNYRV70VFV68",
-  "page_id": "Ticket-01KZ30X0899FM2XNYRV70VFV68",
-  "source_hash": "a3f05e8278f0",
-  "render_hash": "a3f05e8278f0",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310KAGP5JPFD23WNZTJH44": {
-  "source": "docs/.index/rendered/tickets/01KZ310KAGP5JPFD23WNZTJH44.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KAGP5JPFD23WNZTJH44",
-  "page_id": "Ticket-01KZ310KAGP5JPFD23WNZTJH44",
-  "source_hash": "adccbc7e7410",
-  "render_hash": "adccbc7e7410",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310KGJ6ECASHNKX6KEAD6T": {
-  "source": "docs/.index/rendered/tickets/01KZ310KGJ6ECASHNKX6KEAD6T.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KGJ6ECASHNKX6KEAD6T",
-  "page_id": "Ticket-01KZ310KGJ6ECASHNKX6KEAD6T",
-  "source_hash": "f95e30acf6b4",
-  "render_hash": "f95e30acf6b4",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310KPD830HD4QFZKN70ETJ": {
-  "source": "docs/.index/rendered/tickets/01KZ310KPD830HD4QFZKN70ETJ.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KPD830HD4QFZKN70ETJ",
-  "page_id": "Ticket-01KZ310KPD830HD4QFZKN70ETJ",
-  "source_hash": "76e9078ce1b4",
-  "render_hash": "76e9078ce1b4",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310KVM2C8EGTBAQATCAVY2": {
-  "source": "docs/.index/rendered/tickets/01KZ310KVM2C8EGTBAQATCAVY2.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KVM2C8EGTBAQATCAVY2",
-  "page_id": "Ticket-01KZ310KVM2C8EGTBAQATCAVY2",
-  "source_hash": "08709b22bd21",
-  "render_hash": "08709b22bd21",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310M0PYPD21TQWWSXKY1W0": {
-  "source": "docs/.index/rendered/tickets/01KZ310M0PYPD21TQWWSXKY1W0.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310M0PYPD21TQWWSXKY1W0",
-  "page_id": "Ticket-01KZ310M0PYPD21TQWWSXKY1W0",
-  "source_hash": "ed809caa9903",
-  "render_hash": "ed809caa9903",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310M5WKY73X6TYSEYRAJFN": {
-  "source": "docs/.index/rendered/tickets/01KZ310M5WKY73X6TYSEYRAJFN.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310M5WKY73X6TYSEYRAJFN",
-  "page_id": "Ticket-01KZ310M5WKY73X6TYSEYRAJFN",
-  "source_hash": "39481594f841",
-  "render_hash": "39481594f841",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310MBKRS0X05XEC85ZYD8N": {
-  "source": "docs/.index/rendered/tickets/01KZ310MBKRS0X05XEC85ZYD8N.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310MBKRS0X05XEC85ZYD8N",
-  "page_id": "Ticket-01KZ310MBKRS0X05XEC85ZYD8N",
-  "source_hash": "ee91c210489c",
-  "render_hash": "ee91c210489c",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310MHH13W1Q0Q2421CRM02": {
-  "source": "docs/.index/rendered/tickets/01KZ310MHH13W1Q0Q2421CRM02.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310MHH13W1Q0Q2421CRM02",
-  "page_id": "Ticket-01KZ310MHH13W1Q0Q2421CRM02",
-  "source_hash": "23487ac866a0",
-  "render_hash": "23487ac866a0",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "item/01KZ310MPRYBVR1PXBM4ADY53P": {
-  "source": "docs/.index/rendered/tickets/01KZ310MPRYBVR1PXBM4ADY53P.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310MPRYBVR1PXBM4ADY53P",
-  "page_id": "Ticket-01KZ310MPRYBVR1PXBM4ADY53P",
-  "source_hash": "30c7188fec90",
-  "render_hash": "30c7188fec90",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "plan/2026-08-02-view-preferences": {
-  "source": "docs/plans/2026-08-02-view-preferences.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Plan-2026-08-02-view-preferences",
-  "page_id": "Plan-2026-08-02-view-preferences",
-  "source_hash": "5dc69b8462ad",
-  "render_hash": "50b4595d91f1",
-  "frozen": true,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "release/v0.1.0": {
-  "source": "docs/.index/rendered/releases/v0.1.0.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Release-v0.1.0",
-  "page_id": "Release-v0.1.0",
-  "source_hash": "dc62fe8bb2b4",
-  "render_hash": "dc62fe8bb2b4",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "roadmap": {
-  "source": "docs/roadmap.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",
-  "page_id": "Roadmap",
-  "source_hash": "6ace9112c549",
-  "render_hash": "75b39820a2e8",
-  "frozen": false,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- },
- "roadmap-snapshot/2026-08-03_v0.1.0-release": {
-  "source": "docs/roadmap/2026-08-03_v0.1.0-release.md",
-  "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap-2026-08-03_v0.1.0-release",
-  "page_id": "Roadmap-2026-08-03_v0.1.0-release",
-  "source_hash": "cb436c8c00c5",
-  "render_hash": "e9e9434351a1",
-  "frozen": true,
-  "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed"
- }
+  "design/2026-08-02-view-preferences-design": {
+    "canonical_key": "design/2026-08-02-view-preferences-design",
+    "doc_type": "design",
+    "frozen": true,
+    "page_id": "Design-2026-08-02-View-Preferences",
+    "render_hash": "71541acbca9b",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/2026-08-02-view-preferences-design.md",
+    "source_hash": "60add018af06",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-2026-08-02-View-Preferences",
+    "wiki_key": "design/2026-08-02-view-preferences-design"
+  },
+  "design/2026-08-03_v0.1.0-release-code-walkthrough": {
+    "canonical_key": "design/2026-08-03_v0.1.0-release-code-walkthrough",
+    "doc_type": "design",
+    "frozen": true,
+    "page_id": "Code-Walkthrough-2026-08-03_v0.1.0-release",
+    "render_hash": "f0f748c82f75",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/2026-08-03_v0.1.0-release_code_walkthrough.md",
+    "source_hash": "af8c45b7fb47",
+    "truth_state": "snapshot",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Code-Walkthrough-2026-08-03_v0.1.0-release",
+    "wiki_key": "design/2026-08-03_v0.1.0-release-code-walkthrough"
+  },
+  "design/2026-08-03_v0.1.0-release-design-doc": {
+    "canonical_key": "design/2026-08-03_v0.1.0-release-design-doc",
+    "doc_type": "design",
+    "frozen": true,
+    "page_id": "Design-Doc-2026-08-03_v0.1.0-release",
+    "render_hash": "6f1eb465c72e",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/2026-08-03_v0.1.0-release_design_doc.md",
+    "source_hash": "b09e4577f978",
+    "truth_state": "snapshot",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-Doc-2026-08-03_v0.1.0-release",
+    "wiki_key": "design/2026-08-03_v0.1.0-release-design-doc"
+  },
+  "design/current-code-walkthrough": {
+    "canonical_key": "design/current-code-walkthrough",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Code-Walkthrough",
+    "render_hash": "9c731b56bcfb",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/current_code_walkthrough.md",
+    "source_hash": "de81484cf69b",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Code-Walkthrough",
+    "wiki_key": "design/current-code-walkthrough"
+  },
+  "design/current-design-doc": {
+    "canonical_key": "design/current-design-doc",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-Doc",
+    "render_hash": "b7a72a400d38",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/current_design_doc.md",
+    "source_hash": "57536ee5dad8",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-Doc",
+    "wiki_key": "design/current-design-doc"
+  },
+  "design/ui-classify": {
+    "canonical_key": "design/ui-classify",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-UI-Classify",
+    "render_hash": "bcf7920c1f12",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/ui-classify.md",
+    "source_hash": "dd5a47b4784b",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Classify",
+    "wiki_key": "design/ui-classify"
+  },
+  "design/ui-deepagent": {
+    "canonical_key": "design/ui-deepagent",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-UI-Deepagent",
+    "render_hash": "a0b3a8f71891",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/ui-deepagent.md",
+    "source_hash": "f112908e3f9a",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Deepagent",
+    "wiki_key": "design/ui-deepagent"
+  },
+  "design/ui-editor": {
+    "canonical_key": "design/ui-editor",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-UI-Editor",
+    "render_hash": "5c1156e812ee",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/ui-editor.md",
+    "source_hash": "26cae22fac08",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Editor",
+    "wiki_key": "design/ui-editor"
+  },
+  "design/ui-explorer": {
+    "canonical_key": "design/ui-explorer",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-UI-Explorer",
+    "render_hash": "e28f4d559478",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/ui-explorer.md",
+    "source_hash": "a57de91550b4",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Explorer",
+    "wiki_key": "design/ui-explorer"
+  },
+  "design/ui-integrations": {
+    "canonical_key": "design/ui-integrations",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-UI-Integrations",
+    "render_hash": "e0d6b11f05a5",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/ui-integrations.md",
+    "source_hash": "a296c0c331b4",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Integrations",
+    "wiki_key": "design/ui-integrations"
+  },
+  "design/ui-learn": {
+    "canonical_key": "design/ui-learn",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-UI-Learn",
+    "render_hash": "9b5e05ecd428",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/ui-learn.md",
+    "source_hash": "96d3b1bc51b8",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Learn",
+    "wiki_key": "design/ui-learn"
+  },
+  "design/ui-search": {
+    "canonical_key": "design/ui-search",
+    "doc_type": "design",
+    "frozen": false,
+    "page_id": "Design-UI-Search",
+    "render_hash": "a6850326e1c4",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/designs/ui-search.md",
+    "source_hash": "fc69d555abb0",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Search",
+    "wiki_key": "design/ui-search"
+  },
+  "home": {
+    "frozen": false,
+    "page_id": "Home",
+    "render_hash": "7a6e118df66d",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/home.md",
+    "source_hash": "7a6e118df66d",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Home"
+  },
+  "index/decisions": {
+    "frozen": false,
+    "page_id": "Index-Decisions",
+    "render_hash": "a380f6c498ee",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/decisions.md",
+    "source_hash": "a380f6c498ee",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Decisions"
+  },
+  "index/releases": {
+    "frozen": false,
+    "page_id": "Index-Releases",
+    "render_hash": "39bcebdf8477",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/releases.md",
+    "source_hash": "39bcebdf8477",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Releases"
+  },
+  "index/status": {
+    "frozen": false,
+    "page_id": "Index-Status",
+    "render_hash": "b8bcebbbbe23",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/status.md",
+    "source_hash": "b8bcebbbbe23",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Status"
+  },
+  "index/traceability": {
+    "frozen": false,
+    "page_id": "Index-Traceability",
+    "render_hash": "784817e635ce",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/traceability.md",
+    "source_hash": "784817e635ce",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Index-Traceability"
+  },
+  "item/01KYZ24K4MKBE0VN4YAZ84V221": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZ24K4MKBE0VN4YAZ84V221",
+    "render_hash": "e9875ab15c28",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZ24K4MKBE0VN4YAZ84V221.md",
+    "source_hash": "e9875ab15c28",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ24K4MKBE0VN4YAZ84V221"
+  },
+  "item/01KYZ24K90F9SS04CRSJRB65R4": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZ24K90F9SS04CRSJRB65R4",
+    "render_hash": "96f3c100db5c",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZ24K90F9SS04CRSJRB65R4.md",
+    "source_hash": "96f3c100db5c",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ24K90F9SS04CRSJRB65R4"
+  },
+  "item/01KYZ27EFFB9MG32Y3YVFHRTND": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZ27EFFB9MG32Y3YVFHRTND",
+    "render_hash": "fc39f6b005fc",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZ27EFFB9MG32Y3YVFHRTND.md",
+    "source_hash": "fc39f6b005fc",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ27EFFB9MG32Y3YVFHRTND"
+  },
+  "item/01KYZ8TZY5GARKJKNC5NC1PE75": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZ8TZY5GARKJKNC5NC1PE75",
+    "render_hash": "540381519756",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZ8TZY5GARKJKNC5NC1PE75.md",
+    "source_hash": "540381519756",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ8TZY5GARKJKNC5NC1PE75"
+  },
+  "item/01KYZ8V02N7W42QKDHYFK9ZS70": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZ8V02N7W42QKDHYFK9ZS70",
+    "render_hash": "3661dac20d54",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZ8V02N7W42QKDHYFK9ZS70.md",
+    "source_hash": "3661dac20d54",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ8V02N7W42QKDHYFK9ZS70"
+  },
+  "item/01KYZ97ESCXSAG4KFAESST84QT": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZ97ESCXSAG4KFAESST84QT",
+    "render_hash": "8a188964f538",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZ97ESCXSAG4KFAESST84QT.md",
+    "source_hash": "8a188964f538",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ97ESCXSAG4KFAESST84QT"
+  },
+  "item/01KYZ9TRM50FCMFFZDVW2VZ2CC": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZ9TRM50FCMFFZDVW2VZ2CC",
+    "render_hash": "937001d35783",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZ9TRM50FCMFFZDVW2VZ2CC.md",
+    "source_hash": "937001d35783",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZ9TRM50FCMFFZDVW2VZ2CC"
+  },
+  "item/01KYZF04XQY6T771RDTCZQRWSY": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZF04XQY6T771RDTCZQRWSY",
+    "render_hash": "29e38ae4b843",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZF04XQY6T771RDTCZQRWSY.md",
+    "source_hash": "29e38ae4b843",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZF04XQY6T771RDTCZQRWSY"
+  },
+  "item/01KYZN9KRDZ0CR758BA3XEJP6C": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZN9KRDZ0CR758BA3XEJP6C",
+    "render_hash": "04dc70961e08",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZN9KRDZ0CR758BA3XEJP6C.md",
+    "source_hash": "04dc70961e08",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZN9KRDZ0CR758BA3XEJP6C"
+  },
+  "item/01KYZN9KX5FBTAMYCB2ZP4CSSY": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZN9KX5FBTAMYCB2ZP4CSSY",
+    "render_hash": "65aff6e8fde8",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZN9KX5FBTAMYCB2ZP4CSSY.md",
+    "source_hash": "65aff6e8fde8",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZN9KX5FBTAMYCB2ZP4CSSY"
+  },
+  "item/01KYZN9M26QS2EATG15KEZYMZ0": {
+    "frozen": false,
+    "page_id": "Ticket-01KYZN9M26QS2EATG15KEZYMZ0",
+    "render_hash": "875bb4649831",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KYZN9M26QS2EATG15KEZYMZ0.md",
+    "source_hash": "875bb4649831",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KYZN9M26QS2EATG15KEZYMZ0"
+  },
+  "item/01KZ2KCJKX6S20SBVHBEQDZA0K": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2KCJKX6S20SBVHBEQDZA0K",
+    "render_hash": "404b15c9f4c0",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2KCJKX6S20SBVHBEQDZA0K.md",
+    "source_hash": "404b15c9f4c0",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2KCJKX6S20SBVHBEQDZA0K"
+  },
+  "item/01KZ2KCSAW39DDVYWER1DEDAQQ": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2KCSAW39DDVYWER1DEDAQQ",
+    "render_hash": "e7d49fb8d0ea",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2KCSAW39DDVYWER1DEDAQQ.md",
+    "source_hash": "e7d49fb8d0ea",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2KCSAW39DDVYWER1DEDAQQ"
+  },
+  "item/01KZ2M32GWWQ4PP29HVE0AMPX7": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M32GWWQ4PP29HVE0AMPX7",
+    "render_hash": "684884fbe1d4",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M32GWWQ4PP29HVE0AMPX7.md",
+    "source_hash": "684884fbe1d4",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32GWWQ4PP29HVE0AMPX7"
+  },
+  "item/01KZ2M32NY8ZWMW8GWRZ7G3WQD": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M32NY8ZWMW8GWRZ7G3WQD",
+    "render_hash": "4ab7814057c0",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M32NY8ZWMW8GWRZ7G3WQD.md",
+    "source_hash": "4ab7814057c0",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32NY8ZWMW8GWRZ7G3WQD"
+  },
+  "item/01KZ2M32TVGPVF4PYTJ1BJENH7": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M32TVGPVF4PYTJ1BJENH7",
+    "render_hash": "f51c5bd62d4f",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M32TVGPVF4PYTJ1BJENH7.md",
+    "source_hash": "f51c5bd62d4f",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32TVGPVF4PYTJ1BJENH7"
+  },
+  "item/01KZ2M32ZY8G5RVEB2F0EK9G1E": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M32ZY8G5RVEB2F0EK9G1E",
+    "render_hash": "082f1bb5db23",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M32ZY8G5RVEB2F0EK9G1E.md",
+    "source_hash": "082f1bb5db23",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M32ZY8G5RVEB2F0EK9G1E"
+  },
+  "item/01KZ2M334TJ1XNRKG7Y2ENHA5W": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M334TJ1XNRKG7Y2ENHA5W",
+    "render_hash": "7ce2ba56de8a",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M334TJ1XNRKG7Y2ENHA5W.md",
+    "source_hash": "7ce2ba56de8a",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M334TJ1XNRKG7Y2ENHA5W"
+  },
+  "item/01KZ2M339YT6TMAQHJSTEGPADA": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M339YT6TMAQHJSTEGPADA",
+    "render_hash": "b695ad4e3886",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M339YT6TMAQHJSTEGPADA.md",
+    "source_hash": "b695ad4e3886",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M339YT6TMAQHJSTEGPADA"
+  },
+  "item/01KZ2M33EZ4KPYJ8G9SEQ4NFBG": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M33EZ4KPYJ8G9SEQ4NFBG",
+    "render_hash": "34d32acb8e62",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M33EZ4KPYJ8G9SEQ4NFBG.md",
+    "source_hash": "34d32acb8e62",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M33EZ4KPYJ8G9SEQ4NFBG"
+  },
+  "item/01KZ2M8DF9ZY5WMB968Y54WT8R": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2M8DF9ZY5WMB968Y54WT8R",
+    "render_hash": "c9a1dbaa7740",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2M8DF9ZY5WMB968Y54WT8R.md",
+    "source_hash": "c9a1dbaa7740",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2M8DF9ZY5WMB968Y54WT8R"
+  },
+  "item/01KZ2S1VAJNPP9M0CA9S877WE5": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ2S1VAJNPP9M0CA9S877WE5",
+    "render_hash": "fa03232d3ccb",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ2S1VAJNPP9M0CA9S877WE5.md",
+    "source_hash": "fa03232d3ccb",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ2S1VAJNPP9M0CA9S877WE5"
+  },
+  "item/01KZ30X0899FM2XNYRV70VFV68": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ30X0899FM2XNYRV70VFV68",
+    "render_hash": "a3f05e8278f0",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ30X0899FM2XNYRV70VFV68.md",
+    "source_hash": "a3f05e8278f0",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ30X0899FM2XNYRV70VFV68"
+  },
+  "item/01KZ310KAGP5JPFD23WNZTJH44": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310KAGP5JPFD23WNZTJH44",
+    "render_hash": "adccbc7e7410",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310KAGP5JPFD23WNZTJH44.md",
+    "source_hash": "adccbc7e7410",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KAGP5JPFD23WNZTJH44"
+  },
+  "item/01KZ310KGJ6ECASHNKX6KEAD6T": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310KGJ6ECASHNKX6KEAD6T",
+    "render_hash": "f95e30acf6b4",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310KGJ6ECASHNKX6KEAD6T.md",
+    "source_hash": "f95e30acf6b4",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KGJ6ECASHNKX6KEAD6T"
+  },
+  "item/01KZ310KPD830HD4QFZKN70ETJ": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310KPD830HD4QFZKN70ETJ",
+    "render_hash": "76e9078ce1b4",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310KPD830HD4QFZKN70ETJ.md",
+    "source_hash": "76e9078ce1b4",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KPD830HD4QFZKN70ETJ"
+  },
+  "item/01KZ310KVM2C8EGTBAQATCAVY2": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310KVM2C8EGTBAQATCAVY2",
+    "render_hash": "08709b22bd21",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310KVM2C8EGTBAQATCAVY2.md",
+    "source_hash": "08709b22bd21",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310KVM2C8EGTBAQATCAVY2"
+  },
+  "item/01KZ310M0PYPD21TQWWSXKY1W0": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310M0PYPD21TQWWSXKY1W0",
+    "render_hash": "ed809caa9903",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310M0PYPD21TQWWSXKY1W0.md",
+    "source_hash": "ed809caa9903",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310M0PYPD21TQWWSXKY1W0"
+  },
+  "item/01KZ310M5WKY73X6TYSEYRAJFN": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310M5WKY73X6TYSEYRAJFN",
+    "render_hash": "39481594f841",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310M5WKY73X6TYSEYRAJFN.md",
+    "source_hash": "39481594f841",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310M5WKY73X6TYSEYRAJFN"
+  },
+  "item/01KZ310MBKRS0X05XEC85ZYD8N": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310MBKRS0X05XEC85ZYD8N",
+    "render_hash": "ee91c210489c",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310MBKRS0X05XEC85ZYD8N.md",
+    "source_hash": "ee91c210489c",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310MBKRS0X05XEC85ZYD8N"
+  },
+  "item/01KZ310MHH13W1Q0Q2421CRM02": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310MHH13W1Q0Q2421CRM02",
+    "render_hash": "23487ac866a0",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310MHH13W1Q0Q2421CRM02.md",
+    "source_hash": "23487ac866a0",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310MHH13W1Q0Q2421CRM02"
+  },
+  "item/01KZ310MPRYBVR1PXBM4ADY53P": {
+    "frozen": false,
+    "page_id": "Ticket-01KZ310MPRYBVR1PXBM4ADY53P",
+    "render_hash": "30c7188fec90",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/tickets/01KZ310MPRYBVR1PXBM4ADY53P.md",
+    "source_hash": "30c7188fec90",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Ticket-01KZ310MPRYBVR1PXBM4ADY53P"
+  },
+  "plan/2026-08-02-view-preferences": {
+    "canonical_key": "plan/2026-08-02-view-preferences",
+    "doc_type": "plan",
+    "frozen": true,
+    "page_id": "Plan-2026-08-02-view-preferences",
+    "render_hash": "50b4595d91f1",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/plans/2026-08-02-view-preferences.md",
+    "source_hash": "5dc69b8462ad",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Plan-2026-08-02-view-preferences",
+    "wiki_key": "plan/2026-08-02-view-preferences"
+  },
+  "release/v0.1.0": {
+    "frozen": false,
+    "page_id": "Release-v0.1.0",
+    "render_hash": "dc62fe8bb2b4",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/.index/rendered/releases/v0.1.0.md",
+    "source_hash": "dc62fe8bb2b4",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Release-v0.1.0"
+  },
+  "roadmap": {
+    "canonical_key": "roadmap",
+    "doc_type": "roadmap",
+    "frozen": false,
+    "page_id": "Roadmap",
+    "render_hash": "75b39820a2e8",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/roadmap.md",
+    "source_hash": "6ace9112c549",
+    "truth_state": "current",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",
+    "wiki_key": "roadmap"
+  },
+  "roadmap-snapshot/2026-08-03_v0.1.0-release": {
+    "canonical_key": "roadmap-snapshot/2026-08-03_v0.1.0-release",
+    "doc_type": "roadmap-snapshot",
+    "frozen": true,
+    "page_id": "Roadmap-2026-08-03_v0.1.0-release",
+    "render_hash": "e9e9434351a1",
+    "rev": "63f9bafdc0953038407e36852fd2bd73424d33ed",
+    "source": "docs/roadmap/2026-08-03_v0.1.0-release.md",
+    "source_hash": "cb436c8c00c5",
+    "truth_state": "snapshot",
+    "url": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap-2026-08-03_v0.1.0-release",
+    "wiki_key": "roadmap-snapshot/2026-08-03_v0.1.0-release"
+  }
 }

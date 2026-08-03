@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "784817e635ce",
+   "render_hash": "8fdfa9a80247",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -381,6 +381,16 @@
    "wiki_key": "item/01KZ310MPRYBVR1PXBM4ADY53P"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZ3ZNR42R45HYJR4EDQ8VS0S",
+   "render": "as-is",
+   "render_hash": "6740680e4457",
+   "source": "docs/.index/rendered/tickets/01KZ3ZNR42R45HYJR4EDQ8VS0S.md",
+   "title": "Fields use placeholder as their only visible label",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ3ZNR42R45HYJR4EDQ8VS0S"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -484,7 +494,7 @@
    "frozen": true,
    "page_name": "Design-UI-Integrations",
    "render": "doc+banner",
-   "render_hash": "e0d6b11f05a5",
+   "render_hash": "b253564d1f76",
    "source": "docs/designs/ui-integrations.md",
    "title": "UI spec \u2014 Plugins & MCP view",
    "truth_state": "current",
@@ -524,11 +534,11 @@
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T14:07:37Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T14:18:58Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "75b39820a2e8",
+   "render_hash": "51932bdba85a",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

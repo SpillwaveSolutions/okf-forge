@@ -646,6 +646,25 @@
     margin-bottom: 0.35rem;
   }
 
+  /* Sentence-case counterpart to .field-label: guidance that sits under a
+     field and stays visible, unlike a placeholder. Deliberately not uppercase
+     — this is prose, not a caption. */
+  .field-hint {
+    font-size: 0.7rem;
+    color: var(--color-fg-subtle);
+    margin-top: 0.3rem;
+  }
+
+  /* Describes the record, not the field above it. Italic is the whole
+     distinction — without it a card's own description reads as one more hint
+     belonging to the last input. */
+  .field-note {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--color-fg-subtle);
+    margin-top: 0.5rem;
+  }
+
   .field-input {
     width: 100%;
     background: var(--color-bg);

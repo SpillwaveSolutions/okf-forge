@@ -40,9 +40,9 @@ the DOM blocks the merge.
 | sidebar | bundle name, validation badge, file filter, nested file tree | `role="listbox"` / `role="option"` |
 | main | page heading — “Plugins & MCP” | `h1` |
 | main | mode strip: Claude plugins, MCP servers, Export config | button text |
-| main | one card per plugin: enable checkbox, name, source, description, delete | `.panel-card` |
+| main | one card per plugin: enable checkbox, name, delete, then labelled Source and Description fields | `.panel-card`, `label[for]` |
 | main | Add plugin | button text |
-| main | one card per MCP server: enable, command, args, URL, delete | `.panel-card` |
+| main | one card per MCP server: enable, name, transport, delete, then labelled Command + Arguments (stdio) or URL | `.panel-card`, `label[for]` |
 | main | Add MCP server | button text |
 | main | generated settings snippet under Export config | — |
 | status | concept/edge counts, selected path, dirty marker, zoom level | `app-status`, `zoom-level` |
@@ -92,6 +92,10 @@ model judgement has "the model was in a mood" as a failure mode.
 
 Tracked separately, deliberately not fixed by writing this spec:
 
-- Fields still use `placeholder` as their *visible* label, which disappears the
-  moment the user types. They now carry an `aria-label` as well, so the name is
-  stable for assistive tech, but a sighted user still loses the caption.
+- The server name and transport controls carry an `aria-label` but no visible
+  caption. Their values are self-describing (`filesystem`, `stdio`), so a
+  caption above every card would be noise; the stacked fields below them, whose
+  values are not self-describing, do have one.
+- The arguments field round-trips through `split(/\s+/)` and `join(" ")`, so an
+  argument containing a space cannot survive editing. The hint says "separated
+  by spaces"; it does not say that is also a limit.

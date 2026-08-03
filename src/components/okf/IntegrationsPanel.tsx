@@ -71,20 +71,34 @@ export function IntegrationsPanel() {
                     <Trash2 className="size-3.5" />
                   </button>
                 </div>
-                <input
-                  className="field-input font-mono text-xs"
-                  value={p.source}
-                  onChange={(e) => updatePlugin(p.id, { source: e.target.value })}
-                  placeholder="owner/repo or local path"
-                  aria-label="Plugin source"
-                />
-                <input
-                  className="field-input"
-                  value={p.description ?? ""}
-                  onChange={(e) => updatePlugin(p.id, { description: e.target.value })}
-                  placeholder="Description"
-                  aria-label="Plugin description"
-                />
+                {/* Real <label for> pairs rather than aria-label: the caption has
+                    to be visible, and once it is, duplicating it in an attribute
+                    is two places to keep in sync. The id is derived from the
+                    record id so it stays unique across cards. */}
+                <div>
+                  <label className="field-label" htmlFor={`${p.id}-source`}>
+                    Source
+                  </label>
+                  <input
+                    id={`${p.id}-source`}
+                    className="field-input font-mono text-xs"
+                    value={p.source}
+                    onChange={(e) => updatePlugin(p.id, { source: e.target.value })}
+                    placeholder="owner/repo or local path"
+                  />
+                </div>
+                <div>
+                  <label className="field-label" htmlFor={`${p.id}-description`}>
+                    Description
+                  </label>
+                  <input
+                    id={`${p.id}-description`}
+                    className="field-input"
+                    value={p.description ?? ""}
+                    onChange={(e) => updatePlugin(p.id, { description: e.target.value })}
+                    placeholder="What this plugin adds"
+                  />
+                </div>
               </div>
             ))}
             <button
@@ -148,35 +162,56 @@ export function IntegrationsPanel() {
                 </div>
                 {m.transport === "stdio" ? (
                   <>
-                    <input
-                      className="field-input font-mono text-xs"
-                      value={m.command ?? ""}
-                      onChange={(e) => updateMcp(m.id, { command: e.target.value })}
-                      placeholder="command"
-                      aria-label={`${m.name} command`}
-                    />
-                    <input
-                      className="field-input font-mono text-xs"
-                      value={(m.args ?? []).join(" ")}
-                      onChange={(e) =>
-                        updateMcp(m.id, {
-                          args: e.target.value.split(/\s+/).filter(Boolean),
-                        })
-                      }
-                      placeholder="args space-separated"
-                      aria-label={`${m.name} arguments`}
-                    />
+                    <div>
+                      <label className="field-label" htmlFor={`${m.id}-command`}>
+                        Command
+                      </label>
+                      <input
+                        id={`${m.id}-command`}
+                        className="field-input font-mono text-xs"
+                        value={m.command ?? ""}
+                        onChange={(e) => updateMcp(m.id, { command: e.target.value })}
+                        placeholder="npx"
+                      />
+                    </div>
+                    <div>
+                      <label className="field-label" htmlFor={`${m.id}-args`}>
+                        Arguments
+                      </label>
+                      <input
+                        id={`${m.id}-args`}
+                        className="field-input font-mono text-xs"
+                        value={(m.args ?? []).join(" ")}
+                        onChange={(e) =>
+                          updateMcp(m.id, {
+                            args: e.target.value.split(/\s+/).filter(Boolean),
+                          })
+                        }
+                        placeholder="-y some-mcp-server"
+                      />
+                      {/* The split/join round-trip is lossy: an argument
+                          containing a space cannot survive it. Stated here so
+                          the next reader does not treat it as a bug. */}
+                      <p className="field-hint">Separated by spaces.</p>
+                    </div>
                   </>
                 ) : (
-                  <input
-                    className="field-input font-mono text-xs"
-                    value={m.url ?? ""}
-                    onChange={(e) => updateMcp(m.id, { url: e.target.value })}
-                    placeholder="https://…"
-                    aria-label={`${m.name} URL`}
-                  />
+                  <div>
+                    <label className="field-label" htmlFor={`${m.id}-url`}>
+                      URL
+                    </label>
+                    <input
+                      id={`${m.id}-url`}
+                      className="field-input font-mono text-xs"
+                      value={m.url ?? ""}
+                      onChange={(e) => updateMcp(m.id, { url: e.target.value })}
+                      placeholder="https://…"
+                    />
+                  </div>
                 )}
-                {m.notes && <p className="text-[0.6875rem] text-fg-subtle">{m.notes}</p>}
+                {/* Italic so it does not read as another .field-hint — this
+                    describes the server, not the field above it. */}
+                {m.notes && <p className="field-note">{m.notes}</p>}
               </div>
             ))}
             <button
