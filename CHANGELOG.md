@@ -13,6 +13,15 @@ corrections go in the next release's notes, never into a shipped section.
 
 ### Added
 
+- **`okff` — a shell launcher.** `okff [directory]` opens OKF Forge on that
+  folder from any terminal, defaulting to the current directory. Install it
+  from the new Settings view; it goes to `/usr/local/bin/okff`, which is
+  already on the default macOS `PATH`, and asks for a password once only when
+  that directory is not yours to write to. Each invocation opens its own
+  window, so two workspaces can sit side by side. macOS only for now.
+- **A Settings view**, eighth in the nav, holding the CLI installer. Theme and
+  zoom stay in the header — a second place to change a setting is a second
+  place for it to disagree with the first.
 - The file tree is a real `role="tree"`: roving tabindex, arrow navigation,
   Home/End, typeahead, and `aria-level`/`setsize`/`posinset`. It was
   `role="listbox"` with directory buttons interleaved, which is invalid.

@@ -2,7 +2,7 @@
 wiki_key: design/ui-learn
 doc_type: design
 truth_state: current
-git_hash: d3d7c7a
+git_hash: 6cd5b53
 title: "UI spec — Learn view"
 # Pins the wiki page name. Without this, ia_render's page_name() maps every
 # design doc whose filename lacks "design_doc" onto "Code-Walkthrough".
@@ -36,7 +36,7 @@ the DOM blocks the merge.
 | Region | Element | Addressable by |
 |---|---|---|
 | header | brand, search, view-mode toggle, theme toggle, Learn / Open / Classify / Save | see `ui-editor.md` |
-| sidebar | 7 nav items in order: Learn OKF, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
+| sidebar | 8 nav items in order: Learn OKF, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP, Settings | `nav-learn` … `nav-settings` |
 | sidebar | bundle name, validation badge, file filter, nested file tree | `role="tree"` / `role="treeitem"`, `data-kind`, `data-depth` |
 | main | page heading — “Learn OKF by using it” | `h1` |
 | main | step heading — “Step N of 8: …” | `h2` |

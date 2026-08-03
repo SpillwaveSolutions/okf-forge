@@ -46,6 +46,7 @@ const VIEWS: ViewSpec[] = [
   { view: "classify", h1: "Classify into OKF", cards: 1 },
   { view: "deepagent", h1: "LangChain DeepAgents", cards: 4 },
   { view: "integrations", h1: "Plugins & MCP", cards: 1 },
+  { view: "settings", h1: "Settings", cards: 1, sections: ["Command line"] },
 ];
 
 for (const spec of VIEWS) {
@@ -193,4 +194,25 @@ test("no view lets an interactive element escape sideways", async ({ page }) => 
   }
 
   expect(offenders, JSON.stringify(offenders, null, 2)).toEqual({});
+});
+
+/**
+ * The one Settings behaviour that is not generic: the web build must explain
+ * that the CLI is desktop-only rather than offer a button that cannot work.
+ *
+ * `install_cli` writes to /usr/local/bin, so there is no browser fallback to
+ * degrade to — an enabled button here would be a dead control. The desktop
+ * side of the same card is covered in e2e-desktop/specs/cli.e2e.ts, which is
+ * the only tier that can reach a real `invoke`.
+ */
+test("settings offers no CLI install in the browser", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await gotoApp(page);
+  await page.getByTestId("nav-settings").click();
+
+  await expect(page.getByTestId("cli-web-note")).toBeVisible();
+  await expect(page.getByTestId("cli-install")).toHaveCount(0);
+  // The usage block is not gated on the runtime: knowing what the command
+  // looks like is useful before you have somewhere to install it.
+  await expect(page.getByText("okff .")).toBeVisible();
 });

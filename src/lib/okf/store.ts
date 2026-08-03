@@ -129,8 +129,12 @@ interface OkfState {
   loadUpload: (files: FileList | File[]) => Promise<void>;
   /** Open folder (Tauri dialog or web OKF_WORKSPACE) and load as OKF bundle. */
   openWorkspaceFolder: () => Promise<void>;
-  /** Load markdown from the fixed web workspace (Playwright /api/fs). */
-  loadWebWorkspace: () => Promise<void>;
+  /**
+   * Load markdown from whatever root the storage provider already knows about,
+   * with no picker. Two callers, both runtimes: the web `OKF_WORKSPACE` root
+   * behind `/api/fs`, and a desktop workspace seeded by `okff <dir>`.
+   */
+  loadStorageWorkspace: () => Promise<void>;
   scaffoldNew: (name?: string) => void;
   setClassifyDocs: (docs: SourceDoc[]) => void;
   runClassify: () => void;
@@ -338,6 +342,27 @@ export const useOkfStore = create<OkfState>((set, get) => ({
       } catch {
         meta = null;
       }
+      // `okff <dir>` reaches the Rust side as `--workspace <dir>`, which seeds
+      // the workspace mutex before the window exists. So on desktop a workspace
+      // can already be known at first boot with nothing having been picked —
+      // and when it is, that folder is what the user asked for, not the sample.
+      if (isTauriRuntime()) {
+        const seeded = await getStorage()
+          .getWorkspaceRoot()
+          .catch(() => null);
+        if (seeded) {
+          set({
+            ready: true,
+            integrations,
+            pluginSkills: meta?.skills ?? {},
+            pluginAgent: meta?.agent ?? "",
+            pluginInfo: meta?.plugin ?? null,
+          });
+          await get().loadStorageWorkspace();
+          return;
+        }
+      }
+
       const bundle = await loadBundledSample();
       const { concepts, validation } = recompute(bundle);
       const first = pickDefaultPath(concepts);
@@ -650,12 +675,19 @@ export const useOkfStore = create<OkfState>((set, get) => ({
     }
   },
 
-  loadWebWorkspace: async () => {
+  loadStorageWorkspace: async () => {
     set({ loading: true, error: null, openDialog: false });
     try {
       const storage = getStorage();
+      const native = storage.isNative();
       const root = await storage.getWorkspaceRoot();
-      if (!root) throw new Error("No web workspace configured (OKF_WORKSPACE)");
+      if (!root) {
+        throw new Error(
+          native
+            ? "No workspace was passed on the command line"
+            : "No web workspace configured (OKF_WORKSPACE)",
+        );
+      }
       const { bundle, truncated, skipped, diskPrefix } = await loadBundleFromStorage(root);
       const { concepts, validation } = recompute(bundle);
       const first = pickDefaultPath(concepts);
@@ -676,12 +708,14 @@ export const useOkfStore = create<OkfState>((set, get) => ({
         impactTarget: first ?? "",
         graphFocus: first,
         view: "explorer",
-        statusMessage: `Web workspace ${root}${notes ? ` · ${notes}` : ""}`,
+        // The two callers reach here by different routes and the status line
+        // has to say which: "Web workspace" on a desktop launch is confusing
+        // enough that it reads as a bug in the launcher.
+        statusMessage: `${native ? "Workspace" : "Web workspace"} ${root}${notes ? ` · ${notes}` : ""}`,
       });
       if (first) get().runGraph(first);
-      get().showToast(
-        notes ? `Loaded web workspace · ${n} files (${notes})` : "Loaded web workspace via /api/fs",
-      );
+      const how = native ? "Opened from the command line" : "Loaded web workspace via /api/fs";
+      get().showToast(notes ? `${how} · ${n} files (${notes})` : `${how} · ${n} files`);
     } catch (e) {
       set({
         loading: false,

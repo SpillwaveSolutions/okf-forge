@@ -1,3 +1,4 @@
+mod cli;
 mod fs_core;
 
 use std::fs;
@@ -78,13 +79,57 @@ fn list_markdown_files(
     Ok(rels)
 }
 
+/// The `.app` bundle this process is running from, for baking into the shim.
+fn app_path() -> String {
+    std::env::current_exe()
+        .map(|exe| cli::bundle_root(&exe))
+        .map(|p| p.to_string_lossy().into_owned())
+        .unwrap_or_default()
+}
+
+#[tauri::command]
+fn cli_status() -> cli::CliStatus {
+    cli::status(&app_path())
+}
+
+#[tauri::command]
+fn install_cli() -> Result<String, String> {
+    cli::install(&app_path())
+}
+
+#[tauri::command]
+fn uninstall_cli() -> Result<(), String> {
+    cli::uninstall()
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    // `okff <dir>` reaches us as `--workspace <dir>`. Seeding the mutex here
+    // rather than exposing a new command means the frontend needs no new IPC:
+    // `get_workspace` already answers "which folder?" and already returns an
+    // error when there isn't one.
+    //
+    // A bad path is ignored, not fatal. There is no terminal attached to a
+    // GUI launch, so exiting on a stale argument reads to the user as a crash.
+    // Run from a terminal, `--print-shim` writes the exact script the Settings
+    // button installs and exits. It is how the shim gets verified end to end
+    // without writing to /usr/local/bin: render it, drop it on a throwaway
+    // PATH, run `okff .`. Reading the shim out of the running binary is the
+    // only way to test the real text rather than a hand-copied second version.
+    if std::env::args().any(|a| a == "--print-shim") {
+        print!("{}", cli::render_shim(&app_path()));
+        return;
+    }
+
+    let seeded = cli::workspace_from_args(std::env::args().skip(1))
+        .and_then(|p| fs::canonicalize(p).ok())
+        .filter(|p| p.is_dir());
+
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
         .manage(WorkspaceState {
-            root: Mutex::new(None),
+            root: Mutex::new(seeded),
         })
         .setup(|app| {
             if cfg!(debug_assertions) {
@@ -122,6 +167,9 @@ pub fn run() {
             read_file,
             write_file,
             list_markdown_files,
+            cli_status,
+            install_cli,
+            uninstall_cli,
         ])
         .run(tauri::generate_context!())
         .expect("error while running OKFForge");

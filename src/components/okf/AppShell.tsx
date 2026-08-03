@@ -10,6 +10,7 @@ import { SearchPanel } from "./SearchPanel";
 import { LearnPanel } from "./LearnPanel";
 import { ClassifyPanel } from "./ClassifyPanel";
 import { DeepAgentPanel } from "./DeepAgentPanel";
+import { SettingsPanel } from "./SettingsPanel";
 import { IntegrationsPanel } from "./IntegrationsPanel";
 import { OpenBundleDialog } from "./OpenBundleDialog";
 
@@ -87,7 +88,7 @@ export function AppShell() {
           left column so nav/editor panels looked dead. */}
       <Sidebar />
       {/* data-view is how tests address a view: there is one route and all
-          seven panels are conditional renders, so nothing else identifies
+          eight panels are conditional renders, so nothing else identifies
           which one is mounted. */}
       <main className="app-main" data-testid="app-main" data-view={view}>
         {view === "learn" && <LearnPanel />}
@@ -97,6 +98,7 @@ export function AppShell() {
         {view === "classify" && <ClassifyPanel />}
         {view === "deepagent" && <DeepAgentPanel />}
         {view === "integrations" && <IntegrationsPanel />}
+        {view === "settings" && <SettingsPanel />}
       </main>
       <footer className="status-bar" data-testid="app-status">
         <div className="flex items-center gap-3 min-w-0">

@@ -191,6 +191,7 @@ Click **Open** in the header.
 | Option | When to use |
 |--------|-------------|
 | **Open folder (native)** | **Tauri desktop:** pick a real directory; saves write to disk. |
+| **`okff <dir>` in a terminal** | **Tauri desktop:** skip the picker entirely — see §10.5. |
 | **Open web workspace** | **Web only:** load the server’s `OKF_WORKSPACE` (default sample-okf on disk via `/api/fs`). |
 | **Sample: okf-plugin / sample-okf** | Instant dual-graph demo (in-memory until you open a writable folder/workspace). |
 | **GitHub** | Public repos, e.g. `SpillwaveSolutions/okf-plugin/sample-okf`. |
@@ -301,6 +302,32 @@ Skill mappings default to okf-graph-eng skills (init, author, impact, query, val
 4. **Export config** — copy JSON for your host (Claude Code / MCP client).  
 
 Settings persist in **browser localStorage** (per origin). The Tauri webview uses the same mechanism for that desktop profile.
+
+---
+
+## 10.5 Settings — the `okff` command line
+
+The **Settings** view (last item in the nav) installs `okff`, a small script
+that opens OKF Forge on a directory from any terminal:
+
+```sh
+okff .            # open the current directory
+okff ~/my-okf     # open a specific one
+okff --help
+```
+
+Click **Install okff** in Settings. It writes `/usr/local/bin/okff`, which is
+already on the default macOS `PATH`, so the command works in a new shell with
+no profile edit. If that directory is not yours to write to — the default on a
+machine without Homebrew — macOS asks for your password once. **Remove** takes
+it back off.
+
+Each `okff` opens its **own window**, so you can keep two workspaces side by
+side. The two windows share one preferences store, so a theme or zoom change in
+one reaches the other only after that window reloads.
+
+macOS only for now. The web build shows the command's usage but cannot install
+it — a browser has no way to write to your `PATH`.
 
 ---
 

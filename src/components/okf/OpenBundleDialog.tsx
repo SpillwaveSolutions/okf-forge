@@ -11,7 +11,7 @@ export function OpenBundleDialog() {
   const loadUpload = useOkfStore((s) => s.loadUpload);
   const scaffoldNew = useOkfStore((s) => s.scaffoldNew);
   const openWorkspaceFolder = useOkfStore((s) => s.openWorkspaceFolder);
-  const loadWebWorkspace = useOkfStore((s) => s.loadWebWorkspace);
+  const loadStorageWorkspace = useOkfStore((s) => s.loadStorageWorkspace);
   const loading = useOkfStore((s) => s.loading);
   const error = useOkfStore((s) => s.error);
   const isDesktop = useOkfStore((s) => s.isDesktop);
@@ -88,7 +88,7 @@ export function OpenBundleDialog() {
             <button
               type="button"
               className="btn btn-secondary w-full"
-              onClick={() => void loadWebWorkspace()}
+              onClick={() => void loadStorageWorkspace()}
               disabled={loading}
               data-testid="load-web-workspace"
             >
