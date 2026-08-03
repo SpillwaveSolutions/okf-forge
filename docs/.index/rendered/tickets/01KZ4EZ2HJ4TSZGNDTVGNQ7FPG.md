@@ -1,6 +1,6 @@
 # Rust: shim rendering plus install_cli / uninstall_cli / cli_status commands
 
-`01KZ4EZ2HJ4TSZGNDTVGNQ7FPG` · task/feature · **open**
+`01KZ4EZ2HJ4TSZGNDTVGNQ7FPG` · task/feature · **done**
 
 Rust: shim rendering plus install_cli / uninstall_cli / cli_status commands
 

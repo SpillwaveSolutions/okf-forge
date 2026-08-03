@@ -1,6 +1,6 @@
 # Tests: vitest, cargo, and Playwright coverage for the new surfaces
 
-`01KZ4EZ2HJ0SB94Y32K3C3V9MN` · task/feature · **open**
+`01KZ4EZ2HJ0SB94Y32K3C3V9MN` · task/feature · **done**
 
 Tests: vitest, cargo, and Playwright coverage for the new surfaces
 

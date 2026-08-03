@@ -11,5 +11,5 @@ _Why things are the way they are: ADRs (rules adopted) and plans (designs execut
 
 | Plan | Lifecycle | Truth | Date |
 |---|---|---|---|
-| [[Plan-okff-cli]] okff CLI launcher and Settings view | planned | current | 2026-08-03 |
+| [[Plan-okff-cli]] okff CLI launcher and Settings view | completed | current | 2026-08-03 |
 | [[Plan-2026-08-02-view-preferences]] View preferences (theme + zoom) Implementation Plan | completed | current | 2026-08-02 |
