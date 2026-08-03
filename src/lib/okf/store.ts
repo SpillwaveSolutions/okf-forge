@@ -25,6 +25,16 @@ import {
   type IntegrationsState,
   type McpServerConfig,
 } from "./integrations";
+import {
+  applyPrefs,
+  cycleTheme,
+  defaultPrefs,
+  loadPrefs,
+  resolveTheme,
+  savePrefs,
+  type ResolvedTheme,
+  type ThemePref,
+} from "./prefs";
 import type {
   AppView,
   Concept,
@@ -88,7 +98,19 @@ interface OkfState {
   workspacePrefix: string;
   isDesktop: boolean;
 
+  /** What the user chose; `system` defers to the OS. */
+  themePref: ThemePref;
+  /** What `themePref` resolves to right now — always concrete. */
+  resolvedTheme: ResolvedTheme;
+  zoom: number;
+
   init: () => Promise<void>;
+  /** Read stored preferences and stamp them on the document. Client-only. */
+  initPrefs: () => void;
+  cycleThemePref: () => void;
+  setZoom: (z: number) => void;
+  /** Re-resolve when the OS flips. A no-op unless the preference is `system`. */
+  syncSystemTheme: (prefersDark: boolean) => void;
   setView: (v: AppView) => void;
   setEditorMode: (m: EditorViewMode) => void;
   selectPath: (path: string | null) => void;
@@ -269,6 +291,12 @@ export const useOkfStore = create<OkfState>((set, get) => ({
   error: null,
   view: "learn",
   editorMode: "split",
+  // Defaults only, never loadPrefs(). This module is evaluated during SSR
+  // where localStorage does not exist, and seeding from storage here would
+  // also make the server and client render different markup.
+  themePref: defaultPrefs().theme,
+  resolvedTheme: "dark",
+  zoom: defaultPrefs().zoom,
   bundle: null,
   concepts: {},
   validation: null,
@@ -337,6 +365,43 @@ export const useOkfStore = create<OkfState>((set, get) => ({
         ready: true,
       });
     }
+  },
+
+  initPrefs: () => {
+    if (typeof window === "undefined") return;
+    const prefs = loadPrefs();
+    const resolved = resolveTheme(
+      prefs.theme,
+      window.matchMedia("(prefers-color-scheme: dark)").matches,
+    );
+    // The head script already stamped these before first paint; re-applying is
+    // cheap and keeps the store the single source of truth from here on.
+    applyPrefs(document.documentElement, resolved, prefs.zoom);
+    set({ themePref: prefs.theme, resolvedTheme: resolved, zoom: prefs.zoom });
+  },
+
+  cycleThemePref: () => {
+    const next = cycleTheme(get().themePref);
+    const resolved = resolveTheme(
+      next,
+      typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches,
+    );
+    applyPrefs(document.documentElement, resolved, get().zoom);
+    savePrefs({ theme: next, zoom: get().zoom });
+    set({ themePref: next, resolvedTheme: resolved });
+  },
+
+  setZoom: (zoom) => {
+    applyPrefs(document.documentElement, get().resolvedTheme, zoom);
+    savePrefs({ theme: get().themePref, zoom });
+    set({ zoom });
+  },
+
+  syncSystemTheme: (prefersDark) => {
+    if (get().themePref !== "system") return;
+    const resolved = resolveTheme("system", prefersDark);
+    applyPrefs(document.documentElement, resolved, get().zoom);
+    set({ resolvedTheme: resolved });
   },
 
   setView: (view) => set({ view }),

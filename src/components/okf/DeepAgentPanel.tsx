@@ -135,7 +135,7 @@ export function DeepAgentPanel() {
                   )}
                 </div>
                 <p className="text-xs text-fg-muted mt-1">{s.description}</p>
-                <p className="text-[11px] text-fg-subtle mt-1 font-mono">
+                <p className="text-[0.6875rem] text-fg-subtle mt-1 font-mono">
                   tools: {s.tools.join(", ")}
                 </p>
               </div>
@@ -163,7 +163,7 @@ export function DeepAgentPanel() {
                 Download
               </button>
             </div>
-            <pre className="text-[11px] font-mono overflow-auto max-h-[480px] p-3 rounded-md bg-bg border border-border text-fg-muted">
+            <pre className="text-[0.6875rem] font-mono overflow-auto max-h-[480px] p-3 rounded-md bg-bg border border-border text-fg-muted">
               {exportDeepAgentJson()}
             </pre>
           </div>
@@ -189,7 +189,7 @@ export function DeepAgentPanel() {
                 Download
               </button>
             </div>
-            <pre className="text-[11px] font-mono overflow-auto max-h-[480px] p-3 rounded-md bg-bg border border-border text-fg-muted whitespace-pre-wrap">
+            <pre className="text-[0.6875rem] font-mono overflow-auto max-h-[480px] p-3 rounded-md bg-bg border border-border text-fg-muted whitespace-pre-wrap">
               {exportDeepAgentPython()}
             </pre>
           </div>

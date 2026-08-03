@@ -187,7 +187,7 @@ export function ClassifyPanel() {
                   </div>
                 </div>
                 <p className="text-xs text-fg-muted">{c.description}</p>
-                <p className="text-[11px] text-fg-subtle">Reasons: {c.reasons.join(" · ")}</p>
+                <p className="text-[0.6875rem] text-fg-subtle">Reasons: {c.reasons.join(" · ")}</p>
               </div>
             ))}
           </div>

@@ -167,7 +167,7 @@ export function IntegrationsPanel() {
                     placeholder="https://…"
                   />
                 )}
-                {m.notes && <p className="text-[11px] text-fg-subtle">{m.notes}</p>}
+                {m.notes && <p className="text-[0.6875rem] text-fg-subtle">{m.notes}</p>}
               </div>
             ))}
             <button
@@ -207,10 +207,10 @@ export function IntegrationsPanel() {
               <Copy className="size-3.5" />
               Copy settings JSON
             </button>
-            <pre className="text-[11px] font-mono overflow-auto max-h-[420px] p-3 rounded-md bg-bg border border-border text-fg-muted">
+            <pre className="text-[0.6875rem] font-mono overflow-auto max-h-[420px] p-3 rounded-md bg-bg border border-border text-fg-muted">
               {exportClaudeSettings()}
             </pre>
-            <p className="text-[11px] text-fg-subtle">
+            <p className="text-[0.6875rem] text-fg-subtle">
               Illustrative merge target for Claude Code / host MCP config — adapt keys to your host
               schema.
             </p>

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+import { stepZoom } from "@/lib/okf/prefs";
 import { useOkfStore } from "@/lib/okf/store";
+import { isTauriRuntime } from "@/lib/platform/storage";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import { EditorPane } from "./EditorPane";
@@ -22,10 +24,24 @@ export function AppShell() {
   const selectedPath = useOkfStore((s) => s.selectedPath);
   const dirty = useOkfStore((s) => s.dirty);
   const loading = useOkfStore((s) => s.loading);
+  const zoom = useOkfStore((s) => s.zoom);
+  const setZoom = useOkfStore((s) => s.setZoom);
+  const initPrefs = useOkfStore((s) => s.initPrefs);
+  const syncSystemTheme = useOkfStore((s) => s.syncSystemTheme);
 
   useEffect(() => {
     void init();
   }, [init]);
+
+  useEffect(() => {
+    initPrefs();
+    // Only matters while the preference is `system`; syncSystemTheme itself
+    // is the guard, so the listener can stay mounted unconditionally.
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = (e: MediaQueryListEvent) => syncSystemTheme(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [initPrefs, syncSystemTheme]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -37,6 +53,31 @@ export function AppShell() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [saveEditor]);
+
+  useEffect(() => {
+    // Desktop only. WKWebView has no native zoom, which is the whole reason
+    // this exists; in a browser Cmd +/- is the browser's own zoom, which
+    // Chrome already persists per-origin. Hijacking it there would risk
+    // stacking two zooms if a browser declined preventDefault.
+    if (!isTauriRuntime()) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (!(e.metaKey || e.ctrlKey)) return;
+      // "=" is the unshifted key carrying "+" on a US layout, so both arrive
+      // depending on whether shift is held.
+      if (e.key === "=" || e.key === "+") {
+        e.preventDefault();
+        setZoom(stepZoom(zoom, 1));
+      } else if (e.key === "-") {
+        e.preventDefault();
+        setZoom(stepZoom(zoom, -1));
+      } else if (e.key === "0") {
+        e.preventDefault();
+        setZoom(1);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoom, setZoom]);
 
   return (
     <div className="app-shell">
@@ -76,6 +117,12 @@ export function AppShell() {
             <span className="truncate max-w-[40vw] text-fg-muted">
               {selectedPath}
               {dirty ? " *" : ""}
+            </span>
+          )}
+          {/* Hidden at 100%: a permanent "100%" is noise. */}
+          {zoom !== 1 && (
+            <span className="text-fg-muted" data-testid="zoom-level">
+              {Math.round(zoom * 100)}%
             </span>
           )}
           {loading && <span className="text-primary">Loading…</span>}

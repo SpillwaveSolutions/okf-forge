@@ -164,7 +164,7 @@ export function EditorPane() {
         {showMd && (
           <textarea
             id="okf-md-editor"
-            className="w-full h-full min-h-[240px] resize-none border-0 border-r border-border bg-bg p-4 font-mono text-[13px] leading-relaxed text-fg outline-none focus:ring-0"
+            className="w-full h-full min-h-[240px] resize-none border-0 border-r border-border bg-bg p-4 font-mono text-[0.8125rem] leading-relaxed text-fg outline-none focus:ring-0"
             value={editorDraft}
             onChange={(e) => setEditorDraft(e.target.value)}
             spellCheck={false}

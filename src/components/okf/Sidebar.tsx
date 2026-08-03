@@ -217,7 +217,7 @@ export function Sidebar() {
 
       <div className="px-3 py-2 border-b border-border">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-[10px] font-semibold uppercase tracking-wider text-fg-subtle">
+          <h3 className="text-[0.625rem] font-semibold uppercase tracking-wider text-fg-subtle">
             {bundle?.name ?? "Documents"}
           </h3>
           {validation && (
@@ -265,7 +265,7 @@ export function Sidebar() {
         />
       </div>
 
-      <div className="border-t border-border px-3 py-2 text-[10px] text-fg-subtle flex items-center gap-1.5">
+      <div className="border-t border-border px-3 py-2 text-[0.625rem] text-fg-subtle flex items-center gap-1.5">
         <Settings2 className="size-3" />
         {Object.keys(concepts).length} concepts
         {bundle?.source ? ` · ${bundle.source}` : ""}

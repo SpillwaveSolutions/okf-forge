@@ -73,7 +73,11 @@ export function GraphCanvas({ nodes, edges, root, onSelect, height = 320 }: Prop
             markerHeight="6"
             orient="auto-start-reverse"
           >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#484f58" />
+            {/* Themed via the `style` prop, not a `fill=` attribute: var() is
+                not reliably honoured in SVG presentation attributes, but a CSS
+                declaration always resolves it — and CSS wins over the attribute
+                anyway. Same reason for every fill/stroke below. */}
+            <path d="M 0 0 L 10 5 L 0 10 z" style={{ fill: "var(--okf-border-strong)" }} />
           </marker>
         </defs>
         {edges.map((e, i) => {
@@ -88,7 +92,7 @@ export function GraphCanvas({ nodes, edges, root, onSelect, height = 320 }: Prop
                 y1={a.y}
                 x2={b.x}
                 y2={b.y}
-                stroke={typed ? "#58a6ff" : "#30363d"}
+                style={{ stroke: typed ? "var(--okf-primary)" : "var(--okf-border)" }}
                 strokeWidth={typed ? 1.5 : 1}
                 strokeDasharray={typed ? undefined : "4 3"}
                 markerEnd="url(#arrow)"
@@ -97,7 +101,7 @@ export function GraphCanvas({ nodes, edges, root, onSelect, height = 320 }: Prop
                 <text
                   x={(a.x + b.x) / 2}
                   y={(a.y + b.y) / 2 - 4}
-                  fill="#6e7681"
+                  style={{ fill: "var(--okf-fg-subtle)" }}
                   fontSize="9"
                   textAnchor="middle"
                 >
@@ -112,12 +116,12 @@ export function GraphCanvas({ nodes, edges, root, onSelect, height = 320 }: Prop
           const r = isRoot ? 22 : 16;
           const fill =
             n.type === "AgentNode"
-              ? "#1f6feb"
+              ? "var(--okf-primary)"
               : n.type === "Workflow"
-                ? "#238636"
+                ? "var(--okf-accent)"
                 : n.criticality === "critical"
-                  ? "#da3633"
-                  : "#21262d";
+                  ? "var(--okf-danger)"
+                  : "var(--okf-bg-subtle)";
           return (
             <g
               key={n.id}
@@ -133,11 +137,19 @@ export function GraphCanvas({ nodes, edges, root, onSelect, height = 320 }: Prop
                 cx={n.x}
                 cy={n.y}
                 r={r}
-                fill={fill}
-                stroke={isRoot ? "#58a6ff" : "#30363d"}
+                style={{
+                  fill,
+                  stroke: isRoot ? "var(--okf-primary)" : "var(--okf-border)",
+                }}
                 strokeWidth={isRoot ? 2 : 1}
               />
-              <text x={n.x} y={n.y + r + 12} fill="#e6edf3" fontSize="10" textAnchor="middle">
+              <text
+                x={n.x}
+                y={n.y + r + 12}
+                style={{ fill: "var(--okf-fg)" }}
+                fontSize="10"
+                textAnchor="middle"
+              >
                 {n.title.length > 22 ? n.title.slice(0, 20) + "…" : n.title}
               </text>
             </g>

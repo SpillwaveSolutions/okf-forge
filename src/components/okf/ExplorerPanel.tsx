@@ -99,7 +99,7 @@ export function ExplorerPanel() {
                       }}
                     >
                       <span className="block truncate font-medium">{c.title}</span>
-                      <span className="block text-[10px] opacity-70 font-mono truncate">
+                      <span className="block text-[0.625rem] opacity-70 font-mono truncate">
                         {c.path}
                       </span>
                     </button>

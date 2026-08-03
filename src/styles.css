@@ -3,43 +3,119 @@
 
 /* OKF Workbench — Motion-inspired technical writing IDE, refined for graph engineering */
 
+/* Tokens that never vary by theme. Routing these through the --okf-* layer
+   below would be pure noise. */
 @theme {
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono:
     "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, Menlo, Consolas, monospace;
   --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* Motion DNA (dark-first) with restrained single accent — no purple gradient slop */
-  --color-bg: #0d1117;
-  --color-bg-elevated: #161b22;
-  --color-bg-subtle: #21262d;
-  --color-bg-hover: #30363d;
-  --color-fg: #e6edf3;
-  --color-fg-muted: #8b949e;
-  --color-fg-subtle: #6e7681;
-  --color-border: #30363d;
-  --color-border-strong: #484f58;
-  --color-primary: #58a6ff;
-  --color-primary-fg: #0d1117;
-  --color-primary-muted: color-mix(in oklab, #58a6ff 16%, transparent);
-  --color-accent: #3fb950;
-  --color-accent-fg: #0d1117;
-  --color-danger: #f85149;
-  --color-warning: #f0883e;
-  --color-success: #3fb950;
-  --color-info: #58a6ff;
-  --color-card: #161b22;
-  --color-ring: #58a6ff;
-
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+}
 
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.4);
-  --shadow-lg: 0 8px 24px rgb(0 0 0 / 0.5);
+/* Light is the bare `:root` default as well as the explicit one, so a document
+   whose data-theme attribute never got set — the head script threw, JS is off —
+   still renders legibly instead of transparent-on-transparent.
+
+   GitHub Primer light, because the dark values below are GitHub dark. */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --okf-bg: #ffffff;
+  --okf-bg-elevated: #f6f8fa;
+  --okf-bg-subtle: #eff2f5;
+  --okf-bg-hover: #e6eaef;
+  --okf-fg: #1f2328;
+  --okf-fg-muted: #59636e;
+  --okf-fg-subtle: #818b98;
+  --okf-border: #d1d9e0;
+  --okf-border-strong: #9198a1;
+  --okf-primary: #0969da;
+  --okf-primary-fg: #ffffff;
+  --okf-primary-muted: color-mix(in oklab, #0969da 12%, transparent);
+  --okf-accent: #1a7f37;
+  --okf-accent-fg: #ffffff;
+  --okf-danger: #d1242f;
+  --okf-warning: #9a6700;
+  --okf-success: #1a7f37;
+  --okf-info: #0969da;
+  --okf-card: #ffffff;
+  --okf-ring: #0969da;
+
+  --okf-shadow-sm: 0 1px 0 rgb(31 35 40 / 0.04);
+  --okf-shadow-md: 0 3px 6px rgb(140 149 159 / 0.15);
+  --okf-shadow-lg: 0 8px 24px rgb(140 149 159 / 0.2);
+}
+
+/* Motion DNA (dark-first) with restrained single accent — no purple gradient slop */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --okf-bg: #0d1117;
+  --okf-bg-elevated: #161b22;
+  --okf-bg-subtle: #21262d;
+  --okf-bg-hover: #30363d;
+  --okf-fg: #e6edf3;
+  --okf-fg-muted: #8b949e;
+  --okf-fg-subtle: #6e7681;
+  --okf-border: #30363d;
+  --okf-border-strong: #484f58;
+  --okf-primary: #58a6ff;
+  /* The *-fg tokens invert against light on purpose: they are the contrast
+     partner for a filled surface, so dark puts near-black text on bright blue
+     while light puts white on dark blue. Copying them across unchanged makes
+     every primary button unreadable, and is the likeliest mistake in this file. */
+  --okf-primary-fg: #0d1117;
+  --okf-primary-muted: color-mix(in oklab, #58a6ff 16%, transparent);
+  --okf-accent: #3fb950;
+  --okf-accent-fg: #0d1117;
+  --okf-danger: #f85149;
+  --okf-warning: #f0883e;
+  --okf-success: #3fb950;
+  --okf-info: #58a6ff;
+  --okf-card: #161b22;
+  --okf-ring: #58a6ff;
+
+  --okf-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --okf-shadow-md: 0 4px 12px rgb(0 0 0 / 0.4);
+  --okf-shadow-lg: 0 8px 24px rgb(0 0 0 / 0.5);
+}
+
+/* `inline` is load-bearing. Without it Tailwind resolves --color-* once at
+   :root and bakes the literal value into every utility, so the [data-theme]
+   override never reaches `bg-bg` and the theme silently fails to switch. With
+   it, Tailwind emits `var(--okf-bg)` and the indirection survives to runtime. */
+@theme inline {
+  --color-bg: var(--okf-bg);
+  --color-bg-elevated: var(--okf-bg-elevated);
+  --color-bg-subtle: var(--okf-bg-subtle);
+  --color-bg-hover: var(--okf-bg-hover);
+  --color-fg: var(--okf-fg);
+  --color-fg-muted: var(--okf-fg-muted);
+  --color-fg-subtle: var(--okf-fg-subtle);
+  --color-border: var(--okf-border);
+  --color-border-strong: var(--okf-border-strong);
+  --color-primary: var(--okf-primary);
+  --color-primary-fg: var(--okf-primary-fg);
+  --color-primary-muted: var(--okf-primary-muted);
+  --color-accent: var(--okf-accent);
+  --color-accent-fg: var(--okf-accent-fg);
+  --color-danger: var(--okf-danger);
+  --color-warning: var(--okf-warning);
+  --color-success: var(--okf-success);
+  --color-info: var(--okf-info);
+  --color-card: var(--okf-card);
+  --color-ring: var(--okf-ring);
+
+  --shadow-sm: var(--okf-shadow-sm);
+  --shadow-md: var(--okf-shadow-md);
+  --shadow-lg: var(--okf-shadow-lg);
 }
 
 @layer base {
@@ -48,8 +124,12 @@
   }
 
   html {
-    color-scheme: dark;
-    font-size: 16px;
+    /* Zoom rides the root font size so every rem in this file and every
+       rem-based Tailwind text-* utility scales together. Borders and shadows
+       keep their px values on purpose — a 1px hairline should stay 1px at
+       200%, not blur into a 2px frame. color-scheme lives on the palette
+       layers above, since it has to follow the theme. */
+    font-size: calc(16px * var(--okf-zoom, 1));
   }
 
   body {
@@ -121,6 +201,16 @@
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
     z-index: 20;
+    /* At high zoom the header holds more than the window is wide — the search
+       field can shrink to nothing but the logo, mode toggle, and action cluster
+       cannot. Scroll rather than clip, so every control stays reachable instead
+       of two of them falling off the right edge. Inert at 100%, where nothing
+       overflows and no scrollbar appears. */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .app-header::-webkit-scrollbar {
+    display: none;
   }
 
   .app-sidebar {
