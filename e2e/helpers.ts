@@ -11,7 +11,7 @@ import { expect, type Page } from "@playwright/test";
  * symptom ("dialog not found") that looks nothing like the cause.
  *
  * The file tree is the signal: it is populated by init() on the client from
- * the bundle fetch, so a `role=option` row cannot exist in the SSR HTML. Once
+ * the bundle fetch, so a `role=treeitem` row cannot exist in the SSR HTML. Once
  * one is visible, hydration has run and event handlers are live.
  */
 export async function gotoApp(page: Page) {
@@ -19,7 +19,7 @@ export async function gotoApp(page: Page) {
   await expect(page.getByText("Learn OKF by using it")).toBeVisible({
     timeout: 15_000,
   });
-  await expect(page.locator("[role=option]").first()).toBeVisible({
+  await expect(page.locator("[role=treeitem]").first()).toBeVisible({
     timeout: 15_000,
   });
 }

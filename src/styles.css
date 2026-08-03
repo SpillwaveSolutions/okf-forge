@@ -144,7 +144,10 @@
   }
 
   button:not(:disabled),
-  [role="button"]:not(:disabled) {
+  [role="button"]:not(:disabled),
+  /* Tree rows are divs, not buttons, because a treeitem owning its own tab
+     stop conflicts with a button's. They still need the affordance. */
+  [role="treeitem"] {
     cursor: pointer;
   }
 

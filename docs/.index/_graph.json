@@ -454,6 +454,11 @@
    "status": "done",
    "title": "Fields use placeholder as their only visible label"
   },
+  "item/01KZ42251MR137EJ2D14A3M1EZ": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "Convert the file tree to role=tree with full keyboard semantics"
+  },
   "plan/2026-08-02-view-preferences": {
    "doc_type": "plan",
    "source": "docs/plans/2026-08-02-view-preferences.md",

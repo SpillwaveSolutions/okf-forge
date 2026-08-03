@@ -180,7 +180,7 @@ test("no view lets an interactive element escape sideways", async ({ page }) => 
 
     const escaped = await page.evaluate(() => {
       const w = document.documentElement.clientWidth;
-      return [...document.querySelectorAll<HTMLElement>("button, input, a, [role=option]")]
+      return [...document.querySelectorAll<HTMLElement>("button, input, a, [role=treeitem]")]
         .filter((el) => !el.closest("[data-scroll]"))
         .filter((el) => {
           const r = el.getBoundingClientRect();

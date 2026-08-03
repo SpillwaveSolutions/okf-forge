@@ -42,7 +42,7 @@ and its `git_hash` in the same commit.
 | sidebar | 7 nav items, in order: Learn, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
 | sidebar | bundle name + validation badge | — |
 | sidebar | file filter | `aria-label="Filter files"` |
-| sidebar | nested file tree, dirs collapsible | `role="listbox"` / `role="option"`, `aria-expanded` on dirs |
+| sidebar | nested file tree, dirs collapsible | `role="tree"` / `role="treeitem"`, `aria-expanded` on dirs, `aria-level`, `data-depth`, `data-kind` |
 | main | formatting + action toolbar (Impact, Pack, Save) | `title=` only — see backlog |
 | main | Markdown source textarea | `aria-label="Markdown editor"` |
 | main | rendered preview | — |
@@ -78,11 +78,12 @@ model judgement has "the model was in a mood" as a failure mode.
 | 7 | The theme toggle cycles all three states and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
 | 8 | Switching to light changes the computed body background | `layout.spec.ts › the light theme actually repaints the surface` |
 | 9 | Every control stays reachable at 200% zoom | `zoom.e2e.ts › keeps every control reachable at maximum zoom` |
-| 10 | Toolbar reads as a grouped toolbar, not a row of loose buttons | agent |
-| 11 | Source and preview panes are visually balanced in Split mode | agent |
-| 12 | Type badges are legible against the elevated surface | agent |
-| 13 | The empty state ("no file selected") reads as intentional, not broken | agent |
-| 14 | Both themes read as the same product, not two skins | agent |
+| 10 | The file tree is a `role="tree"` with one tab stop and working Arrow/Home/End/typeahead | `tree.spec.ts` |
+| 11 | Toolbar reads as a grouped toolbar, not a row of loose buttons | agent |
+| 12 | Source and preview panes are visually balanced in Split mode | agent |
+| 13 | Type badges are legible against the elevated surface | agent |
+| 14 | The empty state ("no file selected") reads as intentional, not broken | agent |
+| 15 | Both themes read as the same product, not two skins | agent |
 
 ### Acceptable differences
 
@@ -108,8 +109,6 @@ Tracked separately, deliberately not fixed here:
 
 - Toolbar buttons use `title=` rather than `aria-label`; `title` is a weak
   accessible-name source and fragile for `getByRole(name:)`.
-- The file tree is `role="listbox"`/`option` with dir buttons interleaved, which
-  is invalid. Converting to `role="tree"` requires full tree keyboard semantics
-  (Arrow/Home/End/typeahead) or it makes things worse for assistive tech.
-- Tree depth is expressed as inline `paddingLeft` arithmetic, so depth is not
-  assertable without parsing computed styles. Wants `data-depth`.
+- The tree does not persist its expanded state across a save: `recompute` gives
+  `tree` a new identity and the effect that seeds `expanded` re-runs. Tracked
+  separately; it predates the `role="tree"` conversion.

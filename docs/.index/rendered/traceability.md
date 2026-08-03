@@ -2,6 +2,9 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Convert the file tree to role=tree with full keyboard semantics
+`01KZ42251MR137EJ2D14A3M1EZ` · status: done
+
 ### Fields use placeholder as their only visible label
 `01KZ3ZNR42R45HYJR4EDQ8VS0S` · status: done
 
