@@ -3,7 +3,7 @@
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
 ### Cut v0.1.0
-`01KZ2S1VAJNPP9M0CA9S877WE5` · status: todo
+`01KZ2S1VAJNPP9M0CA9S877WE5` · status: done
 
 ### GraphCanvas hardcodes the dark palette in SVG attributes
 `01KZ2M8DF9ZY5WMB968Y54WT8R` · status: done
