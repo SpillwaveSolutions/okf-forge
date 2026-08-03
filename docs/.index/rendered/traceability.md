@@ -2,6 +2,9 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Refresh CLAUDE.md after v0.1.0
+`01KZ30X0899FM2XNYRV70VFV68` · status: todo
+
 ### Cut v0.1.0
 `01KZ2S1VAJNPP9M0CA9S877WE5` · status: done
 

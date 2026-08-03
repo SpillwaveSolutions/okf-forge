@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "ccaa365a8f68",
+   "render_hash": "41d2db00440c",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -281,6 +281,16 @@
    "wiki_key": "item/01KZ2S1VAJNPP9M0CA9S877WE5"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZ30X0899FM2XNYRV70VFV68",
+   "render": "as-is",
+   "render_hash": "0c6d9ade39f8",
+   "source": "docs/.index/rendered/tickets/01KZ30X0899FM2XNYRV70VFV68.md",
+   "title": "Refresh CLAUDE.md after v0.1.0",
+   "truth_state": "open",
+   "wiki_key": "item/01KZ30X0899FM2XNYRV70VFV68"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -358,11 +368,11 @@
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T03:07:19Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T05:17:47Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "89fb653579db",
+   "render_hash": "071074216c86",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

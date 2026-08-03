@@ -25,6 +25,7 @@
    "tag": "v0.1.0",
    "title": "OKF Forge \u2014 Code Walkthrough",
    "truth_state": "snapshot",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Code-Walkthrough-2026-08-03_v0.1.0-release",
    "wiki_key": "design/2026-08-03_v0.1.0-release-code-walkthrough"
   },
   {
@@ -41,6 +42,7 @@
    "tag": "v0.1.0",
    "title": "OKF Forge \u2014 Design Document",
    "truth_state": "snapshot",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-Doc-2026-08-03_v0.1.0-release",
    "wiki_key": "design/2026-08-03_v0.1.0-release-design-doc"
   },
   {
@@ -56,6 +58,7 @@
    "tag": "v0.1.0",
    "title": "OKF Forge \u2014 Code Walkthrough",
    "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Code-Walkthrough",
    "wiki_key": "design/current-code-walkthrough"
   },
   {
@@ -71,6 +74,7 @@
    "tag": "v0.1.0",
    "title": "OKF Forge \u2014 Design Document",
    "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-Doc",
    "wiki_key": "design/current-design-doc"
   },
   {
@@ -94,15 +98,16 @@
    "status": "completed",
    "title": "View preferences (theme + zoom) Implementation Plan",
    "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Plan-2026-08-02-view-preferences",
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
    "canonical_key": "roadmap",
    "doc_type": "roadmap",
-   "generated_at": "2026-08-03T03:07:19Z",
+   "generated_at": "2026-08-03T05:17:47Z",
    "slug": "roadmap",
    "source": "docs/roadmap.md",
-   "source_hash": "7ddc49b7",
+   "source_hash": "8ba9b6c8",
    "title": "Roadmap",
    "truth_state": "current",
    "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",
@@ -120,6 +125,7 @@
    "source_hash": "afc0699e",
    "title": "Roadmap",
    "truth_state": "snapshot",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap-2026-08-03_v0.1.0-release",
    "wiki_key": "roadmap-snapshot/2026-08-03_v0.1.0-release"
   }
  ],

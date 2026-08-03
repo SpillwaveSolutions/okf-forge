@@ -13,17 +13,20 @@ Ships as **one UI on two runtimes**: web (TanStack Start → Vercel) and desktop
 
 | Command | What it does |
 |---|---|
-| `npm run dev` | Vite on `0.0.0.0:8080`. **Host/port are a contract** — see Invariants. |
+| `npm run dev` | Vite on `0.0.0.0:<resolved port>`. The port is **never** hardcoded — see Invariants. |
+| `npm run port` | Prints the resolved dev port. |
 | `npm run build` | Web/SSR prod build (Nitro → `.vercel/output/`) then `db:migrate`. |
 | `npm run build:tauri` | SPA-only build for the desktop webview → `dist/`. |
 | `npm run tauri:dev` | Native window against the Vite dev server. |
 | `npm run tauri:build` | Full desktop package → `src-tauri/target/release/bundle/`. |
 | `npm run typecheck` | `tsc --noEmit`. Covers `src/` only. |
-| `npm test` | Unit tests: **`node:test`**, not vitest/jest. |
+| `npm test` | **Both** unit tiers: `node:test` for `tests/`, then vitest for `src/`. |
 | `npm run test:e2e` | Playwright. Needs `npx playwright install chromium`. |
+| `npm run test:desktop` | WebdriverIO against the real Tauri window. Needs `tauri:build:automation` first. |
 | `npm run test:rust` | `cd src-tauri && cargo test`. |
-| `npm run verify` | typecheck + unit + e2e. **Does not run lint or build.** |
+| `npm run verify` | typecheck + unit + e2e. **Does not run lint, build, rust, or desktop.** |
 | `npm run lint` / `format` | `eslint .` / `prettier --write .` |
+| `npm run wireframes` / `wiki` | Re-render `.puml` → PNG / publish docs to the GitHub wiki. |
 
 Node 22+ (`npm test` uses `--experimental-strip-types`), Rust 1.77+, npm (only
 `package-lock.json`). `OKF_WORKSPACE=/abs/path npm run dev` points `/api/fs` at a
@@ -40,7 +43,8 @@ src/lib/okf/       domain core — pure, testable, runtime-agnostic
   frontmatter.ts   hand-rolled YAML-ish parser (no yaml dep)
   markdown.ts      hand-rolled MD→HTML renderer (no markdown dep)
   classify.ts      heuristic raw-docs → typed OKF paths
-  integrations.ts  DeepAgents / Claude plugin / MCP exporters
+  integrations.ts  DeepAgents / Claude plugin / MCP exporters + localStorage
+  prefs.ts         theme + zoom; pure except one applyPrefs(root) DOM writer
 src/lib/platform/  dual-runtime filesystem
   storage.ts       StorageProvider interface + HttpStorage / TauriStorage
   fsCore.ts        Node-only path jail + walker (never in the browser bundle)
@@ -97,6 +101,14 @@ entry `tauri.html`, no Start/Nitro/fs plugins.
   reintroduce a literal port, and never bind a second dev port in web mode.
 - **Graph logic stays pure** in `src/lib/okf/*`; UI in `src/components/okf/*` wires
   through `store.ts`. Don't put graph algorithms in components.
+- **`@theme inline` is load-bearing and fails silently.** Colour tokens are defined
+  twice in `src/styles.css` — a `--okf-*` layer under `:root[data-theme="light"]`
+  and `:root[data-theme="dark"]` — and referenced through `@theme inline`. Drop
+  `inline` and Tailwind resolves `--color-*` once at `:root` and bakes the literal
+  value into every utility, so flipping `data-theme` repaints **nothing** and no
+  error appears anywhere. `layout.spec.ts › the light theme actually repaints the
+  surface` exists solely to catch that. Never add a colour straight to a plain
+  `@theme` block, and never hardcode a hex in a component.
 - **Never hand-edit `.work/*.jsonl` or `docs/roadmap.md`** — see the policy block below.
 
 ## Gotchas
@@ -125,6 +137,17 @@ entry `tauri.html`, no Start/Nitro/fs plugins.
   is minimal. Expect build artifacts in diffs.
 - Rust edits need a `tauri:dev` restart; frontend HMR flows through the webview.
 - Stale desktop UI after a change: `rm -rf dist src-tauri/target/release`, rebuild.
+- **SVG presentation attributes do not reliably honour `var()`.** `fill="var(--x)"`
+  is a coin flip; `style={{ fill: "var(--x)" }}` always resolves, and CSS beats the
+  attribute anyway. `GraphCanvas.tsx` shipped nine hardcoded dark hex values this
+  way and would have rendered white-on-white in light mode.
+- **Zoom rides the root font size** (`html { font-size: calc(16px * var(--okf-zoom)) }`),
+  so anything in `rem` scales and anything in `px` does not. Borders and shadows
+  stay px deliberately. Use `text-[0.6875rem]`, never `text-[11px]`.
+- **Zoom keybindings are desktop-only**, gated on `isTauriRuntime()`. In a browser
+  `Cmd +/-` belongs to the browser, which already persists it per origin.
+- DMG bundling currently fails on macOS here (`bundle_dmg.sh`); desktop builds are
+  verified with `--no-bundle`.
 
 ## Desktop automation (opt-in)
 
@@ -158,18 +181,57 @@ pins 2.4.0 exactly but imports a symbol only 2.5.0 exports.
 prove — the native window, the FS jail, the picker. The React tree is identical
 in both runtimes by design.
 
+## Test tiers
+
+Four runners, four **disjoint** globs. Putting a test in the wrong directory
+means it either runs twice or never — there is no overlap and no `testIgnore`.
+
+| Tier | Glob | Runner | Required check? |
+|---|---|---|---|
+| pure functions | `tests/*.test.ts` | `node:test` | yes (`checks`) |
+| component / integration | `src/**/*.test.ts(x)` | vitest + jsdom | yes (`checks`) |
+| web end-to-end | `e2e/*.spec.ts` | Playwright | yes (`e2e`) |
+| desktop end-to-end | `e2e-desktop/specs/*.e2e.ts` | WebdriverIO, real window | **no** |
+
+Two import conventions, and they are not interchangeable:
+
+- `tests/` uses `node:test` + `node:assert/strict` and imports source with
+  **explicit `.ts` extensions** — types are stripped, not compiled.
+- `src/` uses vitest and imports **without** an extension (bundler resolution).
+  Colocation here is deliberate: `tsconfig`'s `include: ["src"]` means these
+  tests are typechecked, which the `tests/` tier is not.
+
+`vitest.config.ts` is standalone on purpose. Merging it into `vite.config.ts`
+would drag in the serve-only plugins, and `pgliteBootstrap` boots a database in
+`configureServer` — you would stand up PGlite to test a string function.
+
 ## Conventions
 
-- Tests are **not colocated**: unit in `tests/`, e2e in `e2e/`. Unit tests use
-  `node:test` + `node:assert/strict` and import source with **explicit `.ts`
-  extensions** (types are stripped, not compiled).
 - Prefer e2e coverage for user-visible flows; put `data-testid` on critical controls
-  (`header-open`, `open-workspace`).
+  (`header-open`, `open-workspace`, `theme-toggle`).
 - Prettier: double quotes, semicolons, trailing commas, width 100. `no-explicit-any`
   is **off**; `no-unused-vars` is a warning ignoring `^_`.
-- There is **no CI and no pre-commit hook** beyond what worklog installed. `npm run
-  verify` before pushing is manual discipline.
+- **CI gates `main`.** `.github/workflows/ci.yml` runs `checks`, `e2e`, and `rust`;
+  with worklog's `invariants` these are four required contexts, and `main` refuses
+  force-pushes. Keep app jobs in `ci.yml`, **never** in `worklog.yml` — that file is
+  re-copied by `worklog init` and your jobs would vanish on the next upgrade.
+- `npm run verify` before pushing is still worth it; it is faster than a red PR.
 - Before a desktop release, run the DEVELOPERS.md §8 checklist on a real host.
+
+## Releasing
+
+`CHANGELOG.md` holds a `## X.Y.Z — unreleased` section written **as features
+land**, not reconstructed at tag time. Released sections are frozen: corrections
+go in the next release's notes.
+
+Cutting one (the `worklog:release` skill drives this): stamp the changelog date
+in UTC → `worklog roadmap-snapshot --name vX.Y.Z-release` → `worklog ia-index` →
+land it as a PR (the branch guard refuses commits directly on `main`) → tag the
+merge commit → `gh release create` → regenerate `docs/designs/current_*` against
+the tag and freeze the dated pair → refresh README/USER_GUIDE → `npm run wiki`.
+
+Docs land **after** the tag. They describe the release; the release does not wait
+on them.
 
 ## UI change loop
 
@@ -179,14 +241,19 @@ Any change under `src/components/okf/` or `src/styles.css` follows this loop.
    for the view you're changing? Write one first (template: `ui-editor.md`).
 2. **Implement.** The element inventory is a contract: adding or removing a control
    means updating the spec and its `git_hash` in the same commit.
-3. **Screenshot.** Web: chrome-devtools MCP — resize to 1280×800, navigate to the
-   dev server, click `nav-<view>`, screenshot. Desktop-only behavior (native
-   picker, FS jail) needs the Tauri MCP. Screenshots go to the scratchpad, never
-   to `screenshots/` (those are README assets).
+3. **Screenshot, in both themes.** Web: chrome-devtools MCP — resize to 1280×800,
+   navigate, click `nav-<view>`, screenshot. That MCP needs Chrome already running
+   with `--remote-debugging-port=9222`; when it isn't, a throwaway Playwright
+   script driving `chromium.launch()` is faster than starting one. Desktop-only
+   behavior (native picker, FS jail) needs the Tauri MCP. Screenshots go to the
+   scratchpad, never to `screenshots/` (those are README assets).
 4. **Judge** only the rubric rows marked `agent`. Also take an accessibility
    snapshot and read console messages — a console error is a failure. **Never
    compare a screenshot to the Salt wireframe**: it is authoritative for element
-   inventory, containment order, and ordinal sequence, not pixels.
+   inventory, containment order, and ordinal sequence, not pixels. And never
+   compare light against dark — every rubric has an *Acceptable differences*
+   section naming what does not count, and a judge without one reports every
+   pixel delta as a finding.
 5. **Verify.** `npm run test:e2e -- layout.spec.ts`. Every rubric row with a named
    Check must pass. Those are the gate; `agent` rows are advice.
 6. **Iterate** from 2. Report `agent`-row concerns in the PR body; never block a
@@ -205,10 +272,22 @@ build is SSR, so static copy is visible before React hydrates — clicking earli
 lands on a real, enabled element with no handler and fails with a symptom that
 looks nothing like the cause.
 
+**SSR also means anything a script mutates on `<html>` before hydration is a
+React mismatch error**, which `layout.spec.ts` treats as a failure. `__root.tsx`
+carries `suppressHydrationWarning` for exactly that reason: the theme bootstrap
+script stamps `data-theme` pre-paint, and `localStorage` cannot be read on the
+server. Its copy in `tauri.html` is duplicated verbatim on purpose — sharing a
+module would cost a round trip and reintroduce the flash it prevents.
+
 ## More docs
 
 `DEVELOPERS.md` (dev workflow, Tauri build/deploy, pre-release checklist),
-`DESKTOP.md` (dual-mode cheat sheet), `FEATURES.md`, `USER_GUIDE.md`, `README.md`.
+`DESKTOP.md` (dual-mode cheat sheet), `FEATURES.md`, `USER_GUIDE.md`, `README.md`,
+`CHANGELOG.md`.
+
+`docs/designs/current_design_doc.md` and `current_code_walkthrough.md` are
+regenerated against each release tag. The walkthrough is the fastest way into the
+codebase: it gives a reading order and names where the traps are.
 
 <!-- worklog:policy:start -->
 ## Work tracking policy
