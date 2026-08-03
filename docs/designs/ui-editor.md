@@ -109,6 +109,7 @@ Tracked separately, deliberately not fixed here:
 
 - Toolbar buttons use `title=` rather than `aria-label`; `title` is a weak
   accessible-name source and fragile for `getByRole(name:)`.
-- The tree does not persist its expanded state across a save: `recompute` gives
-  `tree` a new identity and the effect that seeds `expanded` re-runs. Tracked
-  separately; it predates the `role="tree"` conversion.
+- New directories added while a bundle is open are not auto-expanded. Seeding
+  now happens only on a bundle or filter change, which is what stops a save
+  from collapsing the tree; the cost is that a folder created mid-session
+  starts closed.

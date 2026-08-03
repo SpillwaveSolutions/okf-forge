@@ -170,8 +170,19 @@ export function Sidebar() {
 
   const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
 
-  // Expand top-level dirs on bundle load; expand matches while filtering
+  // What the expansion set was last seeded for. Without this the effect reruns
+  // on `tree` identity, and `recompute` builds a fresh concepts map on every
+  // save — so saving a file silently collapsed the whole tree. Seeding is a
+  // response to "a different bundle" or "a different filter", never to the
+  // same bundle being reparsed.
+  const seededFor = useRef<string | null>(null);
+
+  // Expand top-level dirs on bundle load; expand matches while filtering.
   useEffect(() => {
+    const signature = `${bundle?.id ?? ""}|${filter}`;
+    if (seededFor.current === signature) return;
+    seededFor.current = signature;
+
     const next = new Set<string>();
     if (filter) {
       collectDirPaths(filtered, next);

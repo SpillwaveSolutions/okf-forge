@@ -123,3 +123,32 @@ test("rows carry the nesting the flat DOM no longer does", async ({ page }) => {
   // flattening silently lost the hierarchy.
   expect(levels.some((l) => Number(l.depth) > 0)).toBe(true);
 });
+
+test("keeps collapsed folders collapsed across a save", async ({ page }) => {
+  const tree = await openTree(page);
+
+  const dir = tree.locator("[role=treeitem][data-kind=dir]").first();
+  const name = await dir.getAttribute("title");
+  await expect(dir).toHaveAttribute("aria-expanded", "true");
+  await dir.click();
+  await expect(dir).toHaveAttribute("aria-expanded", "false");
+
+  // Open a file from a different folder and save it. saveEditor runs
+  // recompute, which rebuilds the concepts map from scratch.
+  const file = tree.locator("[role=treeitem][data-kind=file]").last();
+  await file.click();
+  const editor = page.getByRole("textbox", { name: "Markdown editor" });
+  await editor.click();
+  await page.keyboard.type("\n");
+  const save = page.getByTestId("header-save");
+  await expect(save).toBeEnabled();
+  await save.click();
+  await expect(save).toBeDisabled();
+
+  // The regression: `tree` gets a new identity on every recompute, so the
+  // effect that seeds expanded folders re-ran and reset the whole tree.
+  await expect(tree.locator(`[role=treeitem][title="${name}"]`)).toHaveAttribute(
+    "aria-expanded",
+    "false",
+  );
+});

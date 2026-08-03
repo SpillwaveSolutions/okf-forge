@@ -2,6 +2,9 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Sidebar forgets expanded folders on every save
+`01KZ4BZAG33322PY4G37WRYBY1` · status: done
+
 ### Convert the file tree to role=tree with full keyboard semantics
 `01KZ42251MR137EJ2D14A3M1EZ` · status: done
 

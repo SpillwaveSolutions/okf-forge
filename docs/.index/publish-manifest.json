@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "9f40f9cd388a",
+   "render_hash": "f995f52dfa77",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -401,6 +401,16 @@
    "wiki_key": "item/01KZ42251MR137EJ2D14A3M1EZ"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZ4BZAG33322PY4G37WRYBY1",
+   "render": "as-is",
+   "render_hash": "62b382137dd3",
+   "source": "docs/.index/rendered/tickets/01KZ4BZAG33322PY4G37WRYBY1.md",
+   "title": "Sidebar forgets expanded folders on every save",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ4BZAG33322PY4G37WRYBY1"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -482,7 +492,7 @@
    "frozen": true,
    "page_name": "Design-UI-Editor",
    "render": "doc+banner",
-   "render_hash": "6960bd16970b",
+   "render_hash": "e6543769ad54",
    "source": "docs/designs/ui-editor.md",
    "title": "UI spec \u2014 Editor view",
    "truth_state": "current",
@@ -544,11 +554,11 @@
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T15:06:15Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T17:52:00Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "eafde15cf457",
+   "render_hash": "c36b8e029934",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",
