@@ -1,6 +1,6 @@
 # Frontend: rename loadWebWorkspace and seed the desktop workspace on init
 
-`01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM` · task/feature · **open**
+`01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM` · task/feature · **done**
 
 Frontend: rename loadWebWorkspace and seed the desktop workspace on init
 

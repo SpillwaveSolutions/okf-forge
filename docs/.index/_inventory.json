@@ -193,7 +193,7 @@
    ],
    "slug": "okff-cli",
    "source": "docs/plans/2026-08-03-okff-cli.md",
-   "status": "planned",
+   "status": "completed",
    "title": "okff CLI launcher and Settings view",
    "truth_state": "current",
    "wiki_key": "plan/2026-08-03-okff-cli"
@@ -201,10 +201,10 @@
   {
    "canonical_key": "roadmap",
    "doc_type": "roadmap",
-   "generated_at": "2026-08-03T18:54:55Z",
+   "generated_at": "2026-08-03T19:04:38Z",
    "slug": "roadmap",
    "source": "docs/roadmap.md",
-   "source_hash": "3a3deccc",
+   "source_hash": "05ef43bb",
    "title": "Roadmap",
    "truth_state": "current",
    "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",

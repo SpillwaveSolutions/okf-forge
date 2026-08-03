@@ -1,6 +1,6 @@
 # Rust: parse `--workspace` from argv and seed WorkspaceState
 
-`01KZ4EZ2HJF3T9ZFZH4D0ZEW8N` · task/feature · **open**
+`01KZ4EZ2HJF3T9ZFZH4D0ZEW8N` · task/feature · **done**
 
 Rust: parse `--workspace` from argv and seed WorkspaceState
 

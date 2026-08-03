@@ -1,6 +1,6 @@
 # Docs: ui-settings spec, wireframe, and the nav line in seven existing specs
 
-`01KZ4EZ2HJ8GDJPQC6DNEKN51E` · task/feature · **open**
+`01KZ4EZ2HJ8GDJPQC6DNEKN51E` · task/feature · **done**
 
 Docs: ui-settings spec, wireframe, and the nav line in seven existing specs
 

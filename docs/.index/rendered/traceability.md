@@ -6,17 +6,17 @@ _The evidence chain: plan → item → ticket → code → release, forward and 
 `01KZ4FN7VEE25SEF6JCFG5J90T` · status: todo
 
 ### Frontend: Settings view, 8th nav item, CLI install card
-`01KZ4EZ2HJSX39N7Q8FY0WVPQK` · status: todo
+`01KZ4EZ2HJSX39N7Q8FY0WVPQK` · status: done
 - belongs-to: okff CLI launcher and Settings view
 - produced-by: [[Plan-okff-cli]]
 
 ### Rust: parse `--workspace` from argv and seed WorkspaceState
-`01KZ4EZ2HJF3T9ZFZH4D0ZEW8N` · status: todo
+`01KZ4EZ2HJF3T9ZFZH4D0ZEW8N` · status: done
 - belongs-to: okff CLI launcher and Settings view
 - produced-by: [[Plan-okff-cli]]
 
 ### okff CLI launcher and Settings view
-`01KZ4EZ2HJ8P0WNRQJRGE1T3S7` · status: todo
+`01KZ4EZ2HJ8P0WNRQJRGE1T3S7` · status: done
 - contains: Tests: vitest, cargo, and Playwright coverage for the new surfaces
 - contains: Frontend: rename loadWebWorkspace and seed the desktop workspace on init
 - contains: Rust: shim rendering plus install_cli / uninstall_cli / cli_status commands
@@ -26,22 +26,22 @@ _The evidence chain: plan → item → ticket → code → release, forward and 
 - produced-by: [[Plan-okff-cli]]
 
 ### Docs: ui-settings spec, wireframe, and the nav line in seven existing specs
-`01KZ4EZ2HJ8GDJPQC6DNEKN51E` · status: todo
+`01KZ4EZ2HJ8GDJPQC6DNEKN51E` · status: done
 - belongs-to: okff CLI launcher and Settings view
 - produced-by: [[Plan-okff-cli]]
 
 ### Rust: shim rendering plus install_cli / uninstall_cli / cli_status commands
-`01KZ4EZ2HJ4TSZGNDTVGNQ7FPG` · status: todo
+`01KZ4EZ2HJ4TSZGNDTVGNQ7FPG` · status: done
 - belongs-to: okff CLI launcher and Settings view
 - produced-by: [[Plan-okff-cli]]
 
 ### Frontend: rename loadWebWorkspace and seed the desktop workspace on init
-`01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM` · status: todo
+`01KZ4EZ2HJ4TCMWVQCV4YZ0ZPM` · status: done
 - belongs-to: okff CLI launcher and Settings view
 - produced-by: [[Plan-okff-cli]]
 
 ### Tests: vitest, cargo, and Playwright coverage for the new surfaces
-`01KZ4EZ2HJ0SB94Y32K3C3V9MN` · status: todo
+`01KZ4EZ2HJ0SB94Y32K3C3V9MN` · status: done
 - belongs-to: okff CLI launcher and Settings view
 - produced-by: [[Plan-okff-cli]]
 
