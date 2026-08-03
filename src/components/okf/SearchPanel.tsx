@@ -146,6 +146,7 @@ export function SearchPanel() {
                   className="field-input"
                   value={packHops}
                   onChange={(e) => setPackOpts(Number(e.target.value) || 2, packMaxNodes)}
+                  aria-label="Pack hops"
                 />
               </div>
               <div>
@@ -157,6 +158,7 @@ export function SearchPanel() {
                   className="field-input"
                   value={packMaxNodes}
                   onChange={(e) => setPackOpts(packHops, Number(e.target.value) || 20)}
+                  aria-label="Pack max nodes"
                 />
               </div>
             </div>
@@ -192,6 +194,7 @@ export function SearchPanel() {
                 className="field-input w-20"
                 value={graphHops}
                 onChange={(e) => setGraphHops(Number(e.target.value) || 2)}
+                aria-label="Neighborhood graph hops"
               />
             </div>
           </div>

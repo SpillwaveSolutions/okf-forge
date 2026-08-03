@@ -1,6 +1,6 @@
 # Panel tab strips expose as plain buttons
 
-`01KZ310MPRYBVR1PXBM4ADY53P` · task/bug · **open**
+`01KZ310MPRYBVR1PXBM4ADY53P` · task/bug · **done**
 
 Classify, DeepAgents, and Plugins & MCP each render a row of buttons that look and behave like tabs but carry no role=tablist or aria-selected.
 

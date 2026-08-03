@@ -75,6 +75,89 @@ for (const spec of VIEWS) {
 }
 
 /**
+ * Every focusable control must have an accessible name, in every view and
+ * behind every sub-tab.
+ *
+ * This is the check that would have caught the thirteen unnamed controls this
+ * suite was written alongside. Note it walks the `.view-toggle` strips: half
+ * the offenders were hidden behind an inactive tab, and a scan of the default
+ * tab alone reported the panels as clean.
+ *
+ * Visibility filter matters too — `ClassifyPanel`'s file input is
+ * `display: none` and driven by a labelled button, so it is not in the
+ * accessibility tree and needs no name of its own.
+ */
+test("every control in every view has an accessible name", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await gotoApp(page);
+
+  const unnamed: Record<string, string[]> = {};
+
+  const scan = (label: string) =>
+    page
+      .evaluate(() => {
+        // Mirrors how AT resolves a name, in precedence order.
+        const named = (el: Element) => {
+          if (el.getAttribute("aria-label")?.trim()) return true;
+          const lb = el.getAttribute("aria-labelledby");
+          if (lb && document.getElementById(lb)?.textContent?.trim()) return true;
+          if (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) return true;
+          if (el.closest("label")?.textContent?.trim()) return true;
+          if (el.getAttribute("title")?.trim()) return true;
+          return !!el.textContent?.trim();
+        };
+        const main = document.querySelector("[data-testid=app-main]")!;
+        return [...main.querySelectorAll<HTMLElement>("button, input, select, textarea")]
+          .filter((el) => el.offsetParent !== null || el.getClientRects().length > 0)
+          .filter((el) => !named(el))
+          .map((el) => `${el.tagName}[${el.getAttribute("type") ?? ""}]`);
+      })
+      .then((bad) => {
+        if (bad.length) unnamed[label] = bad;
+      });
+
+  for (const { view } of VIEWS) {
+    await page.getByTestId(`nav-${view}`).click();
+    await expect(page.getByTestId("app-main")).toHaveAttribute("data-view", view);
+
+    const tabs = page.locator("[data-testid=app-main] .view-toggle button");
+    const count = await tabs.count();
+    await scan(view);
+    for (let i = 1; i < count; i++) {
+      await tabs.nth(i).click();
+      await scan(`${view} › ${(await tabs.nth(i).textContent())?.trim()}`);
+    }
+  }
+
+  expect(unnamed, JSON.stringify(unnamed, null, 2)).toEqual({});
+});
+
+/**
+ * Every `.view-toggle` strip must expose its state, not just style it. The
+ * header toggle always did this; the DeepAgents and Plugins & MCP copies were
+ * a row of buttons whose selected state was a CSS class only — invisible to
+ * assistive tech and unassertable here.
+ */
+test("every view-toggle strip marks exactly one button pressed", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await gotoApp(page);
+
+  for (const { view } of VIEWS) {
+    await page.getByTestId(`nav-${view}`).click();
+    await expect(page.getByTestId("app-main")).toHaveAttribute("data-view", view);
+
+    const strips = page.locator("[data-testid=app-main] .view-toggle");
+    for (let i = 0; i < (await strips.count()); i++) {
+      const strip = strips.nth(i);
+      await expect(
+        strip.locator('button[aria-pressed="true"]'),
+        `${view}: strip ${i} has no pressed button`,
+      ).toHaveCount(1);
+    }
+  }
+});
+
+/**
  * Applied to every view rather than the editor alone. The equivalent check in
  * layout.spec.ts only ever visits the editor, so horizontal overflow in, say,
  * the classify panel went unnoticed.

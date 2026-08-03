@@ -49,6 +49,7 @@ export function DeepAgentPanel() {
               className="field-input"
               value={integrations.deepagentName}
               onChange={(e) => setIntegrations({ deepagentName: e.target.value })}
+              aria-label="Agent name"
             />
           </div>
           <div>
@@ -59,6 +60,7 @@ export function DeepAgentPanel() {
                 className="field-input"
                 value={integrations.packHops}
                 onChange={(e) => setIntegrations({ packHops: Number(e.target.value) || 2 })}
+                aria-label="Pack hops"
               />
               <input
                 type="number"
@@ -69,6 +71,7 @@ export function DeepAgentPanel() {
                     packMaxNodes: Number(e.target.value) || 20,
                   })
                 }
+                aria-label="Pack max nodes"
               />
             </div>
           </div>
@@ -78,6 +81,7 @@ export function DeepAgentPanel() {
               className="field-textarea min-h-[72px]"
               value={integrations.deepagentDescription}
               onChange={(e) => setIntegrations({ deepagentDescription: e.target.value })}
+              aria-label="Agent description"
             />
           </div>
         </div>
@@ -94,6 +98,7 @@ export function DeepAgentPanel() {
               key={id}
               type="button"
               className={`view-toggle-btn ${tab === id ? "active" : ""}`}
+              aria-pressed={tab === id}
               onClick={() => setTab(id)}
             >
               {label}

@@ -63,9 +63,11 @@ model judgement has "the model was in a mood" as a failure mode.
 | 4 | Zero console or page errors on mount | `views.spec.ts › integrations view renders its documented structure` |
 | 5 | No interactive element escapes sideways at 1280×800 | `views.spec.ts › no view lets an interactive element escape sideways` |
 | 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
-| 7 | Disabled entries are visibly distinct from enabled ones | agent |
-| 8 | The persistence note is stated on the page, not only in docs | agent |
-| 9 | Delete is visually subordinate to the fields it sits beside | agent |
+| 7 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
+| 8 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
+| 9 | Disabled entries are visibly distinct from enabled ones | agent |
+| 10 | The persistence note is stated on the page, not only in docs | agent |
+| 11 | Delete is visually subordinate to the fields it sits beside | agent |
 
 ### Acceptable differences
 
@@ -90,10 +92,6 @@ model judgement has "the model was in a mood" as a failure mode.
 
 Tracked separately, deliberately not fixed by writing this spec:
 
-- **The delete buttons have no accessible name.** They render a trash icon with
-  no `aria-label`, so assistive tech announces an unnamed button next to every
-  editable field. Tracked as a bug.
-- The mode strip is a tab strip rendered as plain buttons — same gap as Classify
-  and DeepAgents.
-- Plugin and MCP fields use `placeholder` as their only label, which disappears
-  the moment the user types.
+- Fields still use `placeholder` as their *visible* label, which disappears the
+  moment the user types. They now carry an `aria-label` as well, so the name is
+  stable for assistive tech, but a sighted user still loses the caption.

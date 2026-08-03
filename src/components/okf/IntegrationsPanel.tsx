@@ -37,6 +37,7 @@ export function IntegrationsPanel() {
               key={id}
               type="button"
               className={`view-toggle-btn ${tab === id ? "active" : ""}`}
+              aria-pressed={tab === id}
               onClick={() => setTab(id)}
             >
               {label}
@@ -82,6 +83,7 @@ export function IntegrationsPanel() {
                   value={p.description ?? ""}
                   onChange={(e) => updatePlugin(p.id, { description: e.target.value })}
                   placeholder="Description"
+                  aria-label="Plugin description"
                 />
               </div>
             ))}
@@ -113,11 +115,13 @@ export function IntegrationsPanel() {
                     type="checkbox"
                     checked={m.enabled}
                     onChange={(e) => updateMcp(m.id, { enabled: e.target.checked })}
+                    aria-label={`Enable ${m.name}`}
                   />
                   <input
                     className="field-input flex-1"
                     value={m.name}
                     onChange={(e) => updateMcp(m.id, { name: e.target.value })}
+                    aria-label="MCP server name"
                   />
                   <select
                     className="field-input w-28"
@@ -127,6 +131,7 @@ export function IntegrationsPanel() {
                         transport: e.target.value as "stdio" | "sse" | "http",
                       })
                     }
+                    aria-label={`${m.name} transport`}
                   >
                     <option value="stdio">stdio</option>
                     <option value="sse">sse</option>
@@ -136,6 +141,7 @@ export function IntegrationsPanel() {
                     type="button"
                     className="btn btn-ghost btn-icon"
                     onClick={() => removeMcp(m.id)}
+                    aria-label={`Remove ${m.name}`}
                   >
                     <Trash2 className="size-3.5" />
                   </button>
@@ -147,6 +153,7 @@ export function IntegrationsPanel() {
                       value={m.command ?? ""}
                       onChange={(e) => updateMcp(m.id, { command: e.target.value })}
                       placeholder="command"
+                      aria-label={`${m.name} command`}
                     />
                     <input
                       className="field-input font-mono text-xs"
@@ -157,6 +164,7 @@ export function IntegrationsPanel() {
                         })
                       }
                       placeholder="args space-separated"
+                      aria-label={`${m.name} arguments`}
                     />
                   </>
                 ) : (
@@ -165,6 +173,7 @@ export function IntegrationsPanel() {
                     value={m.url ?? ""}
                     onChange={(e) => updateMcp(m.id, { url: e.target.value })}
                     placeholder="https://…"
+                    aria-label={`${m.name} URL`}
                   />
                 )}
                 {m.notes && <p className="text-[0.6875rem] text-fg-subtle">{m.notes}</p>}

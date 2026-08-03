@@ -3,11 +3,11 @@
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
 ### Panel tab strips expose as plain buttons
-`01KZ310MPRYBVR1PXBM4ADY53P` · status: todo
+`01KZ310MPRYBVR1PXBM4ADY53P` · status: done
 - belongs-to: UI specs and wireframes for all views
 
 ### Delete buttons in Plugins & MCP have no accessible name
-`01KZ310MHH13W1Q0Q2421CRM02` · status: todo
+`01KZ310MHH13W1Q0Q2421CRM02` · status: done
 - belongs-to: UI specs and wireframes for all views
 
 ### UI spec and wireframe: integrations view
@@ -35,7 +35,7 @@ _The evidence chain: plan → item → ticket → code → release, forward and 
 - belongs-to: UI specs and wireframes for all views
 
 ### UI specs and wireframes for all views
-`01KZ310KAGP5JPFD23WNZTJH44` · status: todo
+`01KZ310KAGP5JPFD23WNZTJH44` · status: done
 - contains: UI spec and wireframe: learn view
 - contains: UI spec and wireframe: explorer view
 - contains: UI spec and wireframe: search view
