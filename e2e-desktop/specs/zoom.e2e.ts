@@ -25,7 +25,7 @@ describe("desktop zoom", () => {
     // Same hydration rule as web mode: static copy is present before React is
     // live, so wait for a client-rendered row before touching anything.
     await $("[data-testid='app-header']").waitForExist({ timeout: 60_000 });
-    await $("[role='option']").waitForDisplayed({ timeout: 60_000 });
+    await $("[role='treeitem']").waitForDisplayed({ timeout: 60_000 });
   });
 
   afterEach(async () => {
@@ -60,7 +60,7 @@ describe("desktop zoom", () => {
 
     const escaped = await browser.execute(() => {
       const w = document.documentElement.clientWidth;
-      return [...document.querySelectorAll("button, input, [role=option]")]
+      return [...document.querySelectorAll("button, input, [role=treeitem]")]
         .filter((el) => !el.closest("[data-scroll]"))
         .filter((el) => {
           const r = el.getBoundingClientRect();

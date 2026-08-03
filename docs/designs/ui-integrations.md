@@ -37,7 +37,7 @@ the DOM blocks the merge.
 |---|---|---|
 | header | brand, search, view-mode toggle, theme toggle, Learn / Open / Classify / Save | see `ui-editor.md` |
 | sidebar | 7 nav items in order: Learn OKF, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
-| sidebar | bundle name, validation badge, file filter, nested file tree | `role="listbox"` / `role="option"` |
+| sidebar | bundle name, validation badge, file filter, nested file tree | `role="tree"` / `role="treeitem"`, `data-kind`, `data-depth` |
 | main | page heading — “Plugins & MCP” | `h1` |
 | main | mode strip: Claude plugins, MCP servers, Export config | button text |
 | main | one card per plugin: enable checkbox, name, delete, then labelled Source and Description fields | `.panel-card`, `label[for]` |
@@ -65,9 +65,10 @@ model judgement has "the model was in a mood" as a failure mode.
 | 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
 | 7 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
 | 8 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
-| 9 | Disabled entries are visibly distinct from enabled ones | agent |
-| 10 | The persistence note is stated on the page, not only in docs | agent |
-| 11 | Delete is visually subordinate to the fields it sits beside | agent |
+| 9 | The file tree is a `role="tree"` with one tab stop and working Arrow/Home/End/typeahead | `tree.spec.ts` |
+| 10 | Disabled entries are visibly distinct from enabled ones | agent |
+| 11 | The persistence note is stated on the page, not only in docs | agent |
+| 12 | Delete is visually subordinate to the fields it sits beside | agent |
 
 ### Acceptable differences
 

@@ -47,7 +47,7 @@ test.describe("app shell layout", () => {
 
     const escaped = await page.evaluate(() => {
       const bad: string[] = [];
-      const sel = "button, input, a, [role=option]";
+      const sel = "button, input, a, [role=treeitem]";
       for (const el of document.querySelectorAll<HTMLElement>(sel)) {
         const r = el.getBoundingClientRect();
         if (r.width === 0 && r.height === 0) continue; // hidden is fine

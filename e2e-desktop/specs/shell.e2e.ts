@@ -14,7 +14,7 @@ describe("desktop shell", () => {
     // Same hydration rule as web mode: static copy is present before React is
     // live, so wait for a client-rendered row before asserting anything.
     await $("[data-testid='app-sidebar']").waitForExist({ timeout: 60_000 });
-    await $("[role='option']").waitForDisplayed({ timeout: 60_000 });
+    await $("[role='treeitem']").waitForDisplayed({ timeout: 60_000 });
 
     await expect($("[data-testid='app-main']")).toExist();
     await expect($("[data-testid='app-header']")).toExist();

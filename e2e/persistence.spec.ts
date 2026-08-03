@@ -13,7 +13,7 @@ test.describe("workspace open + save", () => {
     await expect(page.getByRole("dialog")).toBeHidden({ timeout: 15_000 });
 
     // Workspace load lands on explorer with concepts
-    await expect(page.locator('[role="option"]').first()).toBeVisible({
+    await expect(page.locator('[role="treeitem"]').first()).toBeVisible({
       timeout: 10_000,
     });
 

@@ -36,7 +36,7 @@ the DOM blocks the merge.
 |---|---|---|
 | header | brand, search, view-mode toggle, theme toggle, Learn / Open / Classify / Save | see `ui-editor.md` |
 | sidebar | 7 nav items in order: Learn OKF, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
-| sidebar | bundle name, validation badge, file filter, nested file tree | `role="listbox"` / `role="option"` |
+| sidebar | bundle name, validation badge, file filter, nested file tree | `role="tree"` / `role="treeitem"`, `data-kind`, `data-depth` |
 | main | page heading — “Graph & search” | `h1` |
 | main | graph search query field + Search | `aria-label="Graph search query"` |
 | main | search results list | — |
@@ -68,8 +68,9 @@ model judgement has "the model was in a mood" as a failure mode.
 | 7 | The four sections appear in this order: Impact, Pack, Neighborhood, Validation | `views.spec.ts › search view renders its documented structure` |
 | 8 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
 | 9 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
-| 10 | Empty result regions read as “not run yet”, not as “no results” | agent |
-| 11 | The three numeric inputs are visibly associated with their card | agent |
+| 10 | The file tree is a `role="tree"` with one tab stop and working Arrow/Home/End/typeahead | `tree.spec.ts` |
+| 11 | Empty result regions read as “not run yet”, not as “no results” | agent |
+| 12 | The three numeric inputs are visibly associated with their card | agent |
 
 ### Acceptable differences
 

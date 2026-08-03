@@ -37,7 +37,7 @@ the DOM blocks the merge.
 |---|---|---|
 | header | brand, search, view-mode toggle, theme toggle, Learn / Open / Classify / Save | see `ui-editor.md` |
 | sidebar | 7 nav items in order: Learn OKF, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
-| sidebar | bundle name, validation badge, file filter, nested file tree | `role="listbox"` / `role="option"` |
+| sidebar | bundle name, validation badge, file filter, nested file tree | `role="tree"` / `role="treeitem"`, `data-kind`, `data-depth` |
 | main | page heading — “Learn OKF by using it” | `h1` |
 | main | step heading — “Step N of 8: …” | `h2` |
 | main | step body copy | — |
@@ -63,9 +63,10 @@ model judgement has "the model was in a mood" as a failure mode.
 | 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
 | 7 | Every visible control has an accessible name, in every sub-tab | `views.spec.ts › every control in every view has an accessible name` |
 | 8 | Each `.view-toggle` strip marks exactly one button `aria-pressed="true"` | `views.spec.ts › every view-toggle strip marks exactly one button pressed` |
-| 9 | The step counter reads “Step N of 8” and Back is unavailable on step 1 | agent |
-| 10 | The four shortcut cards each state an action and its payoff | agent |
-| 11 | The tour reads as an invitation, not a wall of text | agent |
+| 9 | The file tree is a `role="tree"` with one tab stop and working Arrow/Home/End/typeahead | `tree.spec.ts` |
+| 10 | The step counter reads “Step N of 8” and Back is unavailable on step 1 | agent |
+| 11 | The four shortcut cards each state an action and its payoff | agent |
+| 12 | The tour reads as an invitation, not a wall of text | agent |
 
 ### Acceptable differences
 
