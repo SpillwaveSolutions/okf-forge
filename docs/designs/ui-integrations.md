@@ -1,0 +1,99 @@
+---
+wiki_key: design/ui-integrations
+doc_type: design
+truth_state: current
+git_hash: d3d7c7a
+title: "UI spec — Plugins & MCP view"
+# Pins the wiki page name. Without this, ia_render's page_name() maps every
+# design doc whose filename lacks "design_doc" onto "Code-Walkthrough".
+wiki: https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-UI-Integrations
+---
+
+# UI spec — Plugins & MCP view
+
+Plugins & MCP configures which Claude Code plugins and MCP servers the
+workspace declares, and exports that configuration. Everything on this view
+persists to `localStorage` rather than to the bundle — it is machine state, not
+graph state.
+
+Reached by `nav-integrations`; `main[data-view]` reads `integrations` while mounted.
+
+**Wireframe:** ![integrations wireframe](ui-integrations.png)
+
+The wireframe is authoritative for exactly three things: the **element
+inventory** below, **containment and reading order** (header spans the top;
+sidebar left of main; status bar last), and **ordinal sequence**. It is **not**
+authoritative for pixels, spacing, colour, typography, icons, or density — it
+draws monochrome boxes and the real UI is a dense workbench. Never diff a
+screenshot against it.
+
+## Element inventory
+
+This table is a contract. Adding or removing a control means updating this spec
+and its `git_hash` in the same commit. A control listed here and absent from
+the DOM blocks the merge.
+
+| Region | Element | Addressable by |
+|---|---|---|
+| header | brand, search, view-mode toggle, theme toggle, Learn / Open / Classify / Save | see `ui-editor.md` |
+| sidebar | 7 nav items in order: Learn OKF, Explorer, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP | `nav-learn` … `nav-integrations` |
+| sidebar | bundle name, validation badge, file filter, nested file tree | `role="listbox"` / `role="option"` |
+| main | page heading — “Plugins & MCP” | `h1` |
+| main | mode strip: Claude plugins, MCP servers, Export config | button text |
+| main | one card per plugin: enable checkbox, name, source, description, delete | `.panel-card` |
+| main | Add plugin | button text |
+| main | one card per MCP server: enable, command, args, URL, delete | `.panel-card` |
+| main | Add MCP server | button text |
+| main | generated settings snippet under Export config | — |
+| status | concept/edge counts, selected path, dirty marker, zoom level | `app-status`, `zoom-level` |
+
+## Rubric — Plugins & MCP view
+
+Rows with a named **Check** are the gate. Rows marked `agent` are **never** a
+gate — they are reported in the PR body and nothing more. A merge blocked by
+model judgement has "the model was in a mood" as a failure mode.
+
+### Must match
+
+| # | Criterion | Check |
+|---|---|---|
+| 1 | Sidebar occupies the left column; main starts at or after its right edge | `layout.spec.ts › grid topology` |
+| 2 | `main[data-view]` equals `integrations` after clicking `nav-integrations` | `views.spec.ts › integrations view renders its documented structure` |
+| 3 | The documented `h1` and section headings are present, and the panel-card count meets the inventory minimum | `views.spec.ts › integrations view renders its documented structure` |
+| 4 | Zero console or page errors on mount | `views.spec.ts › integrations view renders its documented structure` |
+| 5 | No interactive element escapes sideways at 1280×800 | `views.spec.ts › no view lets an interactive element escape sideways` |
+| 6 | The theme toggle cycles and `html[data-theme]` follows | `layout.spec.ts › theme toggle cycles system, light, and dark` |
+| 7 | Disabled entries are visibly distinct from enabled ones | agent |
+| 8 | The persistence note is stated on the page, not only in docs | agent |
+| 9 | Delete is visually subordinate to the fields it sits beside | agent |
+
+### Acceptable differences
+
+- Any spacing, font size, radius, shadow, or colour value.
+- Icon choice, provided the accessible name is unchanged.
+- Deliberate truncation on paths, badges, and the status bar.
+- Wireframe geometry and proportion. Topology and inventory only.
+- Dynamic content: concept counts, edge counts, timestamps, and anything driven
+  by the loaded bundle rather than by the code.
+- Either theme. Visual rows are judged **within** a theme, never across the two:
+  light and dark are different palettes, not a defect in one of them.
+- Any zoom level. Density at 200% is not a finding; a control that has become
+  unreachable is.
+
+### Failure criteria
+
+- Any Must-match row with a named Check failing → **blocks merge**.
+- A control listed in the element inventory and absent from the DOM → **blocks merge**.
+- Any `agent` row failing → comment on the PR; does **not** block.
+
+## Known gaps
+
+Tracked separately, deliberately not fixed by writing this spec:
+
+- **The delete buttons have no accessible name.** They render a trash icon with
+  no `aria-label`, so assistive tech announces an unnamed button next to every
+  editable field. Tracked as a bug.
+- The mode strip is a tab strip rendered as plain buttons — same gap as Classify
+  and DeepAgents.
+- Plugin and MCP fields use `placeholder` as their only label, which disappears
+  the moment the user types.

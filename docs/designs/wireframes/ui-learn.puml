@@ -1,0 +1,57 @@
+@startsalt
+'
+' Wireframe — Learn view. Authoritative for THREE things only:
+'   1. element inventory (which named controls exist)
+'   2. containment and reading order (header / sidebar | main / status)
+'   3. ordinal sequence (nav order)
+'
+' NOT authoritative for pixels, spacing, colour, typography, icons, density or
+' state styling. Salt draws monochrome boxes; the real UI is a dense workbench
+' with two themes. Never diff a screenshot against this render.
+'
+' Render: npm run wireframes
+'
+{
+  {* <&git-branch> OKFForge | "  Search concepts, types, tags...  " | [Preview] | [Markdown] | [Split] | [theme] | [Learn] | [Open] | [Classify] | [Save] }
+  {
+    {
+      <b>NAV
+      [<b>Learn OKF]
+      [Explorer]
+      [Editor]
+      [Graph & Search]
+      [Classify]
+      [DeepAgents]
+      [Plugins & MCP]
+      --
+      <b>SAMPLE-OKF | valid
+      "  Filter files...  "
+      --
+      {T
+      + agents
+      ++ graph-engineer.md
+      ++ index.md
+      + knowledge
+      ++ index.md
+      }
+    } |
+    {
+        <b>Learn OKF by using it
+        .
+        <b>Step 1 of 8: What is OKF?
+        "step body copy ..."
+        [Back] | [Next]
+        ==
+        {
+          [<b>Open Graph Engineer\ninspect a real AgentNode]
+          [<b>Run impact analysis\nblast radius before editing]
+        }
+        {
+          [<b>Build a context pack\n2-hop progressive disclosure]
+          [<b>Wire DeepAgents\ninstall okf skills as subagents]
+        }
+      }
+  }
+  {- 22 concepts - 83 edges - healthy | agents/graph-engineer.md }
+}
+@endsalt

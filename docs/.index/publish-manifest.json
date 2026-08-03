@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "ccaa365a8f68",
+   "render_hash": "ea8b84b9a53f",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -281,6 +281,106 @@
    "wiki_key": "item/01KZ2S1VAJNPP9M0CA9S877WE5"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZ30X0899FM2XNYRV70VFV68",
+   "render": "as-is",
+   "render_hash": "a3f05e8278f0",
+   "source": "docs/.index/rendered/tickets/01KZ30X0899FM2XNYRV70VFV68.md",
+   "title": "Refresh CLAUDE.md after v0.1.0",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ30X0899FM2XNYRV70VFV68"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310KAGP5JPFD23WNZTJH44",
+   "render": "as-is",
+   "render_hash": "e07695b51530",
+   "source": "docs/.index/rendered/tickets/01KZ310KAGP5JPFD23WNZTJH44.md",
+   "title": "UI specs and wireframes for all views",
+   "truth_state": "open",
+   "wiki_key": "item/01KZ310KAGP5JPFD23WNZTJH44"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310KGJ6ECASHNKX6KEAD6T",
+   "render": "as-is",
+   "render_hash": "f95e30acf6b4",
+   "source": "docs/.index/rendered/tickets/01KZ310KGJ6ECASHNKX6KEAD6T.md",
+   "title": "UI spec and wireframe: learn view",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ310KGJ6ECASHNKX6KEAD6T"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310KPD830HD4QFZKN70ETJ",
+   "render": "as-is",
+   "render_hash": "76e9078ce1b4",
+   "source": "docs/.index/rendered/tickets/01KZ310KPD830HD4QFZKN70ETJ.md",
+   "title": "UI spec and wireframe: explorer view",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ310KPD830HD4QFZKN70ETJ"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310KVM2C8EGTBAQATCAVY2",
+   "render": "as-is",
+   "render_hash": "08709b22bd21",
+   "source": "docs/.index/rendered/tickets/01KZ310KVM2C8EGTBAQATCAVY2.md",
+   "title": "UI spec and wireframe: search view",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ310KVM2C8EGTBAQATCAVY2"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310M0PYPD21TQWWSXKY1W0",
+   "render": "as-is",
+   "render_hash": "ed809caa9903",
+   "source": "docs/.index/rendered/tickets/01KZ310M0PYPD21TQWWSXKY1W0.md",
+   "title": "UI spec and wireframe: classify view",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ310M0PYPD21TQWWSXKY1W0"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310M5WKY73X6TYSEYRAJFN",
+   "render": "as-is",
+   "render_hash": "39481594f841",
+   "source": "docs/.index/rendered/tickets/01KZ310M5WKY73X6TYSEYRAJFN.md",
+   "title": "UI spec and wireframe: deepagent view",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ310M5WKY73X6TYSEYRAJFN"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310MBKRS0X05XEC85ZYD8N",
+   "render": "as-is",
+   "render_hash": "ee91c210489c",
+   "source": "docs/.index/rendered/tickets/01KZ310MBKRS0X05XEC85ZYD8N.md",
+   "title": "UI spec and wireframe: integrations view",
+   "truth_state": "done",
+   "wiki_key": "item/01KZ310MBKRS0X05XEC85ZYD8N"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310MHH13W1Q0Q2421CRM02",
+   "render": "as-is",
+   "render_hash": "487019360150",
+   "source": "docs/.index/rendered/tickets/01KZ310MHH13W1Q0Q2421CRM02.md",
+   "title": "Delete buttons in Plugins & MCP have no accessible name",
+   "truth_state": "open",
+   "wiki_key": "item/01KZ310MHH13W1Q0Q2421CRM02"
+  },
+  {
+   "frozen": false,
+   "page_name": "Ticket-01KZ310MPRYBVR1PXBM4ADY53P",
+   "render": "as-is",
+   "render_hash": "0f831bd9235f",
+   "source": "docs/.index/rendered/tickets/01KZ310MPRYBVR1PXBM4ADY53P.md",
+   "title": "Panel tab strips expose as plain buttons",
+   "truth_state": "open",
+   "wiki_key": "item/01KZ310MPRYBVR1PXBM4ADY53P"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -338,6 +438,28 @@
   {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
+   "page_name": "Design-UI-Classify",
+   "render": "doc+banner",
+   "render_hash": "8923914a03c2",
+   "source": "docs/designs/ui-classify.md",
+   "title": "UI spec \u2014 Classify view",
+   "truth_state": "current",
+   "wiki_key": "design/ui-classify"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
+   "page_name": "Design-UI-Deepagent",
+   "render": "doc+banner",
+   "render_hash": "6902e4d7f34f",
+   "source": "docs/designs/ui-deepagent.md",
+   "title": "UI spec \u2014 DeepAgents view",
+   "truth_state": "current",
+   "wiki_key": "design/ui-deepagent"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
    "page_name": "Design-UI-Editor",
    "render": "doc+banner",
    "render_hash": "5c1156e812ee",
@@ -345,6 +467,50 @@
    "title": "UI spec \u2014 Editor view",
    "truth_state": "current",
    "wiki_key": "design/ui-editor"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
+   "page_name": "Design-UI-Explorer",
+   "render": "doc+banner",
+   "render_hash": "a6876b3e84fc",
+   "source": "docs/designs/ui-explorer.md",
+   "title": "UI spec \u2014 Explorer view",
+   "truth_state": "current",
+   "wiki_key": "design/ui-explorer"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
+   "page_name": "Design-UI-Integrations",
+   "render": "doc+banner",
+   "render_hash": "c73b09996e96",
+   "source": "docs/designs/ui-integrations.md",
+   "title": "UI spec \u2014 Plugins & MCP view",
+   "truth_state": "current",
+   "wiki_key": "design/ui-integrations"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
+   "page_name": "Design-UI-Learn",
+   "render": "doc+banner",
+   "render_hash": "52f91023f046",
+   "source": "docs/designs/ui-learn.md",
+   "title": "UI spec \u2014 Learn view",
+   "truth_state": "current",
+   "wiki_key": "design/ui-learn"
+  },
+  {
+   "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
+   "frozen": true,
+   "page_name": "Design-UI-Search",
+   "render": "doc+banner",
+   "render_hash": "c9cb5ac60d66",
+   "source": "docs/designs/ui-search.md",
+   "title": "UI spec \u2014 Graph & search view",
+   "truth_state": "current",
+   "wiki_key": "design/ui-search"
   },
   {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
@@ -358,11 +524,11 @@
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T03:07:19Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T05:24:21Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "89fb653579db",
+   "render_hash": "769807f81008",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

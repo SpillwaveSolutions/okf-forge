@@ -1,0 +1,69 @@
+@startsalt
+'
+' Wireframe — Explorer view. Authoritative for THREE things only:
+'   1. element inventory (which named controls exist)
+'   2. containment and reading order (header / sidebar | main / status)
+'   3. ordinal sequence (nav order)
+'
+' NOT authoritative for pixels, spacing, colour, typography, icons, density or
+' state styling. Salt draws monochrome boxes; the real UI is a dense workbench
+' with two themes. Never diff a screenshot against this render.
+'
+' Render: npm run wireframes
+'
+{
+  {* <&git-branch> OKFForge | "  Search concepts, types, tags...  " | [Preview] | [Markdown] | [Split] | [theme] | [Learn] | [Open] | [Classify] | [Save] }
+  {
+    {
+      <b>NAV
+      [Learn OKF]
+      [<b>Explorer]
+      [Editor]
+      [Graph & Search]
+      [Classify]
+      [DeepAgents]
+      [Plugins & MCP]
+      --
+      <b>SAMPLE-OKF | valid
+      "  Filter files...  "
+      --
+      {T
+      + agents
+      ++ graph-engineer.md
+      ++ index.md
+      + knowledge
+      ++ index.md
+      }
+    } |
+    {
+        <b>sample-okf | 22 concepts | 83 edges | valid
+        "https://github.com/owner/repo/tree/main/sample-okf"
+        {Index-7 | Reference-3 | Playbook-3 | AgentNode-2 | Workflow-2}
+        ==
+        <b>Focus: agents/graph-engineer.md
+        {
+          "        (neighborhood graph)        "
+        }
+        ==
+        {
+          {
+            <b>AGENTS
+            [Graph Engineer]
+            [Agents catalog]
+          } |
+          {
+            <b>DECISIONS
+            [Decisions catalog]
+            [Ship as one plugin]
+          } |
+          {
+            <b>(ROOT)
+            [OKF Plugin]
+            [log]
+          }
+        }
+      }
+  }
+  {- 22 concepts - 83 edges - healthy | agents/graph-engineer.md }
+}
+@endsalt

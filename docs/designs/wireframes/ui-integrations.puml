@@ -1,0 +1,62 @@
+@startsalt
+'
+' Wireframe — Plugins & MCP view. Authoritative for THREE things only:
+'   1. element inventory (which named controls exist)
+'   2. containment and reading order (header / sidebar | main / status)
+'   3. ordinal sequence (nav order)
+'
+' NOT authoritative for pixels, spacing, colour, typography, icons, density or
+' state styling. Salt draws monochrome boxes; the real UI is a dense workbench
+' with two themes. Never diff a screenshot against this render.
+'
+' Render: npm run wireframes
+'
+{
+  {* <&git-branch> OKFForge | "  Search concepts, types, tags...  " | [Preview] | [Markdown] | [Split] | [theme] | [Learn] | [Open] | [Classify] | [Save] }
+  {
+    {
+      <b>NAV
+      [Learn OKF]
+      [Explorer]
+      [Editor]
+      [Graph & Search]
+      [Classify]
+      [DeepAgents]
+      [<b>Plugins & MCP]
+      --
+      <b>SAMPLE-OKF | valid
+      "  Filter files...  "
+      --
+      {T
+      + agents
+      ++ graph-engineer.md
+      ++ index.md
+      + knowledge
+      ++ index.md
+      }
+    } |
+    {
+        <b>Plugins & MCP
+        "Settings persist in this browser."
+        {
+          [Claude plugins] | [MCP servers] | [Export config]
+        }
+        ==
+        {
+          [X] | "  okf-graph-eng  " | [del]
+          "  SpillwaveSolutions/okf-plugin  "
+          "  Graph engineering for OKF  "
+        }
+        [+ Add plugin]
+        ==
+        {
+          [X] | "  okf-mcp  " | [del]
+          command: | "  npx  " | args: | "  -y okf-mcp  "
+          url: | "  https://...  "
+        }
+        [+ Add MCP server]
+      }
+  }
+  {- 22 concepts - 83 edges - healthy | agents/graph-engineer.md }
+}
+@endsalt
