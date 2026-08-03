@@ -24,7 +24,7 @@
    "frozen": false,
    "page_name": "Index-Releases",
    "render": "as-is",
-   "render_hash": "f45668ba0034",
+   "render_hash": "d2b4c5b46692",
    "source": "docs/.index/rendered/releases.md",
    "title": "Releases Index",
    "truth_state": "current",
@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "58545b5f6a41",
+   "render_hash": "781fd2c6f343",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -271,6 +271,16 @@
    "wiki_key": "item/01KZ2M8DF9ZY5WMB968Y54WT8R"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZ2S1VAJNPP9M0CA9S877WE5",
+   "render": "as-is",
+   "render_hash": "3f72ea9ccc28",
+   "source": "docs/.index/rendered/tickets/01KZ2S1VAJNPP9M0CA9S877WE5.md",
+   "title": "Cut v0.1.0",
+   "truth_state": "open",
+   "wiki_key": "item/01KZ2S1VAJNPP9M0CA9S877WE5"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -304,19 +314,30 @@
    "wiki_key": "plan/2026-08-02-view-preferences"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T01:48:21Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T03:00:37Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "e107170de11c",
+   "render_hash": "c985ed709419",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",
    "wiki_key": "roadmap"
+  },
+  {
+   "banner": "> **Snapshot** of release v0.1.0 (2026-08-03) \u2014 frozen record. The current version is [[Roadmap]].",
+   "frozen": true,
+   "page_name": "Roadmap-2026-08-03_v0.1.0-release",
+   "render": "doc+banner",
+   "render_hash": "e9e9434351a1",
+   "source": "docs/roadmap/2026-08-03_v0.1.0-release.md",
+   "title": "Roadmap",
+   "truth_state": "snapshot",
+   "wiki_key": "roadmap-snapshot/2026-08-03_v0.1.0-release"
   }
  ],
  "sidebar": {
-  "render_hash": "bf90917cf238",
+  "render_hash": "c819f3f39f83",
   "source": "docs/.index/rendered/_Sidebar.md"
  },
  "version": 1
