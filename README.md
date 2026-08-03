@@ -101,6 +101,8 @@ End-user desktop walkthrough: **[USER_GUIDE.md §2](./USER_GUIDE.md#2-running-as
 - **DeepAgents** — map okf-graph-eng skills → JSON / Python export  
 - **Plugins & MCP** — configure Claude plugins and MCP servers (browser-persisted)  
 - **Desktop or web** — same UI; native FS jail on Tauri, `/api/fs` for Playwright  
+- **Light, dark, or system** theme — follows your OS by default, remembered after that  
+- **Zoom the type** on desktop with ⌘+ / ⌘− / ⌘0, also remembered  
 
 Details: **[FEATURES.md](./FEATURES.md)** · Walkthrough: **[USER_GUIDE.md](./USER_GUIDE.md)**
 

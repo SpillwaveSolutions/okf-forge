@@ -384,6 +384,16 @@ Desktop-specific issues: [§2.7](#27-desktop-troubleshooting).
 ## 14. Keyboard & a11y notes
 
 - **⌘S / Ctrl+S** — save  
+- **⌘+ / ⌘− / ⌘0** — zoom the interface in, out, and back to 100%. **Desktop
+  only**: the Tauri webview has no built-in zoom, which is why this exists,
+  while a browser already provides it and remembers it per site. Eight steps
+  from 80% to 200%; the level appears in the status bar whenever it is not
+  100%, and survives a restart.
+- **Theme** — the sun/moon/monitor button in the header cycles
+  **system → light → dark**. It starts on *system*, so the app matches your
+  desktop, and it follows a change to your OS setting live while it stays on
+  system. Your choice is remembered and applied before the window first
+  paints, so there is no flash of the wrong theme on launch.
 - File list uses `listbox` / `option` roles for keyboard and e2e selection  
 - Open dialog is `role="dialog"` with aria-label  
 - Focus-visible outlines on interactive controls  
