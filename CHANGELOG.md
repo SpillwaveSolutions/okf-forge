@@ -3,7 +3,7 @@
 All notable changes to OKF Forge are recorded here. Dated sections are frozen:
 corrections go in the next release's notes, never into a shipped section.
 
-## 0.1.1 — unreleased
+## 0.1.1 — 2026-08-04
 
 ### Fixed
 

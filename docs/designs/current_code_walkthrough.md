@@ -2,17 +2,17 @@
 wiki_key: design/current-code-walkthrough
 doc_type: design
 truth_state: current
-tag: v0.1.0
-git_hash: 3feaf04b9e9a1c31532c5567cc52a48017b93328
+tag: v0.1.1
+git_hash: PLACEHOLDER_SHA
 branch: main
-generated_at: 2026-08-03T01:55:00Z
+generated_at: 2026-08-04T03:26:00Z
 roadmap: docs/roadmap.md
 ---
 
 # OKF Forge — Code Walkthrough
 
 A reading order for someone opening this repository for the first time.
-Generated against `3feaf04`, tag `v0.1.0`. Follow it top to bottom and the
+Generated against `PLACEHOLDER_SHORT`, tag `v0.1.1`. Follow it top to bottom and the
 architecture assembles itself; jump into `components/` first and it will not.
 
 ## Where to start: `src/lib/okf/types.ts`
@@ -74,7 +74,7 @@ bundle keys are relative to the logical root while the filesystem is not.
 In-memory bundles clear `workspaceRoot` entirely so they cannot write to disk.
 
 **`recompute`** reruns `buildFromBundle` over the whole bundle on every save.
-`MAX_WORKSPACE_MD_FILES` (`:170`) caps this at 400 files. Past that cap the
+`MAX_WORKSPACE_MD_FILES` (`:174`) caps this at 400 files. Past that cap the
 approach does not degrade gracefully — it is a cliff, not a slope.
 
 ## The runtime split: `src/lib/platform/storage.ts`
@@ -84,7 +84,7 @@ interface with two implementations, `HttpStorage` and `TauriStorage`, and one
 selector:
 
 - `isTauriRuntime()` (`:124-131`) sniffs `window.__TAURI_INTERNALS__`.
-- `getStorage()` (`:134-137`) caches the choice at module scope.
+- `getStorage()` (`:133-137`) caches the choice at module scope.
 
 Note the Tauri API imports are **dynamic** (`await import(...)`). That is what
 keeps them out of the browser bundle. A static import here would ship Tauri
@@ -117,10 +117,17 @@ Changing filesystem behavior means changing both files and both test suites.
 
 ## The desktop surface: `src-tauri/src/lib.rs`
 
-Five commands, and they are the entire IPC contract: `set_workspace` (`:24`),
-`get_workspace` (`:40`), `read_file` (`:46`), `write_file` (`:52`),
-`list_markdown_files` (`:62`). The workspace root lives in a
-`Mutex<WorkspaceState>`, which is why only one window can be driven at a time.
+Eight commands, and they are the entire IPC contract: `set_workspace` (`:25`),
+`get_workspace` (`:41`), `read_file` (`:47`), `write_file` (`:53`),
+`list_markdown_files` (`:63`), plus `cli_status` (`:91`), `install_cli`
+(`:96`), and `uninstall_cli` (`:101`). The workspace root lives in a
+`Mutex<WorkspaceState>`, one per process.
+
+`run()` (`:106`) does two things before the builder: it handles `--print-shim`,
+and it scans argv for `--workspace <path>` and seeds that mutex. The seeding is
+the whole reason `okff` needs no new IPC — `get_workspace` already answers
+"which folder?", so a workspace set before the window exists is visible to the
+frontend for free.
 
 The bug class here is silent: the frontend sends
 `invoke("list_markdown_files", { path })` and Rust declares
@@ -135,16 +142,39 @@ at runtime from `automation-capability.json` — deliberately outside
 `capabilities/`, which `tauri-build` scans unconditionally and which would
 therefore break every build made without the feature.
 
+## The launcher: `src-tauri/src/cli.rs`
+
+Read this after `lib.rs`. It renders the `okff` shim, parses `--workspace`, and
+installs to `/usr/local/bin`.
+
+Two decisions are worth the reading. First, the shim resolves the app **by
+bundle identifier before absolute path** — a hardcoded path breaks the moment
+someone drags `OKFForge.app` elsewhere, so the path survives only as a fallback
+for a bundle LaunchServices has not registered yet. Second, rendering and
+argument parsing are deliberately platform-independent while only the install
+side effects are `#[cfg(target_os = "macos")]`, which is what keeps nine of the
+eleven Rust tests running on the Linux CI runner.
+
+`workspace_from_args` (`:36`) skips unknown arguments rather than reading the
+first positional one. macOS hands every GUI launch a `-psn_0_…` process-serial
+argument, and a positional reading would take that for a directory on every
+double-click.
+
+`--print-shim` in `lib.rs` exists for verification: it writes the exact
+installed script to stdout, so the shim can be tested end to end without
+touching a system directory — and without a hand-copied second copy of the text
+that would drift from the real one.
+
 ## The UI: `src/components/okf/`
 
-Thirteen files, 2,366 lines. `AppShell.tsx` is the frame; read it first.
+Fourteen files, 2,660 lines. `AppShell.tsx` is the frame; read it first.
 
 The structural fact that surprises people: **there is effectively one route.**
-All seven views are conditional renders driven by `store.view` (`:52-58`), not
+All eight views are conditional renders driven by `store.view`, not
 by URLs. `data-view` on `<main>` is how tests address a view, because nothing
 else identifies which panel is mounted.
 
-`AppShell.tsx` also owns the grid. The comment at `:44-46` records a real
+`AppShell.tsx` also owns the grid. The comment at `:86-88` records a real
 regression: wrapping the sidebar and main in a container collapsed both into
 the 280px left column, so the panels rendered but looked dead. `layout.spec.ts`
 now asserts the topology that prevents it.
@@ -152,6 +182,24 @@ now asserts the topology that prevents it.
 Three `useEffect` blocks handle, in order: bundle initialization, preference
 boot plus the OS theme listener, and two keyboard handlers — save, and the
 desktop-only zoom bindings guarded by `isTauriRuntime()`.
+
+## The tree's keyboard model: `src/lib/okf/tree.ts`
+
+Separate from `Sidebar.tsx` for the same reason `graph.ts` is separate from the
+panels: this is the branchy part, and branchy things need tests.
+
+`role="tree"` is a promise to assistive technology that arrows, Home/End, and
+typeahead behave a specific way. Shipping the role without honouring it is
+worse than the invalid `role="listbox"` it replaced, because it advertises a
+contract the widget does not keep. `flattenTree` (`:43`) produces the visible
+rows in exactly arrow-key order, which reduces navigation to array indexing;
+`resolveTreeKey` (`:85`) maps a key press to an action or to `null`, and the
+`null` is what lets the caller skip `preventDefault` so Tab still works.
+
+One detail only the browser test caught: the roving tabindex has to follow
+*real* focus, not just focus the component moved itself. A click or a
+screen-reader jump does not go through the key handler, and without an
+`onFocus` on each row the keyboard state and the DOM diverge.
 
 ## Preferences: `src/lib/okf/prefs.ts`
 
