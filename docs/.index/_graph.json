@@ -577,7 +577,7 @@
   },
   "item/01KZ4FN7VEE25SEF6JCFG5J90T": {
    "doc_type": "item",
-   "status": "todo",
+   "status": "done",
    "title": "e2e persistence spec writes into the tracked public/sample-okf fixture"
   },
   "plan/2026-08-02-view-preferences": {

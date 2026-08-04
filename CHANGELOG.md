@@ -7,6 +7,19 @@ corrections go in the next release's notes, never into a shipped section.
 
 ### Fixed
 
+- **The e2e suite no longer writes into the tracked `public/sample-okf`
+  fixture.** `webServer.env` reaches only a dev server Playwright spawns
+  itself, and `reuseExistingServer` is on outside CI — so a dev server started
+  by hand, which has no `OKF_WORKSPACE` and falls back to the fixture, was
+  silently reused and `/api/fs/write` mutated tracked files. Nine had already
+  been committed. A `globalSetup` now refuses to run at all when the server is
+  serving a directory inside the repo.
+- **The e2e scratch workspace is one directory, not one per process.** The
+  config is loaded in the main process and again in every worker, so
+  `mkdtempSync` handed each a different tree: the dev server served one while
+  the workers believed in another, and every run orphaned the rest under
+  `/tmp` (77 had accumulated). The path is now deterministic and reseeded only
+  outside workers.
 - Saving a file no longer collapses the sidebar tree. `recompute` rebuilds the
   concepts map, giving the memoized tree a new identity, and the effect that
   seeds expanded folders listed that identity in its dependencies.

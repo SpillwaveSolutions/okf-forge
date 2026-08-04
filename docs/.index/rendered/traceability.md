@@ -3,7 +3,7 @@
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
 ### e2e persistence spec writes into the tracked public/sample-okf fixture
-`01KZ4FN7VEE25SEF6JCFG5J90T` · status: todo
+`01KZ4FN7VEE25SEF6JCFG5J90T` · status: done
 
 ### Frontend: Settings view, 8th nav item, CLI install card
 `01KZ4EZ2HJSX39N7Q8FY0WVPQK` · status: done

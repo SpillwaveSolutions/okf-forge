@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "2784bb837665",
+   "render_hash": "9bc26744e885",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -494,10 +494,10 @@
    "frozen": false,
    "page_name": "Ticket-01KZ4FN7VEE25SEF6JCFG5J90T",
    "render": "as-is",
-   "render_hash": "1b3f6c9ed6aa",
+   "render_hash": "5ebc036c8ad0",
    "source": "docs/.index/rendered/tickets/01KZ4FN7VEE25SEF6JCFG5J90T.md",
    "title": "e2e persistence spec writes into the tracked public/sample-okf fixture",
-   "truth_state": "open",
+   "truth_state": "done",
    "wiki_key": "item/01KZ4FN7VEE25SEF6JCFG5J90T"
   },
   {
@@ -666,11 +666,11 @@
    "wiki_key": "plan/2026-08-03-okff-cli"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T19:04:38Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-04T03:21:30Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "2f82a35f1b96",
+   "render_hash": "9c1325edefd9",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

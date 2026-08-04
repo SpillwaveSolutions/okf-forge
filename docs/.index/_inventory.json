@@ -201,10 +201,10 @@
   {
    "canonical_key": "roadmap",
    "doc_type": "roadmap",
-   "generated_at": "2026-08-03T19:04:38Z",
+   "generated_at": "2026-08-04T03:21:30Z",
    "slug": "roadmap",
    "source": "docs/roadmap.md",
-   "source_hash": "05ef43bb",
+   "source_hash": 62070618,
    "title": "Roadmap",
    "truth_state": "current",
    "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap",
