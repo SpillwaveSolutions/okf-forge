@@ -24,7 +24,7 @@
    "frozen": false,
    "page_name": "Index-Releases",
    "render": "as-is",
-   "render_hash": "39bcebdf8477",
+   "render_hash": "31fa5433b290",
    "source": "docs/.index/rendered/releases.md",
    "title": "Releases Index",
    "truth_state": "current",
@@ -59,6 +59,16 @@
    "title": "Release v0.1.0",
    "truth_state": "shipped",
    "wiki_key": "release/v0.1.0"
+  },
+  {
+   "frozen": false,
+   "page_name": "Release-v0.1.1",
+   "render": "as-is",
+   "render_hash": "28d782897376",
+   "source": "docs/.index/rendered/releases/v0.1.1.md",
+   "title": "Release v0.1.1",
+   "truth_state": "shipped",
+   "wiki_key": "release/v0.1.1"
   },
   {
    "frozen": false,
@@ -534,22 +544,22 @@
    "wiki_key": "design/2026-08-03_v0.1.0-release-design-doc"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T01:55:00Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T20:00:00Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Code-Walkthrough",
    "render": "doc+banner",
-   "render_hash": "9c731b56bcfb",
+   "render_hash": "6112803081f9",
    "source": "docs/designs/current_code_walkthrough.md",
    "title": "OKF Forge \u2014 Code Walkthrough",
    "truth_state": "current",
    "wiki_key": "design/current-code-walkthrough"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T01:55:00Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T20:00:00Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Design-Doc",
    "render": "doc+banner",
-   "render_hash": "5d0accea596e",
+   "render_hash": "32a8e9e292ba",
    "source": "docs/designs/current_design_doc.md",
    "title": "OKF Forge \u2014 Design Document",
    "truth_state": "current",
@@ -686,10 +696,21 @@
    "title": "Roadmap",
    "truth_state": "snapshot",
    "wiki_key": "roadmap-snapshot/2026-08-03_v0.1.0-release"
+  },
+  {
+   "banner": "> **Snapshot** of release v0.1.1 (2026-08-04) \u2014 frozen record. The current version is [[Roadmap]].",
+   "frozen": true,
+   "page_name": "Roadmap-2026-08-04_v0.1.1-release",
+   "render": "doc+banner",
+   "render_hash": "5b0ffa90bad0",
+   "source": "docs/roadmap/2026-08-04_v0.1.1-release.md",
+   "title": "Roadmap",
+   "truth_state": "snapshot",
+   "wiki_key": "roadmap-snapshot/2026-08-04_v0.1.1-release"
   }
  ],
  "sidebar": {
-  "render_hash": "c819f3f39f83",
+  "render_hash": "9b1ac1091b9b",
   "source": "docs/.index/rendered/_Sidebar.md"
  },
  "version": 1

@@ -2,10 +2,10 @@
 wiki_key: design/current-design-doc
 doc_type: design
 truth_state: current
-tag: v0.1.0
-git_hash: 3feaf04b9e9a1c31532c5567cc52a48017b93328
+tag: v0.1.1
+git_hash: PLACEHOLDER_SHA
 branch: main
-generated_at: 2026-08-03T01:55:00Z
+generated_at: 2026-08-04T03:26:00Z
 roadmap: docs/roadmap.md
 ---
 
@@ -13,7 +13,7 @@ roadmap: docs/roadmap.md
 
 ## 1. Document Overview
 
-Generated against `3feaf04` on `main`, tag `v0.1.0`. Every code claim below
+Generated against `PLACEHOLDER_SHORT` on `main`, tag `v0.1.1`. Every code claim below
 cites a repository-relative path and, where useful, a function and line range.
 
 **Sections omitted, with reasons.** Database design — the only SQL in the repo
@@ -37,10 +37,10 @@ It ships as one user interface on two runtimes: a web build served through
 TanStack Start and Nitro, and a desktop build in Tauri 2 with a native folder
 picker and a Rust filesystem jail.
 
-Roughly 6,400 lines of first-party code: 3,209 in the domain core
-(`src/lib/okf/`, 10 files), 2,366 in the UI (`src/components/okf/`, 13 files),
-484 in the platform layer (`src/lib/platform/`, 4 files), and 362 in Rust
-(`src-tauri/src/`, 3 files).
+Roughly 7,100 lines of first-party code, excluding tests: 3,294 in the domain
+core (`src/lib/okf/`, 10 files), 2,660 in the UI (`src/components/okf/`, 14
+files), 445 in the platform layer (`src/lib/platform/`, 4 files), and 724 in
+Rust (`src-tauri/src/`, 4 files).
 
 ## 3. Requirements Summary
 
@@ -66,7 +66,7 @@ servers — via `src/lib/okf/integrations.ts`, but never invokes them.
 
 ```mermaid
 graph TD
-    UI["src/components/okf/ — 13 components<br/>every file a Zustand consumer"]
+    UI["src/components/okf/ — 14 components<br/>every file a Zustand consumer"]
     Store["src/lib/okf/store.ts<br/>the only state container"]
     Core["src/lib/okf/ — pure domain core<br/>graph, frontmatter, markdown, classify"]
     Storage["src/lib/platform/storage.ts<br/>StorageProvider interface"]
@@ -87,7 +87,7 @@ graph TD
 
 The critical property is that the React tree, the store, and the graph engine
 are entirely runtime-agnostic. Only `getStorage()`
-(`src/lib/platform/storage.ts:134-137`) knows which runtime it is in, selecting
+(`src/lib/platform/storage.ts:133-137`) knows which runtime it is in, selecting
 on `isTauriRuntime()` (`:124-131`), which sniffs `window.__TAURI_INTERNALS__`.
 Tauri API imports are dynamic (`await import(...)`) so the browser bundle never
 pulls them in.
@@ -138,17 +138,20 @@ which `tauri-build` scans unconditionally.
 | `src/lib/okf/classify.ts` | heuristic raw-docs → typed OKF paths |
 | `src/lib/okf/integrations.ts` | DeepAgents / Claude plugin / MCP exporters; also owns `localStorage` persistence |
 | `src/lib/okf/prefs.ts` | theme and zoom preferences; pure except one DOM writer |
+| `src/lib/okf/tree.ts` | the sidebar tree's keyboard and ARIA model — flatten, key resolution, typeahead |
 | `src/lib/platform/storage.ts` | `StorageProvider` interface, `HttpStorage`, `TauriStorage` |
 | `src/lib/platform/fsCore.ts` | Node-only path jail and walker; never in the browser bundle |
 | `src/lib/platform/fsApiPlugin.ts` | Vite dev middleware for `/api/fs/*` |
-| `src-tauri/src/lib.rs` | five `#[tauri::command]` entry points |
+| `src/lib/platform/cli.ts` | the `okff` launcher's IPC surface; deliberately outside `StorageProvider` |
+| `src-tauri/src/lib.rs` | eight `#[tauri::command]` entry points, plus argv handling |
 | `src-tauri/src/fs_core.rs` | the Rust path jail |
+| `src-tauri/src/cli.rs` | shim rendering, `--workspace` parsing, and the `okff` installer |
 
 ## 8. End-to-End Workflows
 
 **Opening a folder on desktop.** The user picks a directory through the native
-dialog. `set_workspace` (`lib.rs:24`) realpaths it and stores it in a
-`Mutex<WorkspaceState>`. `list_markdown_files` (`lib.rs:62`) walks it via
+dialog. `set_workspace` (`lib.rs:25`) realpaths it and stores it in a
+`Mutex<WorkspaceState>`. `list_markdown_files` (`lib.rs:63`) walks it via
 `collect_files` (`fs_core.rs:108`). The store's `resolveWorkspaceSelection`
 then decides whether the logical OKF root is the folder itself or a nested
 `sample-okf/` or `.okf/` subtree, computes `workspacePrefix`, and builds the
@@ -157,7 +160,29 @@ bundle. `buildFromBundle` (`graph.ts:606`) parses and validates.
 **Saving an edit.** `saveEditor` writes through the active `StorageProvider`,
 then calls `recompute`, which reruns `buildFromBundle` over the *entire*
 bundle. This is correct and simple; it is also a performance cliff past the
-400-file cap in `MAX_WORKSPACE_MD_FILES` (`store.ts:170`).
+400-file cap in `MAX_WORKSPACE_MD_FILES` (`store.ts:174`).
+
+**Opening a folder from the shell.** `okff <dir>` is a script on `PATH` that
+runs `open -n -b com.okf.forge --args --workspace "$dir"`, resolving the app by
+bundle identifier so relocating `OKFForge.app` does not break the command. On
+the Rust side, `run()` (`lib.rs:106`) scans argv through
+`workspace_from_args` (`cli.rs:36`) *before* building the app and seeds the
+same `Mutex<WorkspaceState>` the picker would have set. Nothing new crosses the
+IPC boundary for this: `TauriStorage.getWorkspaceRoot()` already calls
+`get_workspace` and returns `null` when unset, so `init` (`store.ts:335`)
+simply asks, and loads that folder instead of the bundled sample when the
+answer is non-null. An unparseable or missing path is ignored rather than
+fatal — a GUI launch has no terminal, so exiting on a stale argument would read
+to the user as a crash.
+
+**Installing that shim.** The Settings view calls `install_cli`, which renders
+the script with `current_exe()`'s `.app` ancestor baked in as a fallback
+launcher, then writes `/usr/local/bin/okff`. It escalates through
+`osascript … with administrator privileges` **only when that directory is not
+already writable**, so a machine where the user owns `/usr/local/bin` sees no
+prompt at all. `cli_status` reports whether the installed file carries our
+marker comment, which is what stops a hand-written `okff` from being
+overwritten silently.
 
 **Switching theme.** A pre-paint inline script in `src/routes/__root.tsx` and
 `tauri.html` reads `localStorage` and stamps `data-theme` on `<html>` before
@@ -224,6 +249,13 @@ Four tiers with disjoint file globs, so no test is ever collected twice:
 | web end-to-end | `e2e/*.spec.ts` | Playwright, chromium |
 | desktop end-to-end | `e2e-desktop/specs/*.e2e.ts` | WebdriverIO against the real Tauri window |
 
+A `globalSetup` guards the Playwright tier: it fetches `/api/fs/workspace`
+before any spec runs and refuses the run when the root is inside the
+repository. `webServer.env` reaches only a server Playwright spawns itself, and
+`reuseExistingServer` is on outside CI, so a dev server started by hand — which
+falls back to the tracked `public/sample-okf` — used to be reused silently
+while the writing specs mutated tracked files.
+
 The first three plus `cargo test` are required checks on `main`. The desktop
 tier is deliberately **not** required: it needs a full cargo build and a real
 window, making it the slowest and flakiest tier, and blocking a documentation
@@ -254,12 +286,18 @@ marketing:
   `src/lib/multiplayer/`, and `migrations/0001_auth.sql` are leftovers from a
   TanStack Start + better-auth + PGlite + WebRTC starter. Nothing imports them.
   Authentication does not work and is not meant to.
-- **Effectively one route.** All seven views are conditional renders driven by
+- **Effectively one route.** All eight views are conditional renders driven by
   `store.view`, not URLs. Deep-linking to a concept is impossible.
 - **Full reparse on every save.** Fine at 400 files, a cliff beyond it.
-- **Sidebar collapse state is lost on save**, because the effect in
-  `Sidebar.tsx` depends on a `tree` identity that `recompute` recreates.
 - **`tsconfig` `include` is `["src"]`**, so `tests/`, `e2e/`, `scripts/`, and
   the Vite configs are not covered by `npm run typecheck`.
 - **21 `@radix-ui` packages are installed and entirely unimported**, while
   `OpenBundleDialog.tsx` hand-rolls a dialog with no focus trap.
+- **The `okff` installer is macOS-only.** The shim calls `open(1)` and
+  escalation goes through `osascript`; Windows and Linux return an explicit
+  error. No packaged build exists for either platform, so there is nothing to
+  install to yet.
+- **Two desktop windows share one preference store.** `okff` opens an
+  independent instance per invocation, but both processes load the same
+  `localStorage` origin, so a theme or zoom change in one reaches the other
+  only after that window reloads, and the last write wins.
