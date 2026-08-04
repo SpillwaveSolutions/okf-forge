@@ -59,6 +59,7 @@
    "tag": "v0.1.1",
    "title": "OKF Forge \u2014 Code Walkthrough",
    "truth_state": "snapshot",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Code-Walkthrough-2026-08-04_v0.1.1-release",
    "wiki_key": "design/2026-08-04_v0.1.1-release-code-walkthrough"
   },
   {
@@ -75,6 +76,7 @@
    "tag": "v0.1.1",
    "title": "OKF Forge \u2014 Design Document",
    "truth_state": "snapshot",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Design-Doc-2026-08-04_v0.1.1-release",
    "wiki_key": "design/2026-08-04_v0.1.1-release-design-doc"
   },
   {
@@ -228,6 +230,7 @@
    "status": "completed",
    "title": "okff CLI launcher and Settings view",
    "truth_state": "current",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Plan-okff-cli",
    "wiki_key": "plan/2026-08-03-okff-cli"
   },
   {
@@ -271,6 +274,7 @@
    "supersedes": "roadmap-snapshot/2026-08-03_v0.1.0-release",
    "title": "Roadmap",
    "truth_state": "snapshot",
+   "wiki": "https://github.com/SpillwaveSolutions/okf-forge/wiki/Roadmap-2026-08-04_v0.1.1-release",
    "wiki_key": "roadmap-snapshot/2026-08-04_v0.1.1-release"
   }
  ],
