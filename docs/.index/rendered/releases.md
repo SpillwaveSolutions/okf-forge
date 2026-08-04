@@ -4,6 +4,8 @@ _What shipped, with the frozen evidence for each release. Generated; do not edit
 
 ## v0.1.1 — 2026-08-04
 
+- Design: [[Code-Walkthrough-2026-08-04_v0.1.1-release]]
+- Design: [[Design-Doc-2026-08-04_v0.1.1-release]]
 - Roadmap snapshot: [[Roadmap-2026-08-04_v0.1.1-release]]
 
 ## v0.1.0 — 2026-08-03

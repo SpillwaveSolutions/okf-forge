@@ -421,7 +421,16 @@ Desktop-specific issues: [§2.7](#27-desktop-troubleshooting).
   desktop, and it follows a change to your OS setting live while it stays on
   system. Your choice is remembered and applied before the window first
   paints, so there is no flash of the wrong theme on launch.
-- File list uses `listbox` / `option` roles for keyboard and e2e selection  
+- **The file tree is keyboard-navigable.** Tab into it once, then:
+  **↑ / ↓** move between visible rows · **→** opens a folder, or steps into an
+  already-open one · **←** closes a folder, or climbs to its parent ·
+  **Home / End** jump to the first and last visible row · **Enter** or
+  **Space** opens the focused file · and typing a few letters jumps to the row
+  whose name starts with them. Tab leaves the tree in one press rather than
+  walking every file in the workspace.
+- It carries `role="tree"` / `role="treeitem"` with depth announced through
+  `aria-level`, so a screen reader reports the nesting the flat markup no
+  longer shows.
 - Open dialog is `role="dialog"` with aria-label  
 - Focus-visible outlines on interactive controls  
 
