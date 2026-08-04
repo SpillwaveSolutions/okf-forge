@@ -544,22 +544,22 @@
    "wiki_key": "design/2026-08-03_v0.1.0-release-design-doc"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T20:00:00Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-04T03:26:00Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Code-Walkthrough",
    "render": "doc+banner",
-   "render_hash": "6112803081f9",
+   "render_hash": "ef2e84b66988",
    "source": "docs/designs/current_code_walkthrough.md",
    "title": "OKF Forge \u2014 Code Walkthrough",
    "truth_state": "current",
    "wiki_key": "design/current-code-walkthrough"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-03T20:00:00Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-04T03:26:00Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Design-Doc",
    "render": "doc+banner",
-   "render_hash": "32a8e9e292ba",
+   "render_hash": "65a977cad31c",
    "source": "docs/designs/current_design_doc.md",
    "title": "OKF Forge \u2014 Design Document",
    "truth_state": "current",
