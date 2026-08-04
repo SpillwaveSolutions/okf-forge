@@ -89,6 +89,14 @@ npm run tauri:build
 # → src-tauri/target/release/bundle/  (dmg, msi, AppImage, deb, …)
 ```
 
+Once the desktop app is installed, open **Settings** and click **Install okff** to
+put a launcher on your `PATH`:
+
+```bash
+okff .            # open the current directory in OKF Forge
+okff ~/my-okf     # open a specific one
+```
+
 Local install and verification steps: **[DEVELOPERS.md §7](./DEVELOPERS.md#7-build--deploy-the-tauri-app-locally)**.  
 End-user desktop walkthrough: **[USER_GUIDE.md §2](./USER_GUIDE.md#2-running-as-a-tauri-app)**.
 
@@ -103,6 +111,8 @@ End-user desktop walkthrough: **[USER_GUIDE.md §2](./USER_GUIDE.md#2-running-as
 - **Desktop or web** — same UI; native FS jail on Tauri, `/api/fs` for Playwright  
 - **Light, dark, or system** theme — follows your OS by default, remembered after that  
 - **Zoom the type** on desktop with ⌘+ / ⌘− / ⌘0, also remembered  
+- **Open from the shell** with `okff <dir>` — installed from Settings, macOS for now  
+- **Navigate the file tree by keyboard** — arrows, Home/End, and type-to-find  
 
 Details: **[FEATURES.md](./FEATURES.md)** · Walkthrough: **[USER_GUIDE.md](./USER_GUIDE.md)**
 
