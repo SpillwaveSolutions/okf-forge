@@ -33,6 +33,16 @@ Search the graph, compute blast radius for a concept, and build N-hop context pa
   <img src="./screenshots/okf-impact.png" alt="OKFForge Graph & Search — impact analysis update order and progressive disclosure pack" width="100%" />
 </p>
 
+### Light and dark themes
+
+Cycle light / dark / system from the header. The palette is two layers of CSS
+variables behind `@theme inline`, so flipping the theme repaints every existing
+utility class without touching a component.
+
+<p align="center">
+  <img src="./screenshots/okf-light.png" alt="OKFForge editor in the light theme — split source and preview with the same typed links and toolbar" width="100%" />
+</p>
+
 ### LangChain DeepAgents export
 
 Map okf-graph-eng skills to DeepAgent skills / subagents and export JSON or Python scaffolding.
