@@ -221,6 +221,11 @@
    "type": "belongs-to"
   },
   {
+   "from": "item/01KZWHV1P4JAJ71Z37MFXXH2TJ",
+   "to": "release/v0.1.2",
+   "type": "targets"
+  },
+  {
    "from": "plan/2026-08-02-view-preferences",
    "to": "item/01KZ2M32GWWQ4PP29HVE0AMPX7",
    "type": "produces"
@@ -627,6 +632,11 @@
    "status": "done",
    "title": "e2e persistence spec writes into the tracked public/sample-okf fixture"
   },
+  "item/01KZWHV1P4JAJ71Z37MFXXH2TJ": {
+   "doc_type": "item",
+   "status": "done",
+   "title": "Re-shoot the README screenshots against the current UI"
+  },
   "plan/2026-08-02-view-preferences": {
    "doc_type": "plan",
    "source": "docs/plans/2026-08-02-view-preferences.md",
@@ -643,6 +653,9 @@
    "doc_type": "release"
   },
   "release/v0.1.1": {
+   "doc_type": "release"
+  },
+  "release/v0.1.2": {
    "doc_type": "release"
   },
   "roadmap": {
