@@ -44,7 +44,7 @@
    "frozen": false,
    "page_name": "Index-Traceability",
    "render": "as-is",
-   "render_hash": "9bc26744e885",
+   "render_hash": "7fef47ab1160",
    "source": "docs/.index/rendered/traceability.md",
    "title": "Traceability Index",
    "truth_state": "current",
@@ -69,6 +69,16 @@
    "title": "Release v0.1.1",
    "truth_state": "shipped",
    "wiki_key": "release/v0.1.1"
+  },
+  {
+   "frozen": false,
+   "page_name": "Release-v0.1.2",
+   "render": "as-is",
+   "render_hash": "199a79605f57",
+   "source": "docs/.index/rendered/releases/v0.1.2.md",
+   "title": "Release v0.1.2",
+   "truth_state": "shipped",
+   "wiki_key": "release/v0.1.2"
   },
   {
    "frozen": false,
@@ -511,6 +521,16 @@
    "wiki_key": "item/01KZ4FN7VEE25SEF6JCFG5J90T"
   },
   {
+   "frozen": false,
+   "page_name": "Ticket-01KZWHV1P4JAJ71Z37MFXXH2TJ",
+   "render": "as-is",
+   "render_hash": "5ffc1b6aeff2",
+   "source": "docs/.index/rendered/tickets/01KZWHV1P4JAJ71Z37MFXXH2TJ.md",
+   "title": "Re-shoot the README screenshots against the current UI",
+   "truth_state": "done",
+   "wiki_key": "item/01KZWHV1P4JAJ71Z37MFXXH2TJ"
+  },
+  {
    "banner": "> **Current** \u2014 the latest status report. Reports freeze once published; corrections appear in later reports.",
    "frozen": true,
    "page_name": "Design-2026-08-02-View-Preferences",
@@ -698,11 +718,11 @@
    "wiki_key": "plan/2026-08-03-okff-cli"
   },
   {
-   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-04T03:21:30Z. Historical snapshots are linked from [[Index-Releases]].",
+   "banner": "> **Current** \u2014 this is the living version; regenerated at 2026-08-13T03:19:55Z. Historical snapshots are linked from [[Index-Releases]].",
    "frozen": false,
    "page_name": "Roadmap",
    "render": "doc+banner",
-   "render_hash": "9c1325edefd9",
+   "render_hash": "725d465ae23e",
    "source": "docs/roadmap.md",
    "title": "Roadmap",
    "truth_state": "current",

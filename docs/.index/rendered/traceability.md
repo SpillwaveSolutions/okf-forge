@@ -2,6 +2,10 @@
 
 _The evidence chain: plan → item → ticket → code → release, forward and backward. Generated from `docs/.index/_graph.json`; do not edit._
 
+### Re-shoot the README screenshots against the current UI
+`01KZWHV1P4JAJ71Z37MFXXH2TJ` · status: done
+- targets: release/v0.1.2
+
 ### e2e persistence spec writes into the tracked public/sample-okf fixture
 `01KZ4FN7VEE25SEF6JCFG5J90T` · status: done
 

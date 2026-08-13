@@ -27,6 +27,7 @@ Ships as **one UI on two runtimes**: web (TanStack Start → Vercel) and desktop
 | `npm run verify` | typecheck + unit + e2e. **Does not run lint, build, rust, or desktop.** |
 | `npm run lint` / `format` | `eslint .` / `prettier --write .` |
 | `npm run wireframes` / `wiki` | Re-render `.puml` → PNG / publish docs to the GitHub wiki. |
+| `npm run screenshots` | Re-shoot the README images. Needs `npm run dev` already running. |
 
 Node 22+ (`npm test` uses `--experimental-strip-types`), Rust 1.77+, npm (only
 `package-lock.json`). `OKF_WORKSPACE=/abs/path npm run dev` points `/api/fs` at a
@@ -260,6 +261,14 @@ Any change under `src/components/okf/` or `src/styles.css` follows this loop.
    Check must pass. Those are the gate; `agent` rows are advice.
 6. **Iterate** from 2. Report `agent`-row concerns in the PR body; never block a
    merge on them.
+
+**If the change alters anything the README shows** — the nav, the branding, the
+sidebar, a view the README embeds — run `npm run screenshots` in the same PR.
+Nothing checks an image, so a stale README is invisible: the hero sat on a
+public repo advertising the pre-rename "OKF Motion" name, a seven-item nav, and
+the flat sidebar for two releases after all three changed. The script re-shoots
+all six; look at the output before committing, because a script that runs is not
+a screenshot that is correct.
 
 Wireframes: edit the `.puml`, run `npm run wireframes` to re-render, then
 `npm run wiki` to publish. `npm run wiki` renders the worklog manifest into the

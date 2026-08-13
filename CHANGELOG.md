@@ -3,6 +3,31 @@
 All notable changes to OKF Forge are recorded here. Dated sections are frozen:
 corrections go in the next release's notes, never into a shipped section.
 
+## 0.1.2 — unreleased
+
+### Fixed
+
+- **Every image in the README showed a product that no longer exists.** The
+  hero still carried the pre-rename "OKF Motion" branding, a seven-item nav
+  with no Settings entry, and the flat sidebar the nested file tree replaced —
+  on a public repository, across two releases that changed all three. All five
+  embedded images are re-shot against the current build.
+
+### Added
+
+- A light-theme screenshot in the README. The theme shipped in 0.1.0 and was
+  invisible in every image until now.
+- `npm run screenshots` re-shoots all six README images against a running dev
+  server. Not wired into CI: fonts rasterize differently on macOS and Linux, so
+  a PNG regenerated on a runner would diff on every byte and prove nothing.
+
+### Removed
+
+- Six unreferenced files from `screenshots/`. Four of them (`okf-final`,
+  `okf-motion`, `okf-motion-2`, `okf-tauri-ready`) were byte-identical copies
+  of the hero, which the README reached through one of the aliases;
+  `okfforge-rename` and `open-debug` were referenced by nothing at all.
+
 ## 0.1.1 — 2026-08-04
 
 ### Fixed
