@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { InputHTMLAttributes } from "react";
 import { FolderOpen, Github, Layers, Monitor, Upload, X } from "lucide-react";
 import { useOkfStore } from "@/lib/okf/store";
@@ -20,6 +20,18 @@ export function OpenBundleDialog() {
   const [name, setName] = useState("my-okf");
   const fileRef = useRef<HTMLInputElement>(null);
   const dirRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, setOpen]);
 
   if (!open) return null;
 
