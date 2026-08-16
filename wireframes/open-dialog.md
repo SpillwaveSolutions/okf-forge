@@ -25,7 +25,7 @@ Load a workspace from native folder (desktop), web /api/fs, bundled sample, GitH
 
 | Element | Type | Behavior / Notes |
 |---------|------|------------------|
-| Overlay | dialog | role=dialog aria-modal=true aria-label=Open OKF repository. Backdrop click closes. |
+| Overlay | dialog | role=dialog aria-modal=true aria-label=Open OKF repository. Backdrop click or Escape closes. |
 | Close | icon | aria-label Close |
 | Subtitle | text | Desktop vs web copy |
 | Error | banner | Store error if last load failed |
@@ -44,7 +44,7 @@ Load a workspace from native folder (desktop), web /api/fs, bundled sample, GitH
 
 ## Acceptance Criteria
 - [ ] Dialog has role=dialog, aria-modal, and label Open OKF repository.
-- [ ] Backdrop click and Close dismiss it.
+- [ ] Backdrop click, Close, and Escape dismiss it.
 - [ ] Desktop primary action is Open folder (native); web is Open web workspace.
 - [ ] Sample, GitHub, file pick, and scaffold are all present.
 - [ ] Reload OKF_WORKSPACE appears only on web.
