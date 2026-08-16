@@ -158,6 +158,7 @@ export const KNOWN_RELS = new Set([
 export type AppView =
   | "learn"
   | "explorer"
+  | "concepts"
   | "editor"
   | "search"
   | "classify"
