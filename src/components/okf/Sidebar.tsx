@@ -14,6 +14,7 @@ import {
   Settings2,
   SlidersHorizontal,
   Sparkles,
+  LayoutList,
 } from "lucide-react";
 import { useOkfStore } from "@/lib/okf/store";
 import type { AppView, Concept } from "@/lib/okf/types";
@@ -23,6 +24,7 @@ import { findByPrefix, flattenTree, resolveTreeKey, type VisibleRow } from "@/li
 const NAV: { id: AppView; label: string; icon: typeof BookOpen }[] = [
   { id: "learn", label: "Learn OKF", icon: BookOpen },
   { id: "explorer", label: "Explorer", icon: FolderTree },
+  { id: "concepts", label: "Concepts", icon: LayoutList },
   { id: "editor", label: "Editor", icon: FileText },
   { id: "search", label: "Graph & Search", icon: Network },
   { id: "classify", label: "Classify", icon: Sparkles },

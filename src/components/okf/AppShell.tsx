@@ -11,6 +11,7 @@ import { LearnPanel } from "./LearnPanel";
 import { ClassifyPanel } from "./ClassifyPanel";
 import { DeepAgentPanel } from "./DeepAgentPanel";
 import { SettingsPanel } from "./SettingsPanel";
+import { ConceptsPanel } from "./ConceptsPanel";
 import { IntegrationsPanel } from "./IntegrationsPanel";
 import { OpenBundleDialog } from "./OpenBundleDialog";
 
@@ -93,6 +94,7 @@ export function AppShell() {
       <main className="app-main" data-testid="app-main" data-view={view}>
         {view === "learn" && <LearnPanel />}
         {view === "explorer" && <ExplorerPanel />}
+        {view === "concepts" && <ConceptsPanel />}
         {view === "editor" && <EditorPane />}
         {view === "search" && <SearchPanel />}
         {view === "classify" && <ClassifyPanel />}

@@ -9,6 +9,7 @@ These describe the **current** product, not a redesign. Update the matching file
 | App chrome | [shell.md](./shell.md) | — |
 | Learn OKF | [learn.md](./learn.md) | `learn` |
 | Explorer | [explorer.md](./explorer.md) | `explorer` |
+| Concepts | [concepts.md](./concepts.md) | `concepts` |
 | Editor | [editor.md](./editor.md) | `editor` |
 | Graph & Search | [graph-search.md](./graph-search.md) | `search` |
 | Classify | [classify.md](./classify.md) | `classify` |
@@ -19,4 +20,4 @@ These describe the **current** product, not a redesign. Update the matching file
 
 Skeleton: [_template.md](./_template.md).
 
-There is one route. All eight panels are conditional renders inside `AppShell`. Tests identify the mounted view via `main[data-view]`.
+There is one route. All nine panels are conditional renders inside `AppShell`. Tests identify the mounted view via `main[data-view]`.

@@ -20,9 +20,9 @@ describe("desktop CLI card", () => {
     await $("[data-testid='cli-state']").waitForDisplayed({ timeout: 30_000 });
   });
 
-  it("shows eight nav items with Settings last", async () => {
+  it("shows nine nav items with Settings last", async () => {
     const labels = await $$(".nav-item").map((el) => el.getText());
-    expect(labels).toHaveLength(8);
+    expect(labels).toHaveLength(9);
     expect(labels[labels.length - 1]).toBe("Settings");
   });
 

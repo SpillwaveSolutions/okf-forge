@@ -12,7 +12,8 @@ Give a Motion-style workbench: persistent header, sidebar nav plus file tree, on
 +-----------------+-----------------------------------------------+
 | Learn OKF       |                                               |
 | Explorer        |                                               |
-| Editor          |              Main (one of 8 views)            |
+| Concepts        |              Main (one of 9 views)            |
+| Editor          |                                               |
 | Graph & Search  |                                               |
 | Classify        |                                               |
 | DeepAgents      |                                               |
@@ -45,7 +46,7 @@ CSS grid children are **direct**: header | sidebar | main | status. Do not wrap 
 | Open | secondary | Opens Open dialog. Disabled while loading. data-testid=header-open. |
 | Classify | secondary | Opens Classify. Hidden on mobile. |
 | Save | primary | Enabled only when dirty. Label Save / Saved. data-testid=header-save. Cmd/Ctrl+S. |
-| Nav rail | 8 buttons | data-testid=nav-{id}. Active item visually marked. |
+| Nav rail | 9 buttons | data-testid=nav-{id}. Active item visually marked. Order: Learn, Explorer, Concepts, Editor, Graph & Search, Classify, DeepAgents, Plugins & MCP, Settings. |
 | Bundle header | text + badge | Bundle name; valid or N err from validation. |
 | File filter | search | Filters tree by path, title, type. |
 | File tree | ARIA tree | Flat role=treeitem rows, aria-level, roving tabindex. Dirs expand/collapse; files select and open editor. Type badge on non-Index files. |
@@ -68,7 +69,7 @@ CSS grid children are **direct**: header | sidebar | main | status. Do not wrap 
 ## Acceptance Criteria
 - [ ] Header, sidebar, main, and status bar are all visible on a desktop viewport.
 - [ ] Exactly one main view is mounted; main[data-view] matches the active nav item.
-- [ ] All eight nav items switch the main panel without a route change.
+- [ ] All nine nav items switch the main panel without a route change.
 - [ ] Header subtitle distinguishes desktop vs web.
 - [ ] Save is disabled when clean and enabled when dirty; Cmd/Ctrl+S saves.
 - [ ] Theme cycle has an accessible name that states current and next.

@@ -32,6 +32,7 @@ const VIEWS: ViewSpec[] = [
   { view: "learn", h1: "Learn OKF by using it", cards: 8 },
   // Data-driven: the heading is the bundle name, so it tracks the fixture.
   { view: "explorer", h1: /^sample-okf$|^Workspace$/, cards: 2 },
+  { view: "concepts", h1: "Concepts", cards: 1 },
   {
     view: "search",
     h1: "Graph & search",
